@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router()
 const fs = require('fs');
 
-app.get('/../db/db.json', (req, res) => {
+router.get('/../db/db.json', (req, res) => {
     fs.readFile('../db/db.json', (err, data) => {
         if (err) {
             return res.status(500).send('Erro ao ler o arquivo de tutoriais.');
@@ -12,7 +12,7 @@ app.get('/../db/db.json', (req, res) => {
 });
 
 // Adicionar um novo tutorial
-app.post('/addVideo', (req, res) => {
+router.post('/addVideo', (req, res) => {
     const newVideo = req.body;
 
     fs.readFile('../db/db.json', (err, data) => {
@@ -41,7 +41,7 @@ app.post('/addVideo', (req, res) => {
 });
 
 // Deletar um tutorial
-app.delete('/deleteVideo', (req, res) => {
+router.delete('/deleteVideo', (req, res) => {
     const index = req.body.index;
 
     fs.readFile('../db/db.json', (err, data) => {
@@ -65,7 +65,7 @@ app.delete('/deleteVideo', (req, res) => {
 });
 
 // Atualizar um tutorial
-app.put('/updateVideo', (req, res) => {
+router.put('/updateVideo', (req, res) => {
     const { index, video } = req.body;
 
     fs.readFile('../db/db.json', (err, data) => {
