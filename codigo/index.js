@@ -15,7 +15,8 @@
 
 const jsonServer = require('json-server')
 const server = jsonServer.create()
-const router = jsonServer.router('../db/db.json')
+const router = jsonServer.router('codigo/db/db.json')
+
 const path = require("path")
 
 const express = require('express');
@@ -23,7 +24,7 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const app = express();
 const PORT = 3000;
-const tutorial = require("./public/routes/tutorial")
+const tutorial = require("/Users/loona/Documents/TI/organizacaoFinanceira/codigo/public/routes/tutorialRoute")
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
