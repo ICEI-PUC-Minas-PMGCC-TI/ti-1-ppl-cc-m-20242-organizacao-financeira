@@ -86,3 +86,7 @@ button:hover {
 .gerenciarBotao{
     margin: 10px 0 0;
 }
+
+.voltarBotao{
+    margin: 15px 0 5px;
+}
