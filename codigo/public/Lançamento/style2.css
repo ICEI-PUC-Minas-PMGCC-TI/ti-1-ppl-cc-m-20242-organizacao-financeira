@@ -10,17 +10,11 @@ body {
     align-items: center;
     min-height: 100vh;
     background-color: #edf3fb;
- 
-}
-
-.container {
-    width: 100%;
-    max-width: 550px;
-    background-color: #fff;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    
+ 
+ 
 }
 
 .title-form{
@@ -42,7 +36,7 @@ label {
     font-weight: bold;
 }
 
-.btn-primary {
+.btn-primary, .btn-success {
     background-color: red;
     border-color: red;
     color:black; 
