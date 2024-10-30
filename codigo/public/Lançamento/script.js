@@ -1,148 +1,144 @@
-function validateForm() {
-    var descricao = document.getElementById("inputDescrição").value;
-    var valor = document.getElementById("inputvalor").value;        
-    var categoria = document.getElementById("inputcategoria").value;
-    var conta = document.getElementById("inputconta").value;
+window.onload = () => {
+    const pageTitle = document.title.toLowerCase();
+    const type = pageTitle.includes("receitas") ? "receitas" : "despesas";
+    showData(type);
+};
 
-    if (descricao == "") {
+function validateForm(type) {
+    const descricao = document.getElementById("exampleInputDescricao").value;
+    const valor = document.getElementById("exampleInputValor").value;
+    const categoria = document.getElementById("exampleInputCategoria").value;
+    const conta = document.getElementById("exampleInputConta").value;
+    const foiRecebidoOuPago = document.getElementById("exampleCheck1").checked;
+
+    if (descricao === "") {
         alert("Descrição é obrigatória");
         return false;
     }
-
-    if (valor == "") {
+    if (valor === "") {
         alert("Valor é obrigatório");
         return false;
     }
-
-    if (categoria == "") {
-        alert("Categoria é obrigatório");
+    if (categoria === "") {
+        alert("Categoria é obrigatória");
         return false;
-    }   
-
-    if (conta == "") {
+    }
+    if (conta === "") {
         alert("Conta é obrigatória");
         return false;
     }
 
-    return true;
+    return { descricao, valor, categoria, conta, foiRecebidoOuPago };
 }
 
-/*function showData() {
-    fetch('/lancamentoList.json') // Obter o arquivo JSON do servidor
-        .then(response => response.json())
-        .then(lancamentoList => {
-            var html = "";
+function showData(type) {
+    const endpoint = type === "receitas" ? "/receitasList.json" : "/despesasList.json";
 
-            lancamentoList.forEach(function (element, index) {
+    fetch(endpoint)
+        .then(response => response.json())
+        .then(dataList => {
+            let html = "";
+
+            dataList.forEach((element, index) => {
                 html += "<tr>";
-                html += '<td><a href="'+ element.url +'" target="_blank" class="link-style"rel="noopener noreferrer"> '+ element.url +'</a></td>';
-                html += "<td>" + element.titulo + "</td>";
                 html += "<td>" + element.descricao + "</td>";
-                html += '<td><button onclick="deleteData(' + index + ')" class="btn btn-danger">Deletar</button></td>';
-                html += '<td><button onclick="updateData(' + index + ')" class="btn btn-warning">Editar</button></td>';
+                html += "<td>" + element.valor + "</td>";
+                html += "<td>" + element.categoria + "</td>";
+                html += "<td>" + element.conta + "</td>";
+                html += "<td>" + (element.foiRecebidoOuPago ? "Sim" : "Não") + "</td>";
+                html += `<td><button onclick="deleteData(${index}, '${type}')" class="btn btn-danger">Deletar</button></td>`;
+                html += `<td><button onclick="updateData(${index}, '${type}')" class="btn btn-warning">Editar</button></td>`;
                 html += "</tr>";
             });
 
             document.querySelector("#crudTable tbody").innerHTML = html;
         })
-        .catch(error => console.error('Erro ao carregar dados:', error));
-}*/
+        .catch(error => console.error("Erro ao carregar dados:", error));
+}
 
-document.onload = showData();
+function addData(type) {
+    const validatedData = validateForm(type);
 
-function addData() {
-    if (validateForm() == true) {
-        var descricao = document.getElementById("inputDescricao").value;
-        var valor = document.getElementById("inputValor").value;
-        var categoria = document.getElementById("inputCategoria").value;
-        var conta = document.getElementById("inputConta").value;
+    if (validatedData) {
+        const endpoint = type === "receitas" ? "/addReceita" : "/addDespesa";
 
-        var newLancamento = {
-            descricao: descricao,
-            valor: valor,
-            categoria: categoria,
-            conta: conta
-        };
-
-        fetch('/addLancamento', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newLancamento)
+        fetch(endpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(validatedData)
         })
             .then(response => response.text())
             .then(data => {
-                alert(data); // Mensagem de sucesso
-                showData(); // Atualizar a tabela
-                clearForm(); // Limpar os campos do formulário
+                alert(data);
+                showData(type);
+                clearForm();
             })
-            .catch(error => console.error('Erro:', error));
+            .catch(error => console.error("Erro:", error));
     }
 }
 
-function deleteData(index) {
-    fetch('/deleteLancamento', {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ index: index }) // Enviando o índice do lancamento a ser deletado
+function deleteData(index, type) {
+    const endpoint = type === "receitas" ? "/deleteReceita" : "/deleteDespesa";
+
+    fetch(endpoint, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ index })
     })
         .then(response => response.text())
         .then(data => {
-            alert(data); // Mensagem de confirmação
-            showData(); // Atualizar a tabela
+            alert(data);
+            showData(type);
         })
-        .catch(error => console.error('Erro ao deletar Lançamento:', error));
+        .catch(error => console.error("Erro ao deletar item:", error));
 }
 
-function updateData(index) {
+function updateData(index, type) {
     document.getElementById("Submit").style.display = "none";
     document.getElementById("Update").style.display = "block";
 
-    fetch('/lancamentoList.json') // Obter a lista de Lançamento
+    const endpoint = type === "receitas" ? "/receitasList.json" : "/despesasList.json";
+
+    fetch(endpoint)
         .then(response => response.json())
-        .then(lancamentoList => {
-            document.getElementById("inputDescricao").value = lancamentoList[index].descricao;
-            document.getElementById("inputValor").value = lancamentoList[index].valor;
-            document.getElementById("inputCategoria").value = lancamentoList[index].categoria; 
-            document.getElementById("inputConta").value = lancamentoList[index].conta;
+        .then(dataList => {
+            const data = dataList[index];
+            document.getElementById("exampleInputDescricao").value = data.descricao;
+            document.getElementById("exampleInputValor").value = data.valor;
+            document.getElementById("exampleInputCategoria").value = data.categoria;
+            document.getElementById("exampleInputConta").value = data.conta;
+            document.getElementById("exampleCheck1").checked = data.foiRecebidoOuPago;
 
             document.querySelector("#Update").onclick = function () {
-                if (validateForm() == true) {
-                    const updatedVideo = {
-                        descricao: document.getElementById("inputDescricao").value,
-                        valor: document.getElementById("inputValor").value,
-                        categoria: document.getElementById("inputCategoria").value, 
-                        conta: document.getElementById("inputConta").value
-                    };
+                const updatedData = validateForm(type);
 
-                    fetch('/updateLancamento', {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ index: index, lancamento: updatedLancamento })
+                if (updatedData) {
+                    const updateEndpoint = type === "receitas" ? "/updateReceita" : "/updateDespesa";
+
+                    fetch(updateEndpoint, {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ index, data: updatedData })
                     })
                         .then(response => response.text())
                         .then(data => {
-                            alert(data); // Mensagem de confirmação
-                            showData(); // Atualizar a tabela
-                            clearForm(); // Limpar os campos
+                            alert(data);
+                            showData(type);
+                            clearForm();
                         })
-                        .catch(error => console.error('Erro ao atualizar lançamento:', error));
+                        .catch(error => console.error("Erro ao atualizar item:", error));
                 }
             };
         })
-        .catch(error => console.error('Erro ao carregar dados para edição:', error));
+        .catch(error => console.error("Erro ao carregar dados para edição:", error));
 }
 
 function clearForm() {
-    document.getElementById("inputDescricao").value = "";
-    document.getElementById("inputValor").value = "";
-    document.getElementById("inputCategoria").value = "";  
-    document.getElementById("inputConta").value = "";
+    document.getElementById("exampleInputDescricao").value = "";
+    document.getElementById("exampleInputValor").value = "";
+    document.getElementById("exampleInputCategoria").value = "";
+    document.getElementById("exampleInputConta").value = "";
+    document.getElementById("exampleCheck1").checked = false;
     document.getElementById("Submit").style.display = "block";
     document.getElementById("Update").style.display = "none";
 }
