@@ -9,18 +9,13 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #edf3fb;
- 
-}
-
-.container {
-    width: 100%;
-    max-width: 550px;
-    background-color: #fff;
+    background-color: #edf3fb; 
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     
+
+ 
 }
 
 .title-form{
@@ -40,9 +35,10 @@ label {
     margin-bottom: 5px;
     color: #333;
     font-weight: bold;
+    
 }
 
-.btn-primary {
+.btn-primary, .btn-success {
     background-color: green;
     border-color: green;
     color:black; 
@@ -50,8 +46,7 @@ label {
     font-weight: bold;
     padding: 5px 10px; 
     font-size: 0.9em; 
-    width: auto; 
-    
+    width: auto;    
 }
 
 
