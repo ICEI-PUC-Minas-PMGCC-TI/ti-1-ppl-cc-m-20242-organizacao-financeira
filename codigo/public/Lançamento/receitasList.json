@@ -1,0 +1,16 @@
+[
+  {
+    "descricao": "Conta de agua",
+    "valor": "R$ 120,00",
+    "categoria": "Contas da Casa",
+    "conta": "Copasa",
+    "foiRecebidoOuPago": true
+  },
+  {
+    "descricao": "Conta de Energia",
+    "valor": "R$200,00",
+    "categoria": "Contas da Casa",
+    "conta": "Cemig",
+    "foiRecebidoOuPago": false
+  }
+]

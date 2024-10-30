@@ -1,0 +1,16 @@
+[
+  {
+    "descricao": "Aluguel da Casa",
+    "valor": "R$500,00",
+    "categoria": "Contas da Casa",
+    "conta": "Aluguel",
+    "foiRecebidoOuPago": true
+  },
+  {
+    "descricao": "Mensalidade",
+    "valor": "R$ 550,00",
+    "categoria": "Contas da crianças",
+    "conta": "Escola",
+    "foiRecebidoOuPago": false
+  }
+]
