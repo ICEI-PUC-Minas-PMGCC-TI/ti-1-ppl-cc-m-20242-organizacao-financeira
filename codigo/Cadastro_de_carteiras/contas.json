@@ -1,3 +1,12 @@
 [
-  
+  {
+    "nomeConta": "fasdfadf",
+    "saldo": "fasdfasdf",
+    "descricaoConta": "fasdfasdfa",
+    "meta": "fasdfadsfas",
+    "detalhes": "fadsfasdfa",
+    "tipo": "Cartão de Débito",
+    "id_icone": "✈️",
+    "id_cor": "#f39c12"
+  }
 ]
