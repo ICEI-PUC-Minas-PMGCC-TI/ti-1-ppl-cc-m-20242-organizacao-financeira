@@ -1,0 +1,85 @@
+{
+  "objetivos": [
+    {
+      "categoria": "Reserva de Emergência",
+      "objetivo": "Criar uma reserva de emergência",
+      "valor_objetivo": 15000,
+      "prazo": "12 meses",
+      "status": "Em progresso",
+      "submetas": [
+        {
+          "submeta": "Economizar R$ 1.500 por mês",
+          "prazo": "12 meses",
+          "status": "Em andamento"
+        },
+        {
+          "submeta": "Abrir uma conta poupança específica",
+          "prazo": "1 mês",
+          "status": "Concluído"
+        }
+      ]
+    },
+    {
+      "categoria": "Investimentos",
+      "objetivo": "Investir em ações",
+      "valor_objetivo": 50000,
+      "prazo": "24 meses",
+      "status": "Em progresso",
+      "submetas": [
+        {
+          "submeta": "Estudar sobre investimentos em ações",
+          "prazo": "3 meses",
+          "status": "Em andamento"
+        },
+        {
+          "submeta": "Investir R$ 2.000 por mês em ações",
+          "prazo": "24 meses",
+          "status": "Em andamento"
+        },
+        {
+          "submeta": "Diversificar a carteira com 5 ações diferentes",
+          "prazo": "12 meses",
+          "status": "Não iniciado"
+        }
+      ]
+    },
+    {
+      "categoria": "Dívidas e Empréstimos",
+      "objetivo": "Quitar dívidas de cartão de crédito",
+      "valor_objetivo": 8000,
+      "prazo": "6 meses",
+      "status": "Em progresso",
+      "submetas": [
+        {
+          "submeta": "Pagar R$ 1.500 por mês",
+          "prazo": "6 meses",
+          "status": "Em andamento"
+        },
+        {
+          "submeta": "Negociar taxas de juros com os credores",
+          "prazo": "1 mês",
+          "status": "Concluído"
+        }
+      ]
+    },
+    {
+      "categoria": "Aposentadoria",
+      "objetivo": "Criar um fundo de aposentadoria",
+      "valor_objetivo": 300000,
+      "prazo": "20 anos",
+      "status": "Em progresso",
+      "submetas": [
+        {
+          "submeta": "Investir R$ 500 por mês em um plano de previdência privada",
+          "prazo": "12 meses",
+          "status": "Em andamento"
+        },
+        {
+          "submeta": "Revisar o valor a ser investido anualmente com base nos aumentos de renda",
+          "prazo": "A cada 12 meses",
+          "status": "Em andamento"
+        }
+      ]
+    }
+  ]
+}
