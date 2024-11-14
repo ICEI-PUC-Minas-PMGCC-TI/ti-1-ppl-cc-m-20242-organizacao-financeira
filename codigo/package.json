@@ -12,5 +12,9 @@
   "dependencies": {
     "express": "^4.17.1",
     "json-server": "^0.17.3"
-  }
+  },
+  "scripts": {
+  "start-json": "json-server --watch db/db.json --port 3000"
+}
+
 }
