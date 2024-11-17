@@ -1,5 +1,5 @@
 // Base URL do JSON Server
-const baseUrl = "http://localhost:3000/tutoriais"; // Substitua pela URL do seu JSON Server
+const baseUrl = "http://localhost:3001/tutoriais"; // Substitua pela URL do seu JSON Server
 
 // Função para validar o formulário
 function validateForm() {

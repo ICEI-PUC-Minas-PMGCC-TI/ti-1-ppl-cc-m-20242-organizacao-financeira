@@ -3,7 +3,9 @@ const path = require("path");
 const app = express();
 const jsonServer = require("json-server");
 
-const router = jsonServer.router("db/db.json");
+app.use(express.static(path.join(__dirname, "db")));
+
+const router = jsonServer.router(path.join(__dirname, "db", "db.json"));
 const middlewares = jsonServer.defaults();
 
 // Configurações do JSON Server
@@ -14,8 +16,8 @@ app.use("/api", router); // Rotas para a API JSON
 app.use(express.static(path.join(__dirname, "public")));
 
 // Rota para servir a página HTML
-app.get("/tutoriais", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "tutorial.html"));
+app.get("/cadastro/tutoriais", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "modules/tutoriais/tutorial.html"));
 });
 
 // Inicializando o servidor

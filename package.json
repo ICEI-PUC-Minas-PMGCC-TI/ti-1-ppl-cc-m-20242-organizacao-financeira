@@ -5,7 +5,7 @@
   "main": "codigo/index.js",
   "scripts": {
     "dev": "nodemon",
-    "start-json": "json-server --watch codigo/db/db.json --port 3000"
+    "start-json": "json-server --watch codigo/db/db.json --port 3001"
   },
   "keywords": [],
   "author": "Rommel Vieira Carneiro",
