@@ -1,0 +1,137 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    justify-content: flex-start;
+}
+
+header {
+    background-color: #1E4DB7;
+    color: white;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+#total-valor {
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 5px;
+    color: white; 
+}
+
+.carteiras-container {
+    display: flex;
+    gap: 20px;
+    margin: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.carteira-item {
+    background-color: #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    width: 250px;
+    height: 220px;
+    text-align: center;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.carteira-item h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: black; 
+    margin: 5px 0;
+}
+
+.carteira-item p {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: black; 
+    margin: 5px 0;
+}
+
+.carteira-item .meta,
+.carteira-item .tipo,
+.carteira-item .descricao {
+    font-size: 0.9em; 
+    font-weight: normal; 
+    color: black; 
+    margin: 3px 0;
+}
+
+.carteira-icone {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    color: white;
+    margin: 0 auto;
+}
+
+.actions {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+.add-btn, .edit-btn, .delete-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    border-radius: 50%;
+    color: white;
+    background-color: #1E4DB7;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-btn:hover, .edit-btn:hover {
+    background-color: #3E6FF7;
+}
+
+footer {
+    margin-top: 30px;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.carteira-item.selected {
+    border: 3px solid #4CAF50; 
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); 
+    transition: all 0.3s ease; 
+}
+.carteira-item:hover {
+    cursor: pointer;
+}
+.delete-btn {
+    background-color: rgb(199, 0, 0);
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: rgb(152, 1, 1);
+}
+
+
+

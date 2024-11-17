@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Carteira</title>
+    <link rel="stylesheet" href="assets/css/cadastroCarteira.css">
+</head>
+<body>
+    <div class="container">
+        <div class="preview-section">
+            <div id="preview-box" class="preview-box">
+                <div id="icon-preview" class="icon-placeholder"></div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h1>Editar Conta</h1>
+            <div class="form-inputs">
+                <label class="nome-carteira" for="nomeConta">Nome da Carteira</label>
+                <input type="text" id="nomeConta" placeholder="Nome da Conta">
+            </div>
+            <div class="form-inputs">
+                <label for="saldo">Saldo da Conta</label>
+                <div class="saldo-info">
+                    <input type="text" id="saldo" placeholder="Valor em R$">
+                </div>
+            </div>
+            <div class="form-inputs">
+                <label for="descricaoConta">Descrição</label>
+                <input type="text" id="descricaoConta" placeholder="Descrição">
+            </div>
+            <div class="form-inputs">
+                <label for="meta">Meta para esta Carteira</label>
+                <input type="text" id="meta" placeholder="Valor">
+            </div>
+            <div class="form-inputs">
+                <label for="tipo">Tipo de Carteira</label>
+                <select id="tipo">
+                    <option value="Cartão de Débito">Cartão de Débito</option>
+                    <option value="Cartão de Crédito">Cartão de Crédito</option>
+                    <option value="Conta Corrente">Conta Corrente</option>
+                    <option value="Poupança">Poupança</option>
+                </select>
+            </div>
+            <div class="form-inputs">
+                <label for="detalhes">Detalhes</label>
+                <textarea id="detalhes" rows="3" placeholder="Escreva aqui os detalhes..."></textarea>
+            </div>
+            <button type="submit" onclick="updateData()">Salvar Alterações</button>
+        </div>
+
+        <div class="options-section">
+            <h3>Ícones :</h3>
+            <div class="icon-picker">
+                <label>
+                    <input type="radio" name="id_icone" value="💳">
+                    <span class="icon-placeholder">💳</span>
+                </label>
+                <label>
+                    <input type="radio" name="id_icone" value="🏦">
+                    <span class="icon-placeholder">🏦</span>
+                </label>
+                <label>
+                    <input type="radio" name="id_icone" value="🐖">
+                    <span class="icon-placeholder">🐖</span>
+                </label>
+                <label>
+                    <input type="radio" name="id_icone" value="✈️">
+                    <span class="icon-placeholder">✈️</span>
+                </label>
+                <label>
+                    <input type="radio" name="id_icone" value="🏠">
+                    <span class="icon-placeholder">🏠</span>
+                </label>
+                <label>
+                    <input type="radio" name="id_icone" value="🚗">
+                    <span class="icon-placeholder">🚗</span>
+                </label>
+                <label>
+                    <input type="radio" name="id_icone" value="😊">
+                    <span class="icon-placeholder">😊</span>
+                </label>
+                <label>
+                    <input type="radio" name="id_icone" value="👶">
+                    <span class="icon-placeholder">👶</span>
+                </label>
+            </div>
+
+            <h3>Cores :</h3>
+            <div class="color-picker">
+                <label style="background-color: #c0392b;">
+                    <input type="radio" name="id_cor" value="#c0392b">
+                </label>
+                <label style="background-color: indigo;">
+                    <input type="radio" name="id_cor" value="#8e44ad">
+                </label>
+                <label style="background-color: #2980b9;">
+                    <input type="radio" name="id_cor" value="#2980b9">
+                </label>
+                <label style="background-color: #3498db;">
+                    <input type="radio" name="id_cor" value="#3498db">
+                </label>
+                <label style="background-color: #27ae60;">
+                    <input type="radio" name="id_cor" value="#27ae60">
+                </label>
+                <label style="background-color: #2ecc71;">
+                    <input type="radio" name="id_cor" value="#2ecc71">
+                </label>
+                <label style="background-color: #f39c12;">
+                    <input type="radio" name="id_cor" value="#f39c12">
+                </label>
+                <label style="background-color: #e67e22;">
+                    <input type="radio" name="id_cor" value="#e67e22"> 
+                </label>
+            </div>
+            <button class="return" onclick="window.location.href ='apresentacaoCarteira.html'">↩</button>
+        </div>
+    </div>
+    <script src="assets/js/editarCarteira.js"></script>
+</body>
+</html>

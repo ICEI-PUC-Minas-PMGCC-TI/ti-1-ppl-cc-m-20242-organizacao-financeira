@@ -1,4 +1,3 @@
-
 const apiUrl = 'http://localhost:3000/contas';
 
 async function addData() {
