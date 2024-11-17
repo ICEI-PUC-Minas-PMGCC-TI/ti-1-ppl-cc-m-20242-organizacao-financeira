@@ -4,13 +4,13 @@
   "description": "Laboratório de aplicação Web com backend baseado no JSON Server",
   "main": "codigo/index.js",
   "scripts": {
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "start-json": "json-server --watch codigo/db/db.json --port 3000"
   },
   "keywords": [],
   "author": "Rommel Vieira Carneiro",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.20.3",
     "express": "^4.17.1",
     "json-server": "^0.17.3",
     "nodemon": "^3.1.7"
