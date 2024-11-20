@@ -1,28 +1,35 @@
-// Trabalho Interdisciplinar 1 - Aplicações Web
-//
-// Esse módulo implementa uma API RESTful baseada no JSONServer
-// O servidor JSONServer fica hospedado na seguinte URL
-// https://jsonserver.rommelpuc.repl.co/contatos
-//
-// Para montar um servidor para o seu projeto, acesse o projeto 
-// do JSONServer no Replit, faça o FORK do projeto e altere o 
-// arquivo db.json para incluir os dados do seu projeto.
-//
-// URL Projeto JSONServer: https://replit.com/@rommelpuc/JSONServer
-//
-// Autor: Rommel Vieira Carneiro
-// Data: 03/10/2023
+const express = require("express");
+const path = require("path");
+const app = express();
+const jsonServer = require("json-server");
 
-const jsonServer = require('json-server')
-const server = jsonServer.create()
-const router = jsonServer.router('./db/db.json')
-  
-// Para permitir que os dados sejam alterados, altere a linha abaixo
-// colocando o atributo readOnly como false.
-const middlewares = jsonServer.defaults({ noCors: true })
-server.use(middlewares)
-server.use(router)
+app.use(express.static(path.join(__dirname, "db")));
 
-server.listen(3000, () => {
-  console.log(`JSON Server is running em http://localhost:3000`)
-})
+const router = jsonServer.router(path.join(__dirname, "db", "db.json"));
+const middlewares = jsonServer.defaults();
+
+// Configurações do JSON Server
+app.use(middlewares);
+app.use("/api", router); // Rotas para a API JSON
+
+// Servindo arquivos estáticos
+app.use(express.static(path.join(__dirname, "public")));
+
+// Rota para servir a página HTML
+app.get("/cadastro/lancamento", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "lancamento/Lancamentos.html"));
+});
+
+app.get("/cadastro/despesas", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "lancamento/Despesas.html"));
+});
+
+app.get("/cadastro/receitas", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "lancamento/Receitas.html"));
+});
+
+// Inicializando o servidor
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running at http://localhost:${PORT}`);
+});

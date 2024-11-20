@@ -2,17 +2,17 @@
   "name": "lab-jsonserver",
   "version": "1.0.0",
   "description": "Laboratório de aplicação Web com backend baseado no JSON Server",
-  "main": "index.js",
+  "main": "codigo/index.js",
   "scripts": {
-   "start": "node index.js",
-   "start-json": "json-server --watch db/db.json --port 3000"
+    "dev": "nodemon",
+    "start-json": "json-server --watch codigo/db/db.json --port 3001"
   },
   "keywords": [],
   "author": "Rommel Vieira Carneiro",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "json-server": "^0.17.3"
+    "json-server": "^0.17.3",
+    "nodemon": "^3.1.7"
   }
-
 }
