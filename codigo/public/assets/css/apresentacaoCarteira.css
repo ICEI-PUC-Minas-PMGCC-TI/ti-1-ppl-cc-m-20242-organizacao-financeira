@@ -133,5 +133,26 @@ footer {
     background-color: rgb(152, 1, 1);
 }
 
+#graph-btn {
+    position: absolute;
+    top: 40px;
+    right: 60px;
+    background-color: #56a6fb;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
 
+#graph-btn:hover {
+    background-color: #bcdcff;
+}
 
