@@ -271,6 +271,24 @@
       "descricao": "Parcela do financiamento do carro",
       "recorrente": true,
       "frequencia": "mensal"
+    },
+    {
+      "descricao": "Pagamento da monto",
+      "valor": -20000,
+      "categoria": "Conta pessoal",
+      "conta": "Moto",
+      "foiRecebidoOuPago": false,
+      "tipo": "despesa",
+      "id": 12
+    },
+    {
+      "descricao": "Pagar o boliche",
+      "valor": -200,
+      "categoria": "Lazer",
+      "conta": "Estabelecimento",
+      "foiRecebidoOuPago": true,
+      "tipo": "despesa",
+      "id": 13
     }
   ],
   "objetivos": [
