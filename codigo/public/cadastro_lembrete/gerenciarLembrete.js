@@ -1,30 +1,44 @@
-function carregarLembretes() {
+const API_URL = 'http://localhost:3000/lembretes';
 
-    const lembretes = JSON.parse(localStorage.getItem('pagamentos')) || [];
 
-    const listaLembretes = document.getElementById('listaLembretes');
-    listaLembretes.innerHTML = ''; 
+async function carregarLembretes() {
+    try {
+        const response = await fetch(API_URL);
+        if (!response.ok) throw new Error('Erro ao carregar lembretes');
+        const lembretes = await response.json();
 
-    lembretes.forEach((lembrete, index) => {
-  
-        const li = document.createElement('li');
-        li.textContent = `${lembrete.titulo} - R$${lembrete.valor.toFixed(2)} - ${lembrete.data}`;
-        
-        const botaoExcluir = document.createElement('button');
-        botaoExcluir.textContent = 'Excluir';
-        botaoExcluir.onclick = function() {
-            excluirLembrete(index);
-        };
-        li.appendChild(botaoExcluir);
-        listaLembretes.appendChild(li);
-    });
+        const listaLembretes = document.getElementById('listaLembretes');
+        listaLembretes.innerHTML = '';
+
+        lembretes.forEach((lembrete) => {
+            const li = document.createElement('li');
+            li.textContent = `${lembrete.titulo} - R$${lembrete.valor.toFixed(2)} - ${lembrete.data}`;
+
+            const botaoExcluir = document.createElement('button');
+            botaoExcluir.textContent = 'Excluir';
+            botaoExcluir.onclick = () => excluirLembrete(lembrete.id);
+            li.appendChild(botaoExcluir);
+
+            listaLembretes.appendChild(li);
+        });
+    } catch (error) {
+        console.error('Erro ao carregar lembretes:', error);
+    }
 }
 
-function excluirLembrete(index) {
-    let lembretes = JSON.parse(localStorage.getItem('pagamentos')) || [];
-    lembretes.splice(index, 1); 
-    localStorage.setItem('pagamentos', JSON.stringify(lembretes)); 
-    carregarLembretes(); 
+
+
+
+async function excluirLembrete(id) {
+    try {
+        const response = await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+        if (!response.ok) throw new Error('Erro ao excluir lembrete');
+        alert('Lembrete excluído com sucesso!');
+        carregarLembretes(); 
+    } catch (error) {
+        console.error('Erro ao excluir lembrete:', error);
+    }
 }
+
 
 window.onload = carregarLembretes;

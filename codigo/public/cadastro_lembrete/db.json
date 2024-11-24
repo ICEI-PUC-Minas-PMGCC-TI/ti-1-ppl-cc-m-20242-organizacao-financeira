@@ -1,12 +1,12 @@
 {
   "lembretes": [
     {
-      "id": "d23c",
-      "titulo": "asd",
-      "descricao": "aasda",
-      "valor": 123,
-      "data": "2024-11-12",
-      "status": false,
+      "id": "a2c1",
+      "titulo": "asdas",
+      "descricao": "sd",
+      "valor": 0.25,
+      "data": "2024-11-14",
+      "status": true,
       "frequencia": "null"
     }
   ]
