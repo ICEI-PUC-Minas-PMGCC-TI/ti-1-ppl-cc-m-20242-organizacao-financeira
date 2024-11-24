@@ -12,16 +12,16 @@ async function gerarCalendario() {
     const ultimoDia = new Date(anoAtual, mesAtual + 1, 0).getDate();
 
     calendarioDiv.innerHTML = '';
-    detalhesDiv.style.display = 'none'; // Oculta os detalhes inicialmente.
+    detalhesDiv.style.display = 'none'; 
 
-    // Preenche os dias em branco no início do mês
+    
     for (let i = 0; i < primeiroDia; i++) {
         const divVazia = document.createElement('div');
         divVazia.classList.add('dia');
         calendarioDiv.appendChild(divVazia);
     }
 
-    // Preenche os dias do mês
+   
     for (let dia = 1; dia <= ultimoDia; dia++) {
         const divDia = document.createElement('div');
         divDia.classList.add('dia');
@@ -42,7 +42,7 @@ async function gerarCalendario() {
                 const lembreteDiv = document.createElement('div');
                 lembreteDiv.textContent = lembrete.titulo;
                 lembreteDiv.classList.add('lembrete-item');
-                lembreteDiv.onclick = () => exibirDetalhesLembrete(lembrete); // Adiciona o evento de clique.
+                lembreteDiv.onclick = () => exibirDetalhesLembrete(lembrete); 
                 lembretesDiv.appendChild(lembreteDiv);
             });
 
@@ -64,7 +64,7 @@ function exibirDetalhesLembrete(lembrete) {
         <p><strong>Pago:</strong> ${lembrete.status ? 'Sim' : 'Não'}</p>
         <p><strong>Frequência:</strong> ${lembrete.frequencia}</p>
     `;
-    detalhesDiv.style.display = 'block'; // Exibe os detalhes.
+    detalhesDiv.style.display = 'block'; 
 }
 
 async function buscarLembretes() {
