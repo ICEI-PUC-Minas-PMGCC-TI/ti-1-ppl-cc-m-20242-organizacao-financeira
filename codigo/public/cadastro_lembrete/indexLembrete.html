@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Lembrete de Pagamento</title>
+    <link rel="stylesheet" href="styleLembrete.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastrar Pagamento</h1>
+        <form>
+            <div class="form-group">
+                <label for="titulo">Nome do Pagamento:</label>
+                <input type="text" id="titulo" name="titulo" placeholder="Insira o nome do pagamento" required>
+            </div>
+            <div class="form-group">
+                <label for="descricao">Descrição:</label>
+                <textarea id="descricao" name="descricao" placeholder="Descrição" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="valor">Valor do Pagamento:</label>
+                <input type="number" step="0.01" id="valor" name="valor" placeholder="Valor em Real" required>
+            </div>
+            <div class="form-group">
+                <label for="data">Data de Pagamento:</label>
+                <input type="date" id="data" name="data" required>
+            </div>
+            <div class="form-group">
+                <label for="status">Pagamento Realizado:</label>
+                <input type="checkbox" id="status" name="status">
+            </div>
+            <label class="frequencia">Frequência:</label>
+            <select id="frequencia" class="form-select d-inline w-auto" required>
+                <option value=""></option>
+                <option value="null">Pagamento Único</option>
+                <option value="semanal">Pagamento Semanal</option>
+                <option value="mensal">Pagamento Mensal</option>
+                <option value="semestral">Pagamento Semestral</option>
+            </select>
+            <button type="submit">Cadastrar</button>
+        </form>
+        <div class="gerenciarBotao">
+        <button onclick="window.location.href='gerenciarLembrete.html'">Gerenciar Lembretes</button>
+        </div>
+    </div>
+</body>
+<script src="scriptLembrete.js"></script>
+</html>
+
+

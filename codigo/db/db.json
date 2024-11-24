@@ -287,7 +287,7 @@
       "id": 2,
       "id_usuario": 1,
       "id_carteira": 2,
-      "id_categoria": 8
+      "id_categoria": 8,
       "valor": 300.00,
       "tipo": "receita",
       "data": "2024-10-10",
@@ -299,7 +299,7 @@
       "id": 3,
       "id_usuario": 1,
       "id_carteira": 3,
-      "id_categoria": 6
+      "id_categoria": 6,
       "valor": 1250.00,
       "tipo": "receita",
       "data": "2024-10-11",
@@ -311,7 +311,7 @@
       "id": 4,
       "id_usuario": 1,
       "id_carteira": 1,
-      "id_categoria": 4
+      "id_categoria": 4,
       "valor": 320.00,
       "tipo": "receita",
       "data": "2024-10-14",
@@ -323,7 +323,7 @@
       "id": 5,
       "id_usuario": 1,
       "id_carteira": 5,
-      "id_categoria": 7
+      "id_categoria": 7,
       "valor": 1800.00,
       "tipo": "receita",
       "data": "2024-10-21",
@@ -335,7 +335,7 @@
       "id": 6,
       "id_usuario": 1,
       "id_carteira": 1,
-      "id_categoria": 7
+      "id_categoria": 7,
       "valor": -400.00,
       "tipo": "despesa",
       "data": "2024-10-19",
@@ -347,7 +347,7 @@
       "id": 7,
       "id_usuario": 1,
       "id_carteira": 2,
-      "id_categoria": 1
+      "id_categoria": 1,
       "valor": -150.00,
       "tipo": "despesa",
       "data": "2024-10-30",
@@ -359,7 +359,7 @@
       "id": 8,
       "id_usuario": 1,
       "id_carteira": 3,
-      "id_categoria": 3
+      "id_categoria": 3,
       "valor": -200.00,
       "tipo": "despesa",
       "data": "2024-10-25",
@@ -371,7 +371,7 @@
       "id": 9,
       "id_usuario": 1,
       "id_carteira": 4,
-      "id_categoria": 4
+      "id_categoria": 4,
       "valor": -1200.00,
       "tipo": "despesa",
       "data": "2024-09-11",
@@ -383,7 +383,7 @@
       "id": 10,
       "id_usuario": 1,
       "id_carteira": 1,
-      "id_categoria": 5
+      "id_categoria": 5,
       "valor": -300.00,
       "tipo": "despesa",
       "data": "2024-10-22",
@@ -395,7 +395,7 @@
       "id": 11,
       "id_usuario": 1,
       "id_carteira": 7,
-      "id_categoria": 4
+      "id_categoria": 4,
       "valor": -400.00,
       "tipo": "despesa",
       "data": "2024-10-09",
@@ -514,7 +514,7 @@
     {
       "id": 4,
       "id_usuario": 1,
-      "id_categoria": 12
+      "id_categoria": 12,
       "titulo": "Pagar conta de luz",
       "descricao": "Lembrar de pagar a conta de luz até o dia 20.",
       "data_hora": "2024-10-20T12:00:00",
