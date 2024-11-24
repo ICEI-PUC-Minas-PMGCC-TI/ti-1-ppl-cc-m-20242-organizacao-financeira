@@ -1,31 +1,40 @@
 cff-version: 1.0.1
 message: Please cite this software using these metadata.
-title: 
+title: Midas
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names:
+  - family-names: Andrade de Oliveira
+    given-names: Alessandro
+  - family-names: Almeida Costa
+    given-names: André
+  - family-names: Manoel Bernardes
+    given-names: Davi
+  - family-names: Quites Santos
+    given-names: Felipe
+  - family-names: Cardoso Maia
+    given-names: Pedro Henrique
+  - family-names: Santos Nogueira
+    given-names: Tiago
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: OLiveira Caetano
+    given-names: João Carlos 
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Mara Freitas Diniz
+    given-names: Luciana 
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Vieira Carneiro
+    given-names: Rommel 
+    
 keywords:
+  - Economia
+  - Gestão Financeira
+  - Dinheiro
+  - Economizar
+  - Poupança
   - 
-  - 
-repository-code: 
+repository-code: https://github.com/ICEI-PUC-Minas-PMGCC-TI/ti-1-ppl-cc-m-20242-organizacao-financeira.git
 license: CC-BY-4.0
 version: 1.0.0
 date-released: 2022-07-14
