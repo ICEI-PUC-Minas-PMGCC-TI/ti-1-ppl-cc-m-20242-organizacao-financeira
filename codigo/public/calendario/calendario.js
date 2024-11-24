@@ -2,6 +2,7 @@ const API_URL = 'http://localhost:3000/lembretes';
 
 async function gerarCalendario() {
     const calendarioDiv = document.getElementById('calendario');
+    const detalhesDiv = document.getElementById('lembreteDetalhes');
     const hoje = new Date();
     const mesAtual = hoje.getMonth();
     const anoAtual = hoje.getFullYear();
@@ -11,15 +12,16 @@ async function gerarCalendario() {
     const ultimoDia = new Date(anoAtual, mesAtual + 1, 0).getDate();
 
     calendarioDiv.innerHTML = '';
+    detalhesDiv.style.display = 'none'; // Oculta os detalhes inicialmente.
 
- 
+    // Preenche os dias em branco no início do mês
     for (let i = 0; i < primeiroDia; i++) {
         const divVazia = document.createElement('div');
         divVazia.classList.add('dia');
         calendarioDiv.appendChild(divVazia);
     }
 
-
+    // Preenche os dias do mês
     for (let dia = 1; dia <= ultimoDia; dia++) {
         const divDia = document.createElement('div');
         divDia.classList.add('dia');
@@ -39,6 +41,8 @@ async function gerarCalendario() {
             lembretesDoDia.forEach(lembrete => {
                 const lembreteDiv = document.createElement('div');
                 lembreteDiv.textContent = lembrete.titulo;
+                lembreteDiv.classList.add('lembrete-item');
+                lembreteDiv.onclick = () => exibirDetalhesLembrete(lembrete); // Adiciona o evento de clique.
                 lembretesDiv.appendChild(lembreteDiv);
             });
 
@@ -47,6 +51,20 @@ async function gerarCalendario() {
 
         calendarioDiv.appendChild(divDia);
     }
+}
+
+function exibirDetalhesLembrete(lembrete) {
+    const detalhesDiv = document.getElementById('lembreteDetalhes');
+    detalhesDiv.innerHTML = `
+        <h2>Detalhes do Lembrete</h2>
+        <p><strong>Nome:</strong> ${lembrete.titulo}</p>
+        <p><strong>Descrição:</strong> ${lembrete.descricao}</p>
+        <p><strong>Valor:</strong> R$${lembrete.valor.toFixed(2)}</p>
+        <p><strong>Data:</strong> ${lembrete.data}</p>
+        <p><strong>Pago:</strong> ${lembrete.status ? 'Sim' : 'Não'}</p>
+        <p><strong>Frequência:</strong> ${lembrete.frequencia}</p>
+    `;
+    detalhesDiv.style.display = 'block'; // Exibe os detalhes.
 }
 
 async function buscarLembretes() {
