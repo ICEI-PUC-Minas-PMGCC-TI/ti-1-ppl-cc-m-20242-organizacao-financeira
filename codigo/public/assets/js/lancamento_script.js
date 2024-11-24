@@ -2,6 +2,7 @@ window.onload = () => {
     const pageTitle = document.title.toLowerCase();
     const type = pageTitle.includes("receita") ? "receita" : "despesa";
     showData(type);
+    fetchLancamentos();
 };
 
 function validateForm() {
@@ -9,7 +10,7 @@ function validateForm() {
     const valor = document.getElementById("exampleInputValor").value;
     const categoria = document.getElementById("exampleInputCategoria").value;
     const conta = document.getElementById("exampleInputConta").value;
-    const foiRecebidoOuPago = document.getElementById("exampleCheck1").checked;
+    const recorrente = document.getElementById("exampleCheck1").checked;
 
     if (!descricao || !valor || !categoria || !conta) {
         alert("Todos os campos são obrigatórios!");
@@ -21,7 +22,7 @@ function validateForm() {
         valor: parseFloat(valor),
         categoria,
         conta,
-        foiRecebidoOuPago,
+        recorrente,
         tipo: categoria.includes("receita") ? "receita" : "despesa",
     };
 }
@@ -34,13 +35,13 @@ function showData(type) {
         .then(dataList => {
             let html = "";
 
-            dataList.forEach(element => {
+            dataList.forEach(element => {                
                 html += "<tr>";
                 html += `<td>${element.descricao}</td>`;
                 html += `<td>${element.valor}</td>`;
                 html += `<td>${element.categoria}</td>`;
                 html += `<td>${element.conta}</td>`;
-                html += `<td>${element.foiRecebidoOuPago ? "Sim" : "Não"}</td>`;
+                html += `<td>${element.recorrente ? "Sim" : "Não"}</td>`;
                 html += `<td><button onclick="deleteData(${element.id})" class="btn btn-danger">Deletar</button></td>`;
                 html += `<td><button onclick="updateData(${element.id})" class="btn btn-warning">Editar</button></td>`;
                 html += "</tr>";
@@ -92,7 +93,7 @@ function updateData(id) {
             document.getElementById("exampleInputValor").value = data.valor;
             document.getElementById("exampleInputCategoria").value = data.categoria;
             document.getElementById("exampleInputConta").value = data.conta;
-            document.getElementById("exampleCheck1").checked = data.foiRecebidoOuPago;
+            document.getElementById("exampleCheck1").checked = data.recorrente;
 
             document.getElementById("Submit").style.display = "none";
             document.getElementById("Update").style.display = "block";
@@ -115,6 +116,36 @@ function updateData(id) {
             };
         })
         .catch(error => console.error("Erro ao carregar dados para edição:", error));
+}
+
+function fetchLancamentos() {
+    const endpoints = [
+        "http://localhost:3001/lancamentos?tipo=receita",
+        "http://localhost:3001/lancamentos?tipo=despesa"
+    ];
+
+    const lancamentosTableBody = document.getElementById("lancamentosTableBody");
+    lancamentosTableBody.innerHTML = ""; // Limpa a tabela antes de adicionar novos dados
+
+    endpoints.forEach(endpoint => {
+        fetch(endpoint)
+            .then(response => response.json())
+            .then(dataList => {
+                dataList.forEach(lancamento => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${lancamento.descricao}</td>
+                        <td>${lancamento.valor}</td>
+                        <td>${lancamento.categoria}</td>
+                        <td>${lancamento.conta}</td>
+                        <td>${lancamento.recorrente ? "Sim" : "Não"}</td>
+                        <td>${lancamento.tipo}</td>
+                    `;
+                    lancamentosTableBody.appendChild(row);
+                });
+            })
+            .catch(error => console.error(`Erro ao carregar ${endpoint}:`, error));
+    });
 }
 
 function clearForm() {
