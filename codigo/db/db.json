@@ -474,15 +474,5 @@
       "nome": "Aposentadoria"
     }
   ],
-  "lembretes": [
-    {
-      "id": "54da",
-      "titulo": "asd",
-      "descricao": "asd",
-      "valor": 12,
-      "data": "2024-11-15",
-      "status": false,
-      "frequencia": "mensal"
-    }
-  ]
+  "lembretes": []
 }
