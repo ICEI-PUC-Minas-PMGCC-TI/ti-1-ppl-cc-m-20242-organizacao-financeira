@@ -35,7 +35,6 @@
       "id_cor": "#27ae60"
     },
     {
-      "id": "58a2",
       "nomeConta": "Oie",
       "saldo": 12342,
       "descricaoConta": "Fdasasdf",
@@ -43,18 +42,30 @@
       "tipo": "Conta Corrente",
       "detalhes": "Ola",
       "id_icone": "🏠",
-      "id_cor": "#2ecc71"
+      "id_cor": "#f39c12",
+      "id": "58a2"
     },
     {
-      "nomeConta": "abcd",
-      "saldo": 1000,
-      "descricaoConta": "abcd",
-      "meta": 1000,
+      "nomeConta": "ABCS",
+      "saldo": 10000,
+      "descricaoConta": "FASDVA",
+      "meta": 17000,
       "tipo": "Cartão de Crédito",
-      "detalhes": "abcd",
-      "id_icone": "✈️",
-      "id_cor": "#f39c12",
-      "id": "qGCgG4P"
+      "detalhes": "ABCSDFS",
+      "id_icone": "🚗",
+      "id_cor": "#3498db",
+      "id": "jhj7qPt"
+    },
+    {
+      "nomeConta": "FADFGASDF",
+      "saldo": 10000,
+      "descricaoConta": "JKLKJH",
+      "meta": 20000,
+      "tipo": "Cartão de Crédito",
+      "detalhes": "ALFDKSJD",
+      "id_icone": "🏠",
+      "id_cor": "#8e44ad",
+      "id": "q4rhbz2"
     }
   ],
   "categorias": [
