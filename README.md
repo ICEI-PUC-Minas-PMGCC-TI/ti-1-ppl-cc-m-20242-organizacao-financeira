@@ -10,7 +10,6 @@ Com funcionalidades pensadas tanto para quem está dando os primeiros passos na 
 * Alessandro Andrade de Oliveira
 * Pedro Henrique Cardoso Maia
 * André Almeida Costa
-* Samuel Padua Ramos
 * Davi Manoel Bernardes
 * Tiago Santos Nogueira
 * Felipe Quites Lopes
