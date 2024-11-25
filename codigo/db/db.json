@@ -142,147 +142,48 @@
   "lancamentos": [
     {
       "id": 1,
-      "id_usuario": 1,
-      "id_carteira": 1,
-      "id_categoria": 2,
-      "valor": 1412,
-      "tipo": "receita",
-      "data": "2024-10-01",
-      "descricao": "Salário do mês de Setembro",
-      "recorrente": true,
-      "frequencia": "mensal"
+      "descricao": "Venda de produto A",
+      "valor": 1500,
+      "categoria": "receita",
+      "conta": "Caixa",
+      "recorrente": false,
+      "tipo": "receita"
     },
     {
       "id": 2,
-      "id_usuario": 1,
-      "id_carteira": 2,
-      "id_categoria": 8,
-      "valor": 300,
-      "tipo": "receita",
-      "data": "2024-10-10",
-      "descricao": "Venda de doces",
+      "descricao": "Pagamento de aluguel",
+      "valor": 1200,
+      "categoria": "despesa",
+      "conta": "Banco",
       "recorrente": true,
-      "frequencia": "semanal"
+      "tipo": "despesa"
     },
     {
       "id": 3,
-      "id_usuario": 1,
-      "id_carteira": 3,
-      "id_categoria": 6,
-      "valor": 1250,
-      "tipo": "receita",
-      "data": "2024-10-11",
-      "descricao": "Aluguel recebido",
-      "recorrente": true,
-      "frequencia": "mensal"
+      "descricao": "Venda de produto B",
+      "valor": 2000,
+      "categoria": "receita",
+      "conta": "Caixa",
+      "recorrente": false,
+      "tipo": "receita"
     },
     {
       "id": 4,
-      "id_usuario": 1,
-      "id_carteira": 1,
-      "id_categoria": 4,
-      "valor": 320,
-      "tipo": "receita",
-      "data": "2024-10-14",
-      "descricao": "Bicos do mês de setembro",
+      "descricao": "Compra de materiais",
+      "valor": 800,
+      "categoria": "despesa",
+      "conta": "Cartão de Crédito",
       "recorrente": false,
-      "frequencia": null
+      "tipo": "despesa"
     },
     {
-      "id": 5,
-      "id_usuario": 1,
-      "id_carteira": 5,
-      "id_categoria": 7,
-      "valor": 1800,
-      "tipo": "receita",
-      "data": "2024-10-21",
-      "descricao": "Recebimento de royalties",
-      "recorrente": true,
-      "frequencia": "mensal"
-    },
-    {
-      "descricao": "Pagamento de conta de energia elétrica",
-      "valor": -400,
-      "categoria": "Conta da Casa",
-      "conta": "Conta do Mes",
+      "descricao": "Almoço",
+      "valor": 50,
+      "categoria": "Alimentacao",
+      "conta": "Banco",
       "recorrente": false,
       "tipo": "despesa",
-      "id": 6
-    },
-    {
-      "id": 7,
-      "id_usuario": 1,
-      "id_carteira": 2,
-      "id_categoria": 1,
-      "valor": -150,
-      "tipo": "despesa",
-      "data": "2024-10-30",
-      "descricao": "Compra de supermercado da semana",
-      "recorrente": false,
-      "frequencia": null
-    },
-    {
-      "id": 8,
-      "id_usuario": 1,
-      "id_carteira": 3,
-      "id_categoria": 3,
-      "valor": -200,
-      "tipo": "despesa",
-      "data": "2024-10-25",
-      "descricao": "Assinatura de jogos da PSN",
-      "recorrente": true,
-      "frequencia": "anual"
-    },
-    {
-      "id": 9,
-      "id_usuario": 1,
-      "id_carteira": 4,
-      "id_categoria": 4,
-      "valor": -1200,
-      "tipo": "despesa",
-      "data": "2024-09-11",
-      "descricao": "Manutenção do carro",
-      "recorrente": false,
-      "frequencia": null
-    },
-    {
-      "descricao": "Mensalidade da academia",
-      "valor": -300,
-      "categoria": "Lazer",
-      "conta": "Estabelecimento",
-      "recorrente": false,
-      "tipo": "despesa",
-      "id": 10
-    },
-    {
-      "id": 11,
-      "id_usuario": 1,
-      "id_carteira": 7,
-      "id_categoria": 4,
-      "valor": -400,
-      "tipo": "despesa",
-      "data": "2024-10-09",
-      "descricao": "Parcela do financiamento do carro",
-      "recorrente": true,
-      "frequencia": "mensal"
-    },
-    {
-      "descricao": "Pagamento da monto",
-      "valor": -20000,
-      "categoria": "Conta pessoal",
-      "conta": "Moto",
-      "foiRecebidoOuPago": false,
-      "tipo": "despesa",
-      "id": 12
-    },
-    {
-      "descricao": "Pagar o boliche",
-      "valor": -200,
-      "categoria": "Lazer",
-      "conta": "Estabelecimento",
-      "foiRecebidoOuPago": true,
-      "tipo": "despesa",
-      "id": 13
+      "id": 5
     }
   ],
   "objetivos": [
