@@ -20,6 +20,11 @@ app.get("/cadastro/tutoriais", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "modules/tutoriais/tutorial.html"));
 });
 
+app.get("/tutoriais", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "modules/tutoriais/exibicaoTutorial.html"));
+});
+
+
 // Inicializando o servidor
 const PORT = 3000;
 app.listen(PORT, () => {

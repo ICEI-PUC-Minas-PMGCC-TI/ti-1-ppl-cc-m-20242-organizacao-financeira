@@ -278,6 +278,54 @@
       "youtubeId": "AfMGeMZmyUU",
       "duracao": "10",
       "id": 15
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=V7z5bC4GOQI",
+      "titulo": "Como ADMINISTRAR e ORGANIZAR o Dinheiro (Métodos de Livros de Finanças)",
+      "descricao": "Veja como administrar seu dinheiro de acordo com grandes livros de finanças pessoais!",
+      "youtubeId": "V7z5bC4GOQI",
+      "duracao": "9",
+      "id": 16
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=o7BUfhgZb68",
+      "titulo": "GUSTAVO CERBASI: OS MAIORES ERROS DA ORGANIZAÇÃO FINANCEIRA | Os Economistas 64",
+      "descricao": "Neste episódio especial, temos a honra de receber Gustavo Cerbasi, grande autor e especialista em finanças pessoais, para discutir o tema \"Como Organizar sua vida financeira para Investir mais.\nNeste episódio, mergulharemos na organização financeira e como ela pode transformar sua vida. Gustavo Cerbasi, conhecido por sua abordagem prática, compartilhará suas melhores dicas e estratégias para que você possa criar uma base sólida para suas finanças pessoais e aproveitar ao máximo suas oportunidades de investimento.",
+      "youtubeId": "o7BUfhgZb68",
+      "duracao": "5",
+      "id": 17
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=xIIa3A3kY-k",
+      "titulo": "Como se organizar financeiramente: 7 passos para sair do caos financeiro 💸",
+      "descricao": "Se você está cansado de ver seu dinheiro desaparecer sem saber para onde ele foi esse vídeo é pra você. Por que hoje, quero te mostrar 7 passos simples para você organizar seu dinheiro e ter uma vida financeira mais equilibrada.",
+      "youtubeId": "xIIa3A3kY-k",
+      "duracao": "14",
+      "id": 18
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=jvJBjO24PVs",
+      "titulo": "10 dicas para se organizar financeiramente em 2024!",
+      "descricao": "No vídeo de hoje, trouxe 10 dicas para te ajudar a ficar no verde em 2024 e ser um orgulho da Nath Finanças!",
+      "youtubeId": "jvJBjO24PVs",
+      "duracao": "14",
+      "id": 19
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Vi7sSRi_3ao",
+      "titulo": "10 PASSOS para PLANEJAMENTO FINANCEIRO FÁCIL e SIMPLES | Minimalismo | Educação Financeira",
+      "descricao": "10 PASSOS para PLANEJAMENTO FINANCEIRO FÁCIL e SIMPLES | Minimalismo | Educação Financeira",
+      "youtubeId": "Vi7sSRi_3ao",
+      "duracao": "14",
+      "id": 20
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=HzRK6wTSHHU",
+      "titulo": "Educação Financeiro – Educação Financeira Para Iniciante!",
+      "descricao": "Olá pessoal, tudo bem! No vídeo de hoje falaremos um pouco de educação financeira para iniciantes.\nNesse vídeo você irá saber tudo sobre educação financeira, e como usar a educação financeira para garantir um futuro próspero.",
+      "youtubeId": "HzRK6wTSHHU",
+      "duracao": "5",
+      "id": 21
     }
   ],
   "lancamentos": [
