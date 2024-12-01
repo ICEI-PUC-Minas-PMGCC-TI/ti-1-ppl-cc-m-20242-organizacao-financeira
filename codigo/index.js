@@ -10,7 +10,7 @@ const middlewares = jsonServer.defaults();
 
 // Configurações do JSON Server
 app.use(middlewares);
-app.use(router); // Rotas para a API JSON
+app.use("/api", router); // Rotas para a API JSON
 
 // Servindo arquivos estáticos
 app.use(express.static(path.join(__dirname, "public")));
