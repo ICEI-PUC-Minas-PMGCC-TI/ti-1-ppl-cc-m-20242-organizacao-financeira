@@ -66,14 +66,28 @@ function carregarObjetivos() {
         })
         .then(data => {
             const container = document.getElementById('objetivos-container');
-            // Remove todos os elementos, exceto o card de "Novo Objetivo"
-            container.innerHTML = container.innerHTML.split('</div>')[0] + '</div>';
+            container.innerHTML = ''; // Limpa o container
 
+            // Adiciona o card de "Novo Objetivo"
+            const novoObjetivoCard = `
+                <div class="col-md-4">
+                    <div class="card custom-card text-center p-3" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#novoObjetivoModal">
+                        <div>
+                            <i class="bi bi-plus fs-1"></i>
+                            <p class="mt-2">Novo objetivo</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.innerHTML += novoObjetivoCard;
+
+            // Verifica se há objetivos no servidor
             if (data.length === 0) {
                 container.innerHTML += '<p class="text-center text-muted">Nenhum objetivo encontrado.</p>';
                 return;
             }
 
+            // Renderiza os objetivos existentes
             data.forEach(objetivo => {
                 const valor = parseFloat(objetivo.valor) || 0;
                 const valorInicial = parseFloat(objetivo.valorInicial) || 0;
@@ -99,9 +113,10 @@ function carregarObjetivos() {
                                 </div>
                                 <p class="mt-2 text-muted">R$ ${valorInicial.toFixed(2)} / R$ ${valor.toFixed(2)}</p>
                                 <div class="d-flex justify-content-between mt-3">
-                                    <i class="bi bi-pencil-square" style="cursor: pointer;"></i>
+                                    <i class="bi bi-pencil-square" style="cursor: pointer;" onclick="editarObjetivo(${objetivo.id})"></i>
                                     <i class="bi bi-trash" style="cursor: pointer; color: red;" onclick="removerObjetivo(${objetivo.id})"></i>
-                                    <i class="bi bi-check" style="cursor: pointer; color: green;"></i>
+                                    <i class="bi bi-check" style="cursor: pointer; color: green;" onclick="removerObjetivo(${objetivo.id})"></i>
+                                    <i class="bi bi-graph-up-arrow" style="cursor: pointer;" onclick="detalharObjetivo(${objetivo.id})"></i>
                                 </div>
                             </div>
                         </div>
@@ -114,6 +129,10 @@ function carregarObjetivos() {
         .catch(error => console.error('Erro ao carregar os objetivos:', error));
 }
 
+function detalharObjetivo(id) {
+    // Redireciona para a página de detalhes com o ID do objetivo como parâmetro na URL
+    window.location.href = `http://localhost:3000/objetivos/detalhes?id=${id}`;
+}
 
 // Função para remover objetivo
 function removerObjetivo(id) {
@@ -121,7 +140,6 @@ function removerObjetivo(id) {
         fetch(`${baseUrl}/${id}`, { method: 'DELETE' })
             .then(response => {
                 if (response.ok) {
-                    alert('Objetivo excluído com sucesso!');
                     carregarObjetivos();
                 } else {
                     alert('Erro ao excluir o objetivo.');
@@ -130,6 +148,98 @@ function removerObjetivo(id) {
             .catch(error => console.error('Erro ao excluir o objetivo:', error));
     }
 }
+
+function editarObjetivo(id) {
+    // Faz uma requisição GET para obter os dados do objetivo selecionado
+    fetch(`${baseUrl}/${id}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao buscar os dados do objetivo.');
+            }
+            return response.json();
+        })
+        .then(objetivo => {
+            // Preenche os campos do modal com os dados do objetivo
+            document.querySelector('input[placeholder="Novo objetivo"]').value = objetivo.nome;
+            document.querySelector('input[type="date"]').value = objetivo.data;
+            document.querySelectorAll('input.text-primary')[0].value = objetivo.valor;
+            document.querySelectorAll('input.text-primary')[1].value = objetivo.valorInicial;
+            document.querySelector('textarea').value = objetivo.descricao;
+
+            // Atualiza a cor ativa
+            document.querySelectorAll('.btn-color').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.style.backgroundColor === objetivo.cor) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Abre o modal para edição
+            const modal = new bootstrap.Modal(document.querySelector('#novoObjetivoModal'));
+            modal.show();
+
+            // Atualiza o botão de salvar para executar a edição
+            const btnSalvar = document.querySelector('.btn-save');
+            btnSalvar.textContent = 'Salvar Alterações'; // Muda o texto do botão
+            btnSalvar.onclick = () => salvarEdicao(id);
+        })
+        .catch(error => console.error('Erro ao carregar os dados para edição:', error));
+}
+
+function salvarEdicao(id) {
+    // Captura os dados atualizados do modal
+    const nomeObjetivo = document.querySelector('input[placeholder="Novo objetivo"]').value;
+    const dataObjetivo = document.querySelector('input[type="date"]').value;
+    const valorObjetivo = document.querySelectorAll('input.formcontrol')[0].value;
+    const valorInicial = document.querySelectorAll('input.formcontrol')[1].value;
+    const descricao = document.querySelector('textarea').value;
+    const corSelecionada = document.querySelector('.btn-color.active')?.style.backgroundColor || 'default';
+
+    // Estrutura JSON para enviar ao servidor
+    const objetivoAtualizado = {
+        nome: nomeObjetivo,
+        data: dataObjetivo,
+        valor: valorObjetivo,
+        valorInicial: valorInicial,
+        descricao: descricao,
+        cor: corSelecionada
+    };
+
+    // Faz uma requisição PUT para atualizar o objetivo
+    fetch(`${baseUrl}/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(objetivoAtualizado)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao salvar as alterações.');
+            }
+            return response.json();
+        })
+        .then(() => {
+            alert('Objetivo atualizado com sucesso!');
+            
+            // Fecha o modal
+            const modal = bootstrap.Modal.getInstance(document.querySelector('#novoObjetivoModal'));
+            modal.hide();
+
+            // Restaura o botão de salvar ao estado original
+            const btnSalvar = document.querySelector('.btn-save');
+            btnSalvar.textContent = 'Salvar';
+            btnSalvar.onclick = () => salvarNovoObjetivo();
+
+            // Atualiza os cartões na interface
+            carregarObjetivos();
+        })
+        .catch(error => {
+            console.error('Erro ao salvar as alterações:', error);
+            alert('Erro ao salvar as alterações.');
+        });
+}
+
 
 // Chama a função ao carregar a página
 window.onload = carregarObjetivos;

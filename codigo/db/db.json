@@ -464,32 +464,34 @@
   ],
   "objetivos": [
     {
-      "nome": "Carro",
-      "data": "2024-12-01",
-      "valor": "90.000",
-      "valorInicial": "10.000",
-      "descricao": "Comprar um carro ",
-      "cor": "default",
-      "id": 7
-    },
-    {
-      "nome": "Casa",
+      "nome": "Novo carro",
       "data": "2025-01-16",
-      "valor": "80000",
-      "valorInicial": "10",
-      "descricao": "Comprar um casa",
-      "cor": "default",
-      "id": 8
-    },
-    {
-      "nome": "teclado",
-      "data": "2024-12-01",
-      "valor": 200,
-      "valorInicial": 90,
-      "descricao": "comprar um teclado",
+      "valor": 80000,
+      "valorInicial": 10010,
+      "descricao": "Comprar um carro",
       "cor": "#000000",
       "icone": "bi-question-circle",
-      "id": 9
+      "id": 10
+    },
+    {
+      "nome": "Novo carro",
+      "data": "2025-01-16",
+      "valor": 80000,
+      "valorInicial": 70200,
+      "descricao": "Comprar um carro",
+      "cor": "#000000",
+      "icone": "bi-question-circle",
+      "id": 11
+    },
+    {
+      "nome": "Nova casa",
+      "data": "2025-01-16",
+      "valor": 80000,
+      "valorInicial": 10000,
+      "descricao": "Comprar uma casa",
+      "cor": "#000000",
+      "icone": "bi-question-circle",
+      "id": 13
     }
   ],
   "tipos_de_objetivos": [
