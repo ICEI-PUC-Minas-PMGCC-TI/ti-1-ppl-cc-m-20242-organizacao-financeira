@@ -17,16 +17,19 @@ function carregarDetalhes() {
 
       // Atualiza o gráfico de progresso
       const progresso = (objetivo.valorInicial / objetivo.valor) * 100;
-      document.getElementById("progresso").textContent = `${progresso.toFixed(2)}%`;
-      document.getElementById("icone-objetivo").innerHTML = `
-        <div class="rounded-circle" style="width: 50px; height: 50px; background-color: ${objetivo.cor}; display: flex; align-items: center; justify-content: center;">
-          <i class="${objetivo.icone}" style="color: white; font-size: 20px;"></i>
-        </div>`;
-      document.querySelector(".progress-bar").style.width = `${progresso}%`;
-      document.querySelector(".progress-bar").setAttribute("aria-valuenow", progresso);
+      const progressBar = document.querySelector(".progress");
+      
+      if (progressBar) { // Verifica se o elemento existe
+        progressBar.style.width = `${progresso}%`;
+        progressBar.setAttribute("aria-valuenow", progresso);
+      }
+
+      // Exibe os depósitos
+      exibirDepositos(objetivo.depositos);
     })
     .catch((error) => console.error("Erro ao carregar detalhes:", error));
 }
+
 
 // Abre o modal para adicionar depósito
 function abrirModalDeposito() {
@@ -49,28 +52,83 @@ function adicionarDeposito() {
     return;
   }
 
-  // Atualiza o valor do objetivo no servidor
+  // Adiciona o depósito no servidor
   fetch(`${baseUrl}/${objetivoId}`)
     .then((response) => response.json())
     .then((objetivo) => {
       const novoValorInicial = objetivo.valorInicial + valorDeposito;
+      const novoDeposito = {
+        id: Date.now(), // ID único baseado no timestamp
+        valor: valorDeposito,
+        data: dataDeposito
+      };
 
       fetch(`${baseUrl}/${objetivoId}`, {
         method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ ...objetivo, valorInicial: novoValorInicial }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...objetivo,
+          valorInicial: novoValorInicial,
+          depositos: [...objetivo.depositos, novoDeposito]
+        })
       })
         .then(() => {
           alert("Depósito adicionado com sucesso!");
           const modalDeposito = bootstrap.Modal.getInstance(document.getElementById("modalDeposito"));
           modalDeposito.hide(); // Fecha o modal
-          carregarDetalhes(); // Atualiza os detalhes
+          carregarDetalhes(); // Atualiza a página
         })
         .catch((error) => console.error("Erro ao adicionar depósito:", error));
     });
 }
+
+
+function exibirDepositos(depositos) {
+  const listaDepositos = document.getElementById("lista-depositos");
+  listaDepositos.innerHTML = ""; // Limpa os depósitos existentes
+
+  depositos.forEach((deposito) => {
+    const depositoItem = document.createElement("div");
+    depositoItem.className = "d-flex justify-content-between align-items-center mb-2";
+    depositoItem.innerHTML = `
+      <span>${new Date(deposito.data).toLocaleDateString("pt-BR")}</span>
+      <div class="d-flex align-items-center">
+        <span class="text-success me-3">R$ ${deposito.valor.toFixed(2)}</span>
+        <button class="btn btn-sm btn-outline-danger" onclick="removerDeposito(${deposito.id})">
+          <i class="bi bi-trash"></i>
+        </button>
+      </div>
+    `;
+    listaDepositos.appendChild(depositoItem);
+  });
+}
+
+function removerDeposito(depositoId) {
+  fetch(`${baseUrl}/${objetivoId}`)
+    .then((response) => response.json())
+    .then((objetivo) => {
+      const depositoRemovido = objetivo.depositos.find(d => d.id === depositoId);
+      const novoValorInicial = objetivo.valorInicial - depositoRemovido.valor;
+      const novosDepositos = objetivo.depositos.filter(d => d.id !== depositoId);
+
+      fetch(`${baseUrl}/${objetivoId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...objetivo,
+          valorInicial: novoValorInicial,
+          depositos: novosDepositos
+        })
+      })
+        .then(() => {
+          alert("Depósito removido com sucesso!");
+          carregarDetalhes(); // Atualiza a página
+        })
+        .catch((error) => console.error("Erro ao remover depósito:", error));
+    });
+}
+
+
 
 // Carrega os detalhes ao iniciar a página
 window.onload = carregarDetalhes;

@@ -1,74 +1,178 @@
 const baseUrl = "http://localhost:3001/objetivos";
 
-// Seleciona o botão de salvar
-document.querySelector('.btn-save').addEventListener('click', () => {
-    // Captura os dados do modal
-    const nomeObjetivo = document.querySelector('input[placeholder="Novo objetivo"]')?.value.trim();
-    const dataObjetivo = document.querySelector('input[type="date"]')?.value;
-    const inputsValor = document.querySelectorAll('input.text-primary');
-    const valorObjetivo = inputsValor[0]?.value.trim();
-    const valorInicial = inputsValor[1]?.value.trim();
-    const descricao = document.querySelector('textarea')?.value.trim();
-    const corSelecionada = document.querySelector('.btn-color.active')?.style.backgroundColor || '#000000'; // Cor padrão
-    const iconeSelecionado = document.querySelector('.icone-selecionado')?.dataset.icon || 'bi-question-circle'; // Ícone padrão
+let currentAction = null; // Variável para armazenar a ação atual
+let currentId = null; // ID do objetivo associado à ação
 
-    // Valida os campos obrigatórios
-    if (!nomeObjetivo || !dataObjetivo || !valorObjetivo || isNaN(parseFloat(valorObjetivo))) {
-        alert('Por favor, preencha todos os campos obrigatórios corretamente.');
+// Exibe o modal de confirmação
+function showConfirmationModal(action, id) {
+    currentAction = action;
+    currentId = id;
+
+    const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+    const confirmationMessage = document.getElementById('confirmationMessage');
+
+    if (action === 'delete') {
+        confirmationMessage.textContent = 'Você realmente deseja deletar esse objetivo?';
+        document.getElementById('confirmationModalLabel').textContent = 'Deletar objetivo';
+    } else if (action === 'complete') {
+        confirmationMessage.textContent = 'Você realmente deseja concluir esse objetivo?';
+        document.getElementById('confirmationModalLabel').textContent = 'Concluir objetivo';
+    }
+
+    confirmationModal.show();
+}
+
+document.getElementById('confirmActionBtn').addEventListener('click', () => {
+    const confirmationModal = bootstrap.Modal.getInstance(document.getElementById('confirmationModal'));
+
+    if (currentAction === 'delete') {
+        removerObjetivo(currentId);
+    } else if (currentAction === 'complete') {
+        concluirObjetivo(currentId);
+    }
+
+    confirmationModal.hide(); // Fecha o modal após a ação
+});
+
+// Função para exibir notificações
+function showNotification(type, message) {
+    const notification = document.getElementById('notification');
+    const icon = notification.querySelector('i');
+    const messageSpan = notification.querySelector('.message');
+
+    // Configura o tipo de mensagem
+    notification.className = `notification ${type} visible`;
+    messageSpan.textContent = message;
+
+    // Define o ícone com base no tipo
+    switch (type) {
+        case 'success':
+            icon.className = 'bi bi-check-circle';
+            break;
+        case 'success-delete':
+            icon.className = 'bi bi-check-circle';
+            break;
+        case 'error':
+            icon.className = 'bi bi-exclamation-circle';
+            break;
+        case 'info':
+            icon.className = 'bi bi-info-circle';
+            break;
+        default:
+            icon.className = '';
+    }
+
+    // Remove a notificação após 3 segundos
+    setTimeout(() => {
+        notification.className = `notification ${type} hidden`;
+    }, 3000);
+}
+
+// Seleciona o botão de salvar e define o comportamento com base no modo (add/edit)
+document.querySelector('.btn-save').addEventListener('click', () => {
+    const btnSalvar = document.querySelector('.btn-save');
+    const mode = btnSalvar.getAttribute('data-mode');
+    const id = btnSalvar.getAttribute('data-id');
+
+    if (mode === 'edit' && id) {
+        salvarEdicao(id);
+    } else {
+        salvarNovoObjetivo();
+    }
+});
+
+// Função para salvar um novo objetivo
+function salvarNovoObjetivo() {
+    const nomeObjetivo = document.querySelector('input[placeholder="Novo objetivo"]').value.trim();
+    const dataObjetivo = document.querySelector('input[type="date"]').value;
+    const inputsValor = document.querySelectorAll('input.text-primary');
+    const valorObjetivo = parseFloat(inputsValor[0]?.value.trim());
+    const valorInicial = parseFloat(inputsValor[1]?.value.trim());
+    const corSelecionada = document.querySelector('.btn-color.active')?.style.backgroundColor || '#4caf50';
+    const iconeSelecionado = document.querySelector('.icone-selecionado')?.dataset.icon || 'fas fa-question-circle';
+
+    if (!nomeObjetivo || !dataObjetivo || isNaN(valorObjetivo)) {
+        showNotification('error', 'Por favor, preencha todos os campos obrigatórios.');
         return;
     }
 
-    // Estrutura JSON para enviar ao servidor
+    // Novo objetivo com a estrutura completa
     const novoObjetivo = {
         nome: nomeObjetivo,
+        valor: valorObjetivo,
+        valorInicial: valorInicial || 0,
         data: dataObjetivo,
-        valor: parseFloat(valorObjetivo),
-        valorInicial: parseFloat(valorInicial) || 0, // Valor inicial padrão é 0
-        descricao: descricao,
+        cor: corSelecionada,
+        icone: iconeSelecionado,
+        depositos: [] // Inicia com um array vazio de depósitos
+    };
+
+    fetch(baseUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(novoObjetivo),
+    })
+        .then(response => {
+            if (response.ok) {
+                showNotification('success', 'Objetivo salvo com sucesso!');
+                carregarObjetivos();
+                fecharModal();
+            } else {
+                showNotification('error', 'Erro ao salvar o objetivo.');
+            }
+        })
+        .catch(error => console.error('Erro:', error));
+}
+
+// Função para salvar as alterações de um objetivo existente
+function salvarEdicao(id) {
+    const nomeObjetivo = document.querySelector('input[placeholder="Novo objetivo"]').value.trim();
+    const dataObjetivo = document.querySelector('input[type="date"]').value;
+    const inputsValor = document.querySelectorAll('input.text-primary');
+    const valorObjetivo = parseFloat(inputsValor[0]?.value.trim());
+    const valorInicial = parseFloat(inputsValor[1]?.value.trim());
+    const corSelecionada = document.querySelector('.btn-color.active')?.style.backgroundColor || '#4caf50';
+    const iconeSelecionado = document.querySelector('.icone-selecionado')?.dataset.icon || 'fas fa-question-circle';
+
+    if (!nomeObjetivo || !dataObjetivo || isNaN(valorObjetivo)) {
+        showNotification('error', 'Por favor, preencha todos os campos obrigatórios.');
+        return;
+    }
+
+    const objetivoAtualizado = {
+        nome: nomeObjetivo,
+        valor: valorObjetivo,
+        valorInicial: valorInicial || 0,
+        data: dataObjetivo,
         cor: corSelecionada,
         icone: iconeSelecionado
     };
 
-    // Envia os dados ao JSON Server
-    fetch(baseUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(novoObjetivo)
+    fetch(`${baseUrl}/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(objetivoAtualizado),
     })
-    .then(response => {
-        if (response.ok) {
-            alert('Objetivo salvo com sucesso!');
-            // Fecha o modal
-            const modal = bootstrap.Modal.getInstance(document.querySelector('#novoObjetivoModal'));
-            if (modal) modal.hide();
-            // Atualiza a lista de objetivos
-            carregarObjetivos();
-        } else {
-            alert('Erro ao salvar o objetivo.');
-        }
-    })
-    .catch(error => {
-        console.error('Erro:', error);
-        alert('Erro ao salvar o objetivo.');
-    });
-});
+        .then(response => {
+            if (response.ok) {
+                showNotification('success', 'Objetivo atualizado com sucesso!');
+                carregarObjetivos();
+                fecharModal();
+            } else {
+                showNotification('error', 'Erro ao atualizar o objetivo.');
+            }
+        })
+        .catch(error => console.error('Erro ao salvar as alterações:', error));
+}
 
-// Função para buscar os dados do JSON Server e renderizar os cartões
+// Função para carregar os objetivos e renderizar os cartões
 function carregarObjetivos() {
     fetch(baseUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro ao buscar os dados do servidor.');
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
             const container = document.getElementById('objetivos-container');
             container.innerHTML = ''; // Limpa o container
 
-            // Adiciona o card de "Novo Objetivo"
             const novoObjetivoCard = `
                 <div class="col-md-4">
                     <div class="card custom-card text-center p-3" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#novoObjetivoModal">
@@ -81,13 +185,11 @@ function carregarObjetivos() {
             `;
             container.innerHTML += novoObjetivoCard;
 
-            // Verifica se há objetivos no servidor
             if (data.length === 0) {
                 container.innerHTML += '<p class="text-center text-muted">Nenhum objetivo encontrado.</p>';
                 return;
             }
 
-            // Renderiza os objetivos existentes
             data.forEach(objetivo => {
                 const valor = parseFloat(objetivo.valor) || 0;
                 const valorInicial = parseFloat(objetivo.valorInicial) || 0;
@@ -112,134 +214,96 @@ function carregarObjetivos() {
                                     <div class="progress-bar" role="progressbar" style="width: ${progresso}%; background-color: ${objetivo.cor};" aria-valuenow="${progresso}" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                                 <p class="mt-2 text-muted">R$ ${valorInicial.toFixed(2)} / R$ ${valor.toFixed(2)}</p>
-                                <div class="d-flex justify-content-between mt-3">
+                                <div class="d-flex justify-content-between mt-3"> 
                                     <i class="bi bi-pencil-square" style="cursor: pointer;" onclick="editarObjetivo(${objetivo.id})"></i>
-                                    <i class="bi bi-trash" style="cursor: pointer; color: red;" onclick="removerObjetivo(${objetivo.id})"></i>
-                                    <i class="bi bi-check" style="cursor: pointer; color: green;" onclick="removerObjetivo(${objetivo.id})"></i>
+                                    <i class="bi bi-check" style="cursor: pointer; color: green;" onclick="showConfirmationModal('complete', ${objetivo.id})"></i>
+                                    <i class="bi bi-trash" style="cursor: pointer; color: red;" onclick="showConfirmationModal('delete', ${objetivo.id})"></i>
                                     <i class="bi bi-graph-up-arrow" style="cursor: pointer;" onclick="detalharObjetivo(${objetivo.id})"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                 `;
-
                 container.innerHTML += card;
             });
         })
         .catch(error => console.error('Erro ao carregar os objetivos:', error));
 }
 
+// Função para detalhar um objetivo
 function detalharObjetivo(id) {
-    // Redireciona para a página de detalhes com o ID do objetivo como parâmetro na URL
     window.location.href = `http://localhost:3000/objetivos/detalhes?id=${id}`;
 }
 
-// Função para remover objetivo
+// Função para remover um objetivo
 function removerObjetivo(id) {
-    if (confirm('Tem certeza que deseja excluir este objetivo?')) {
-        fetch(`${baseUrl}/${id}`, { method: 'DELETE' })
-            .then(response => {
-                if (response.ok) {
-                    carregarObjetivos();
-                } else {
-                    alert('Erro ao excluir o objetivo.');
-                }
-            })
-            .catch(error => console.error('Erro ao excluir o objetivo:', error));
-    }
+    fetch(`${baseUrl}/${id}`, { method: 'DELETE' })
+        .then(response => {
+            if (response.ok) {
+                showNotification('success-delete', 'Objetivo excluído com sucesso!');
+                carregarObjetivos();
+            } else {
+                showNotification('error', 'Erro ao excluir o objetivo.');
+            }
+        })
+        .catch(error => console.error('Erro ao excluir o objetivo:', error));
 }
 
+
+// Função para editar um objetivo
 function editarObjetivo(id) {
-    // Faz uma requisição GET para obter os dados do objetivo selecionado
     fetch(`${baseUrl}/${id}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro ao buscar os dados do objetivo.');
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(objetivo => {
-            // Preenche os campos do modal com os dados do objetivo
             document.querySelector('input[placeholder="Novo objetivo"]').value = objetivo.nome;
             document.querySelector('input[type="date"]').value = objetivo.data;
             document.querySelectorAll('input.text-primary')[0].value = objetivo.valor;
             document.querySelectorAll('input.text-primary')[1].value = objetivo.valorInicial;
             document.querySelector('textarea').value = objetivo.descricao;
 
-            // Atualiza a cor ativa
-            document.querySelectorAll('.btn-color').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.style.backgroundColor === objetivo.cor) {
-                    btn.classList.add('active');
-                }
-            });
+            document.querySelectorAll('.btn-color').forEach(btn => btn.classList.remove('active'));
+            const corAtiva = document.querySelector(`.btn-color[style*="${objetivo.cor}"]`);
+            if (corAtiva) corAtiva.classList.add('active');
 
-            // Abre o modal para edição
+            const btnSalvar = document.querySelector('.btn-save');
+            btnSalvar.setAttribute('data-mode', 'edit');
+            btnSalvar.setAttribute('data-id', id);
+            btnSalvar.textContent = 'Salvar Alterações';
+
             const modal = new bootstrap.Modal(document.querySelector('#novoObjetivoModal'));
             modal.show();
-
-            // Atualiza o botão de salvar para executar a edição
-            const btnSalvar = document.querySelector('.btn-save');
-            btnSalvar.textContent = 'Salvar Alterações'; // Muda o texto do botão
-            btnSalvar.onclick = () => salvarEdicao(id);
         })
-        .catch(error => console.error('Erro ao carregar os dados para edição:', error));
+        .catch(error => console.error('Erro ao carregar dados para edição:', error));
 }
 
-function salvarEdicao(id) {
-    // Captura os dados atualizados do modal
-    const nomeObjetivo = document.querySelector('input[placeholder="Novo objetivo"]').value;
-    const dataObjetivo = document.querySelector('input[type="date"]').value;
-    const valorObjetivo = document.querySelectorAll('input.formcontrol')[0].value;
-    const valorInicial = document.querySelectorAll('input.formcontrol')[1].value;
-    const descricao = document.querySelector('textarea').value;
-    const corSelecionada = document.querySelector('.btn-color.active')?.style.backgroundColor || 'default';
-
-    // Estrutura JSON para enviar ao servidor
-    const objetivoAtualizado = {
-        nome: nomeObjetivo,
-        data: dataObjetivo,
-        valor: valorObjetivo,
-        valorInicial: valorInicial,
-        descricao: descricao,
-        cor: corSelecionada
-    };
-
-    // Faz uma requisição PUT para atualizar o objetivo
+function concluirObjetivo(id) {
+    // Atualize o objetivo no backend, se necessário
     fetch(`${baseUrl}/${id}`, {
         method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(objetivoAtualizado)
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ concluido: true }),
     })
         .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro ao salvar as alterações.');
+            if (response.ok) {
+                showNotification('success', 'Objetivo concluído!');
+                carregarObjetivos();
+            } else {
+                showNotification('error', 'Erro ao concluir o objetivo.');
             }
-            return response.json();
         })
-        .then(() => {
-            alert('Objetivo atualizado com sucesso!');
-            
-            // Fecha o modal
-            const modal = bootstrap.Modal.getInstance(document.querySelector('#novoObjetivoModal'));
-            modal.hide();
-
-            // Restaura o botão de salvar ao estado original
-            const btnSalvar = document.querySelector('.btn-save');
-            btnSalvar.textContent = 'Salvar';
-            btnSalvar.onclick = () => salvarNovoObjetivo();
-
-            // Atualiza os cartões na interface
-            carregarObjetivos();
-        })
-        .catch(error => {
-            console.error('Erro ao salvar as alterações:', error);
-            alert('Erro ao salvar as alterações.');
-        });
+        .catch(error => console.error('Erro ao concluir o objetivo:', error));
 }
 
+// Função para fechar o modal e resetar o botão de salvar
+function fecharModal() {
+    const modal = bootstrap.Modal.getInstance(document.querySelector('#novoObjetivoModal'));
+    modal.hide();
+
+    const btnSalvar = document.querySelector('.btn-save');
+    btnSalvar.setAttribute('data-mode', 'add');
+    btnSalvar.setAttribute('data-id', '');
+    btnSalvar.textContent = 'Salvar';
+}
 
 // Chama a função ao carregar a página
-window.onload = carregarObjetivos;
+carregarObjetivos();

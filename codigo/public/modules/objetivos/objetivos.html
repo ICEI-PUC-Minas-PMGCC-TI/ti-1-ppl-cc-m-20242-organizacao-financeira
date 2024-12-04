@@ -27,6 +27,32 @@
         </div>
     </div>
 
+    <!-- Contêiner para notificações -->
+    <div id="notification" class="notification hidden">
+      <i class="bi"></i>
+      <span class="message"></span>
+    </div>
+
+    <!-- Modal de confirmação -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="confirmationModalLabel">Confirmar ação</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <p id="confirmationMessage">Você realmente deseja executar esta ação?</p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-primary" id="confirmActionBtn">Confirmar</button>
+              </div>
+          </div>
+      </div>
+    </div>
+
+
     <div class="modal fade" id="novoObjetivoModal" tabindex="-1" aria-labelledby="novoObjetivoModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
