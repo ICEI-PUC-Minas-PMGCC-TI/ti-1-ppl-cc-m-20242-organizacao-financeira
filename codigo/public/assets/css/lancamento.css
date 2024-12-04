@@ -1,0 +1,167 @@
+/* Remove os estilos padrões de todos os elementos */
+* {
+    padding: 0; /* Remove o preenchimento interno */
+    margin: 0; /* Remove as margens externas */
+    box-sizing: border-box; /* Inclui padding e bordas no cálculo do tamanho total do elemento */
+}
+
+/* Estilo geral do corpo da página */
+body {
+    display: flex; /* Usa flexbox para alinhar os elementos na página */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    min-height: 100vh; /* Faz com que o corpo ocupe no mínimo 100% da altura da janela */
+    background-color: #edf3fb; /* Define um fundo claro para a página */
+    padding: 20px; /* Adiciona espaço interno ao redor do conteúdo */
+    overflow-x: auto; /* Permite rolagem horizontal se necessário */
+    width: 100%; /* Faz o corpo ocupar toda a largura da janela */
+    max-width: 100vw; /* Garante que a largura não ultrapasse o tamanho da janela */
+}
+
+/* Container principal que envolve o conteúdo */
+.container {
+    width: 100%; /* O container ocupa toda a largura disponível */
+    max-width: 1200px; /* Limita a largura máxima do container */
+    background-color: #fff; /* Fundo branco */
+    padding: 20px; /* Adiciona espaço interno */
+    border-radius: 15px; /* Bordas arredondadas para um design mais suave */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil ao redor do container */
+    border: 2px solid #ddd; /* Borda clara para destacar o container */
+    overflow-x: auto; /* Permite rolagem horizontal se necessário */
+}
+
+/* Estilo para o título do formulário */
+.title-form {
+    color: black; /* Texto preto */
+    font-weight: bold; /* Texto em negrito */
+    font-size: 2em; /* Tamanho maior para destacar o título */
+    text-align: center; /* Centraliza o título */
+    margin-bottom: 35px; /* Adiciona espaço abaixo do título */
+}
+
+/* Botão de atualização escondido inicialmente */
+#Update {
+    display: none; /* Não exibe o botão até ser necessário */
+}
+
+/* Estilo para botões específicos (botão verde) */
+.btn-button1 {
+    background-color: green; /* Fundo verde */
+    border-color: green; /* Borda verde */
+    color: black; /* Texto preto */
+    font-weight: bold; /* Texto em negrito */
+}
+
+/* Estilo para botões específicos (botão vermelho) */
+.btn-button2 {
+    background-color: red; /* Fundo vermelho */
+    border-color: red; /* Borda vermelha */
+    color: black; /* Texto preto */
+    font-weight: bold; /* Texto em negrito */
+}
+
+/* Estilo geral para botões */
+.btn-button1, .btn-button2 {
+    padding: 5px 10px; /* Adiciona espaço interno aos botões */
+    font-size: 0.9em; /* Define um tamanho de texto adequado */
+    width: auto; /* Faz com que a largura do botão se ajuste ao texto */
+}
+
+/* Estilo geral da tabela */
+table {
+    width: 100%; /* Faz a tabela ocupar toda a largura disponível */
+    max-width: 100%; /* Garante que a tabela não ultrapasse o limite do container */
+    border-collapse: collapse; /* Remove o espaço entre bordas das células */
+    margin-top: 20px; /* Adiciona espaço acima da tabela */
+    background-color: #f9f9f9; /* Fundo claro */
+    border-radius: 8px; /* Bordas arredondadas */
+    overflow: hidden; /* Garante que nada ultrapasse os limites da tabela */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve ao redor da tabela */
+}
+
+/* Estilo para o cabeçalho da tabela */
+table thead {
+    background-color: #007bff; /* Fundo azul */
+    color: white; /* Texto branco */
+    text-align: center; /* Centraliza o texto no cabeçalho */
+}
+
+/* Estilo para cada célula do cabeçalho */
+table thead th {
+    padding: 12px 20px; /* Adiciona espaço interno para maior legibilidade */
+    font-size: 1.1em; /* Define um tamanho de texto maior */
+    font-weight: bold; /* Texto em negrito */
+    white-space: nowrap; /* Impede que o texto quebre para a próxima linha */
+}
+
+/* Estilo geral das linhas da tabela */
+table tbody tr {
+    color: #000; /* Texto preto */
+    transition: background-color 0.3s ease; /* Suaviza a mudança de cor ao passar o mouse */
+}
+
+/* Estilo específico para linhas que representam receitas */
+table tbody tr.receita {
+    background-color: #e9f8e9; /* Fundo verde claro */
+}
+
+table tbody tr.receita:hover {
+    background-color: #c8ebc8; /* Fundo verde mais forte ao passar o mouse */
+}
+
+/* Estilo específico para linhas que representam despesas */
+table tbody tr.despesa {
+    background-color: #fdecea; /* Fundo vermelho claro */
+}
+
+table tbody tr.despesa:hover {
+    background-color: #f6c1bd; /* Fundo vermelho mais forte ao passar o mouse */
+}
+
+/* Estilo para as células da tabela */
+table tbody td {
+    padding: 12px 20px; /* Adiciona espaço interno para melhorar a legibilidade */
+    font-size: 1em; /* Define o tamanho do texto */
+    text-align: left; /* Alinha o texto à esquerda */
+    border-bottom: 1px solid #ddd; /* Linha de separação entre as células */
+    font-weight: normal; /* Texto mais leve do que o cabeçalho */
+    white-space: nowrap; /* Impede que o texto quebre */
+}
+
+/* Estilo para botões dentro das células da tabela */
+table tbody td button {
+    font-size: 0.8em; /* Texto menor para os botões */
+    padding: 5px 10px; /* Adiciona espaço interno */
+    margin-right: 5px; /* Adiciona um pequeno espaço entre os botões */
+    border: none; /* Remove borda padrão */
+    border-radius: 4px; /* Bordas arredondadas */
+    color: white; /* Texto branco */
+}
+
+/* Estilo para botões de exclusão */
+table tbody td button.btn-danger {
+    background-color: #dc3545; /* Fundo vermelho para botões de exclusão */
+}
+
+/* Estilo para botões de edição */
+table tbody td button.btn-warning {
+    background-color: #ffc107; /* Fundo amarelo para botões de edição */
+    color: black; /* Texto preto */
+}
+
+/* Ajusta o texto das colunas para centralizar */
+table tbody td, table thead th {
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Define largura específica para a coluna "Foi Recebido/Pago" */
+table thead th:nth-child(5),
+table tbody td:nth-child(5) {
+    width: 150px; /* Largura fixa para manter o alinhamento */
+}
+
+/* Estilo adicional para títulos ou elementos fora da tabela */
+.mt-4 {
+    text-align: center; /* Centraliza o texto */
+    font-weight: bold; /* Texto em negrito */
+}

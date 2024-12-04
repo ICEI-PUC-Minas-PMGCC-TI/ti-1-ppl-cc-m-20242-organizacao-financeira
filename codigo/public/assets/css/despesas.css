@@ -1,0 +1,97 @@
+/* Remove margens e espaçamentos padrão de todos os elementos */
+* {
+    padding: 0; /* Remove preenchimento padrão */
+    margin: 0; /* Remove margem padrão */
+    box-sizing: border-box; /* Inclui padding e bordas no cálculo do tamanho total do elemento */
+}
+
+/* Estilo principal para o corpo da página */
+body {
+    display: flex; /* Usa flexbox para organizar os elementos */
+    justify-content: center; /* Centraliza os elementos horizontalmente */
+    align-items: center; /* Centraliza os elementos verticalmente */
+    min-height: 100vh; /* Define altura mínima para ocupar toda a janela */
+    background-color: #edf3fb; /* Define uma cor clara para o fundo */
+    padding: 20px; /* Adiciona espaço interno ao redor do conteúdo */
+    border-radius: 15px; /* Bordas arredondadas para o corpo */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve ao redor */
+}
+
+/* Estilo para o título do formulário */
+.title-form {
+    color: red; /* Define o texto do título em vermelho */
+    font-weight: bold; /* Faz o texto ficar em negrito */
+    font-size: 2em; /* Aumenta o tamanho do texto */
+    text-align: center; /* Centraliza o texto do título */
+    margin-bottom: 35px; /* Adiciona um espaço abaixo do título */
+}
+
+/* Esconde o botão de atualização por padrão */
+#Update {
+    display: none; /* O botão não será exibido inicialmente */
+}
+
+/* Estilo para os rótulos (labels) */
+label {
+    display: block; /* Faz com que os rótulos ocupem uma linha inteira */
+    margin-bottom: 5px; /* Adiciona espaço abaixo do rótulo */
+    color: #333; /* Define a cor do texto do rótulo como cinza escuro */
+    font-weight: bold; /* Faz o texto do rótulo ficar em negrito */
+}
+
+/* Estilo para botões primários e de sucesso */
+.btn-primary, .btn-success {
+    background-color: red; /* Define o fundo do botão como vermelho */
+    border-color: red; /* Define a cor da borda como vermelho */
+    color: black; /* Define o texto dos botões como preto */
+    font-weight: bold; /* Deixa o texto em negrito */
+    padding: 5px 10px; /* Adiciona espaço interno ao botão */
+    font-size: 0.9em; /* Define o tamanho do texto no botão */
+    width: auto; /* Permite que a largura do botão se ajuste ao conteúdo */
+}
+
+/* Estilo para a tabela */
+table {
+    width: 100%; /* Faz a tabela ocupar toda a largura do container */
+    max-width: 1200px; /* Define um limite máximo para a largura */
+    margin-top: 20px; /* Adiciona espaço acima da tabela */
+    border-collapse: collapse; /* Remove espaços entre as bordas das células */
+    background-color: white; /* Define o fundo da tabela como branco */
+    border: 1px solid #ccc; /* Adiciona uma borda cinza clara */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave */
+    border-radius: 8px; /* Arredonda as bordas da tabela */
+    overflow: hidden; /* Garante que o conteúdo não ultrapasse os limites da tabela */
+}
+
+/* Estilo para cabeçalhos e células da tabela */
+table th, table td {
+    padding: 12px 15px; /* Adiciona espaço interno às células */
+    text-align: left; /* Alinha o texto à esquerda */
+    border-bottom: 1px solid #ddd; /* Adiciona uma linha divisória entre as linhas */
+    font-size: 0.95em; /* Define o tamanho do texto */
+    color: #333; /* Define o texto em cinza escuro */
+}
+
+/* Estilo para os cabeçalhos da tabela */
+table th {
+    background-color: #f4f4f4; /* Define um fundo claro para os cabeçalhos */
+    font-weight: bold; /* Faz o texto dos cabeçalhos ficar em negrito */
+    text-transform: uppercase; /* Converte o texto dos cabeçalhos para maiúsculas */
+}
+
+/* Destaque na linha da tabela ao passar o mouse */
+table tr:hover {
+    background-color: #f1f1f1; /* Define uma cor de fundo clara ao passar o mouse */
+}
+
+/* Remove a linha inferior da última linha da tabela */
+table tbody tr:last-of-type {
+    border-bottom: none; /* Remove a borda inferior da última linha */
+}
+
+/* Container principal da página */
+.container {
+    width: 90%; /* Faz o container ocupar 90% da largura disponível */
+    max-width: 1200px; /* Define um limite máximo de largura */
+    margin: 0 auto; /* Centraliza o container horizontalmente */
+}
