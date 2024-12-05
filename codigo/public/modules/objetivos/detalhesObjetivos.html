@@ -39,16 +39,12 @@
               <button type="button" class="btn btn-primary" onclick="abrirModalDeposito()">Adicionar Depósito</button>
             </div>
           </div>
-
-          <div class="card p-4">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h5 class="card-title">Últimos depósitos</h5>
-              <button class="btn btn-primary" onclick="abrirModalDeposito()">Adicionar Depósito</button>
-            </div>
-            <div id="lista-depositos"></div>
-          </div>
-
         </div>
+      </div>
+
+      <div id="notification" class="notification hidden">
+        <i class="bi"></i>
+        <span class="message"></span>
       </div>
 
 
@@ -62,7 +58,7 @@
             <div class="modal-body">
               <div class="mb-3">
                 <label for="valor-deposito" class="form-label">Valor do Depósito</label>
-                <input type="number" class="form-control" id="valor-deposito" placeholder="R$ 0,00">
+                <input type="number" class="form-control" id="valor-deposito" oninput="formatarValor(this)" placeholder="R$ 0,00">
               </div>
               <div class="mb-3">
                 <label for="data-deposito" class="form-label">Data</label>

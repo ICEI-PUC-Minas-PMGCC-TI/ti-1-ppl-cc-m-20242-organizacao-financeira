@@ -88,6 +88,7 @@ function salvarNovoObjetivo() {
     const inputsValor = document.querySelectorAll('input.text-primary');
     const valorObjetivo = parseFloat(inputsValor[0]?.value.trim());
     const valorInicial = parseFloat(inputsValor[1]?.value.trim());
+    const descricao = document.querySelector('textarea')?.value.trim();
     const corSelecionada = document.querySelector('.btn-color.active')?.style.backgroundColor || '#4caf50';
     const iconeSelecionado = document.querySelector('.icone-selecionado')?.dataset.icon || 'fas fa-question-circle';
 
@@ -103,6 +104,7 @@ function salvarNovoObjetivo() {
         valorInicial: valorInicial || 0,
         data: dataObjetivo,
         cor: corSelecionada,
+        descricao: descricao,
         icone: iconeSelecionado,
         depositos: [] // Inicia com um array vazio de depósitos
     };
@@ -240,7 +242,7 @@ function removerObjetivo(id) {
     fetch(`${baseUrl}/${id}`, { method: 'DELETE' })
         .then(response => {
             if (response.ok) {
-                showNotification('success-delete', 'Objetivo excluído com sucesso!');
+                showNotification('success-delete', 'Objetivo excluído!');
                 carregarObjetivos();
             } else {
                 showNotification('error', 'Erro ao excluir o objetivo.');
@@ -303,6 +305,32 @@ function fecharModal() {
     btnSalvar.setAttribute('data-mode', 'add');
     btnSalvar.setAttribute('data-id', '');
     btnSalvar.textContent = 'Salvar';
+}
+
+function formatarValor(input) {
+    let valor = input.value;
+
+    // Substituir qualquer caractere que não seja número ou vírgula
+    valor = valor.replace(/[^\d,]/g, '');
+
+    // Separar a parte inteira e a parte decimal
+    let [inteiro, decimal] = valor.split(',');
+
+    // Formatar a parte inteira com ponto como separador de milhar
+    inteiro = inteiro.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+    // Limitar a parte decimal a 2 casas
+    decimal = decimal ? decimal.substring(0, 2) : '';
+
+    // Se houver parte decimal, adicionar vírgula
+    if (decimal) {
+      valor = `${inteiro},${decimal}`;
+    } else {
+      valor = inteiro;
+    }
+
+    // Atualizar o valor no input
+    input.value = valor;
 }
 
 // Chama a função ao carregar a página

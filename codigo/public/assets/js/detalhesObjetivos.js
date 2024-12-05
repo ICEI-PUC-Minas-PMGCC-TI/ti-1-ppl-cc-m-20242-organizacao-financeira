@@ -4,6 +4,39 @@ const baseUrl = "http://localhost:3001/objetivos"; // URL do JSON Server
 const urlParams = new URLSearchParams(window.location.search);
 const objetivoId = urlParams.get("id");
 
+function showNotification(type, message) {
+  const notification = document.getElementById('notification');
+  const icon = notification.querySelector('i');
+  const messageSpan = notification.querySelector('.message');
+
+  // Configura o tipo de mensagem
+  notification.className = `notification ${type} visible`;
+  messageSpan.textContent = message;
+
+  // Define o ícone com base no tipo
+  switch (type) {
+      case 'success':
+          icon.className = 'bi bi-check-circle';
+          break;
+      case 'success-delete':
+          icon.className = 'bi bi-check-circle';
+          break;
+      case 'error':
+          icon.className = 'bi bi-exclamation-circle';
+          break;
+      case 'info':
+          icon.className = 'bi bi-info-circle';
+          break;
+      default:
+          icon.className = '';
+  }
+
+  // Remove a notificação após 3 segundos
+  setTimeout(() => {
+      notification.className = `notification ${type} hidden`;
+  }, 3000);
+}
+
 // Carrega os detalhes do objetivo
 function carregarDetalhes() {
   fetch(`${baseUrl}/${objetivoId}`)
@@ -12,8 +45,8 @@ function carregarDetalhes() {
       document.getElementById("titulo-objetivo").textContent = `Detalhes: ${objetivo.nome}`;
       document.getElementById("nome-objetivo").textContent = objetivo.nome;
       document.getElementById("data-objetivo").textContent = `Data final: ${new Date(objetivo.data).toLocaleDateString("pt-BR")}`;
-      document.getElementById("valor-total").textContent = `R$ ${objetivo.valor.toFixed(2)}`;
-      document.getElementById("valor-atual").textContent = `R$ ${objetivo.valorInicial.toFixed(2)}`;
+      document.getElementById("valor-total").textContent = `${objetivo.valor.toFixed(2)}`;
+      document.getElementById("valor-atual").textContent = `${objetivo.valorInicial.toFixed(2)}`;
 
       // Atualiza o gráfico de progresso
       const progresso = (objetivo.valorInicial / objetivo.valor) * 100;
@@ -43,12 +76,12 @@ function adicionarDeposito() {
   const dataDeposito = document.getElementById("data-deposito").value;
 
   if (isNaN(valorDeposito) || valorDeposito <= 0) {
-    alert("Por favor, insira um valor válido!");
+    showNotification('error', 'Por favor, insira um valor válido!');
     return;
   }
 
   if (!dataDeposito) {
-    alert("Por favor, insira uma data!");
+    showNotification('error', 'Por favor, insira uma data!');
     return;
   }
 
@@ -73,7 +106,7 @@ function adicionarDeposito() {
         })
       })
         .then(() => {
-          alert("Depósito adicionado com sucesso!");
+          showNotification('success', 'Depósito salvo com sucesso');
           const modalDeposito = bootstrap.Modal.getInstance(document.getElementById("modalDeposito"));
           modalDeposito.hide(); // Fecha o modal
           carregarDetalhes(); // Atualiza a página
@@ -121,14 +154,38 @@ function removerDeposito(depositoId) {
         })
       })
         .then(() => {
-          alert("Depósito removido com sucesso!");
+          showNotification('success-delete', 'Depósito excluido!');
           carregarDetalhes(); // Atualiza a página
         })
         .catch((error) => console.error("Erro ao remover depósito:", error));
     });
 }
 
+function formatarValor(input) {
+  let valor = input.value;
 
+  // Substituir qualquer caractere que não seja número ou vírgula
+  valor = valor.replace(/[^\d,]/g, '');
+
+  // Separar a parte inteira e a parte decimal
+  let [inteiro, decimal] = valor.split(',');
+
+  // Formatar a parte inteira com ponto como separador de milhar
+  inteiro = inteiro.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+  // Limitar a parte decimal a 2 casas
+  decimal = decimal ? decimal.substring(0, 2) : '';
+
+  // Se houver parte decimal, adicionar vírgula
+  if (decimal) {
+    valor = `${inteiro},${decimal}`;
+  } else {
+    valor = inteiro;
+  }
+
+  // Atualizar o valor no input
+  input.value = valor;
+}
 
 // Carrega os detalhes ao iniciar a página
 window.onload = carregarDetalhes;

@@ -11,12 +11,12 @@
 <body>
     <!--Side bar-->
     <div class="sidebar">
-        <a href="#"><i class="bi bi-house-door"></i> Início</a>
-        <a href="#">Contas</a>
-        <a href="#">Profile</a>
+        <a href="#"><i class="bi bi-house-door"></i></a>
+        <a href="#"><i class="bi bi-bank"></i></a>
+        <a href="http://localhost:3000/objetivos"><i class="bi bi-bookmark-check-fill"></i></a>
         <hr>
-        <a href="#">Calendário</a>
-        <a href="#">Objetivos</a>
+        <a href="http://localhost:3000/tutoriais"><i class="bi bi-play-circle-fill"></i></a>
+        <a href="#"><i class="bi bi-calendar2-check-fill"></i></a>
     </div>
 
     <!--Card-->
@@ -70,7 +70,7 @@
                 <!-- Valor do objetivo -->
                 <div class="col-md-6">
                   <label class="form-label">Valor do objetivo</label>
-                  <input type="text" class="form-control text-primary" placeholder="R$ 0,00">
+                  <input type="text" class="form-control text-primary" oninput="formatarValor(this)" placeholder="R$ 0,00">
                 </div>
                 <!-- Data -->
                 <div class="col-md-6">
@@ -80,18 +80,7 @@
                 <!-- Valor inicial -->
                 <div class="col-md-6">
                   <label class="form-label">Valor inicial do objetivo</label>
-                  <input type="text" class="form-control text-primary" placeholder="R$ 0,00">
-                </div>
-                <!-- Cores -->
-                <div class="col-md-6">
-                  <label class="form-label">Cor</label>
-                  <div class="d-flex align-items-center gap-2">
-                    <button class="btn-color" style="background-color: #007bff;"></button>
-                    <button class="btn-color" style="background-color: #6f42c1;"></button>
-                    <button class="btn-color" style="background-color: #28a745;"></button>
-                    <button class="btn-color" style="background-color: #ffc107;"></button>
-                    <button class="btn btn-outros">OUTROS</button>
-                  </div>
+                  <input type="text" class="form-control text-primary" oninput="formatarValor(this)" placeholder="R$ 0,00">
                 </div>
                 <!-- Descrição -->
                 <div class="col-12">

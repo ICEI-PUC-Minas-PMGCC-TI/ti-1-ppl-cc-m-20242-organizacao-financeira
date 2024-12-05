@@ -16,7 +16,7 @@ body {
 }
 
 .sidebar {
-  width: 250px;
+  width: 100px;
   background-color: #ffffff;
   height: 100vh;
   position: fixed;
@@ -24,18 +24,24 @@ body {
   left: 0;
   padding-top: 60px;
   border-right: 1px solid #ddd;
+  display: flex; /* Permite o alinhamento com flexbox */
+  flex-direction: column; /* Direção vertical */
+  align-items: center; /* Centraliza os itens horizontalmente */
 }
 
 .sidebar a {
-  display: block;
-  padding: 10px 20px;
+  display: flex; /* Para alinhar ícones centralmente com textos, se aplicável */
+  justify-content: center; /* Centraliza o ícone dentro do link */
+  align-items: center; /* Centraliza o ícone dentro do link */
+  padding: 15px 20px; /* Aumenta o espaço para tornar o link maior */
   color: #333;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 18px; /* Aumenta o tamanho da fonte (se aplicável aos ícones) */
 }
 
 .sidebar a:hover {
   background-color: #f1f1f1;
+  font-size: 20px; /* Aumenta levemente o tamanho na interação */
 }
 
 
