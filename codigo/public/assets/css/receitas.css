@@ -1,0 +1,97 @@
+/* Remove margens e espaçamentos padrão de todos os elementos */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; /* Garante que o padding e as bordas sejam incluídos no tamanho total do elemento */
+}
+
+/* Estilo do corpo da página */
+body {
+    display: flex; /* Usa flexbox para alinhar os elementos */
+    justify-content: center; /* Centraliza os elementos horizontalmente */
+    align-items: center; /* Centraliza os elementos verticalmente */
+    min-height: 100vh; /* Faz o corpo ocupar pelo menos a altura total da janela */
+    background-color: #edf3fb; /* Define uma cor clara para o fundo */
+    padding: 20px; /* Adiciona espaçamento interno ao redor do corpo */
+    border-radius: 15px; /* Deixa os cantos do corpo arredondados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave ao corpo */
+}
+
+/* Estilo para o título do formulário */
+.title-form {
+    color: green; /* Deixa o título verde */
+    font-weight: bold; /* Faz o título ficar em negrito */
+    font-size: 2em; /* Aumenta o tamanho da fonte do título */
+    text-align: center; /* Centraliza o texto do título */
+    margin-bottom: 35px; /* Adiciona um espaço abaixo do título */
+}
+
+/* Esconde o botão de atualizar por padrão */
+#Update {
+    display: none; /* O botão não será exibido inicialmente */
+}
+
+/* Estilo para os rótulos (labels) */
+label {
+    display: block; /* Faz com que os rótulos ocupem uma linha inteira */
+    margin-bottom: 5px; /* Adiciona espaço abaixo do rótulo */
+    color: #333; /* Define uma cor escura para o texto */
+    font-weight: bold; /* Deixa o texto do rótulo em negrito */
+}
+
+/* Estilo para botões primários e de sucesso */
+.btn-primary, .btn-success {
+    background-color: green; /* Define a cor de fundo como verde */
+    border-color: green; /* Define a cor da borda como verde */
+    color: black; /* Deixa o texto do botão preto */
+    font-weight: bold; /* Faz o texto do botão ficar em negrito */
+    padding: 5px 10px; /* Adiciona espaçamento interno aos botões */
+    font-size: 0.9em; /* Define um tamanho de fonte um pouco menor */
+    width: auto; /* Deixa os botões ajustarem sua largura ao conteúdo */
+}
+
+/* Estilo para a tabela */
+table {
+    width: 100%; /* Faz a tabela ocupar toda a largura disponível */
+    max-width: 1200px; /* Define um limite máximo para a largura da tabela */
+    margin-top: 20px; /* Adiciona espaço acima da tabela */
+    border-collapse: collapse; /* Remove espaços entre as bordas das células */
+    background-color: white; /* Define o fundo da tabela como branco */
+    border: 1px solid #ccc; /* Adiciona uma borda cinza clara à tabela */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave */
+    border-radius: 8px; /* Deixa os cantos da tabela arredondados */
+    overflow: hidden; /* Garante que o conteúdo não ultrapasse os limites da tabela */
+}
+
+/* Estilo para células (cabeçalhos e dados) da tabela */
+table th, table td {
+    padding: 12px 15px; /* Adiciona espaçamento interno às células */
+    text-align: left; /* Alinha o texto das células à esquerda */
+    border-bottom: 1px solid #ddd; /* Adiciona uma linha separadora abaixo das células */
+    font-size: 0.95em; /* Define um tamanho de fonte para o texto */
+    color: #333; /* Define a cor do texto das células como cinza escuro */
+}
+
+/* Estilo para os cabeçalhos da tabela */
+table th {
+    background-color: #f4f4f4; /* Define um fundo claro para os cabeçalhos */
+    font-weight: bold; /* Deixa o texto dos cabeçalhos em negrito */
+    text-transform: uppercase; /* Faz o texto dos cabeçalhos ficar em letras maiúsculas */
+}
+
+/* Destaque para linhas da tabela quando o mouse passa por elas */
+table tr:hover {
+    background-color: #f1f1f1; /* Altera o fundo da linha ao passar o mouse */
+}
+
+/* Remove a linha inferior da última linha da tabela */
+table tbody tr:last-of-type {
+    border-bottom: none; /* Remove a borda inferior da última linha */
+}
+
+/* Container principal da página */
+.container {
+    width: 90%; /* Faz o container ocupar 90% da largura da página */
+    max-width: 1200px; /* Define um limite máximo para o container */
+    margin: 0 auto; /* Centraliza o container horizontalmente */
+}

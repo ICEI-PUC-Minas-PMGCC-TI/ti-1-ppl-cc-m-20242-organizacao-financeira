@@ -2,14 +2,13 @@
 
 Informações básicas do projeto.
 
-* **Projeto:**  Descontrole financeiro
+* **Projeto:** Midas - Organização financeira
 * **Repositório GitHub:** https://github.com/ICEI-PUC-Minas-PMGCC-TI/ti-1-ppl-cc-m-20242-organizacao-financeira
 * **Membros da equipe:**
 
   * Alessandro Andrade de Oliveira https://github.com/ale-andrade-o/ale-andrade-o
   * Pedro Henrique Cardoso Maia https://github.com/pedro-maia1337
   * André Almeida Costa https://github.com/And-30
-  * Samuel Padua Ramos https://github.com/samuelpr0
   * Davi Manoel Bernardes https://github.com/DaviManoelB
   * Tiago Santos Nogueira https://github.com/TiagoSNogueira
   * Felipe Quites Lopes https://github.com/FelipeQLopes

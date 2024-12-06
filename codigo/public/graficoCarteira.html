@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gráfico de Carteiras</title>
+  <link rel="stylesheet" href="assets/css/graficoCarteiras.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>Gráfico de Carteiras</h1>
+  <div id="filters">
+    <div class="filter-group">
+      <button id="toggle-name">Filtrar por Nome</button>
+      <div class="filter-options" id="filter-name"></div>
+    </div>
+    <div class="filter-group">
+      <button id="toggle-type">Filtrar por Tipo</button>
+      <div class="filter-options" id="filter-type"></div>
+    </div>
+  </div>
+  <button id="apply-filters">Aplicar Filtros</button>
+  <canvas id="donutChart"></canvas>
+  <button class="return" onclick="window.location.href ='apresentacaoCarteira.html'">↩</button>
+  <script src="assets/js/graficoCarteiras.js"></script>
+</body>
+</html>

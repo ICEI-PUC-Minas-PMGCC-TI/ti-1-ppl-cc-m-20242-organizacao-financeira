@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carteiras</title>
+    <link rel="stylesheet" href="assets/css/apresentacaoCarteira.css">
+</head>
+<body>
+    <header>
+        <button id="graph-btn" onclick="window.location.href='graficoCarteira.html'">&#x1F4CA;</button>
+        <h1>VALOR TOTAL</h1>
+        <div id="total-valor">R$ 0,00</div>
+    </header>
+
+    <main>
+        <section id="carteiras-container" class="carteiras-container">
+            <!-- CARTEIRAS -->
+        </section>
+    </main>
+    <footer>
+        <div class="actions">
+            <button id="add-carteira" class="add-btn" onclick="window.location.href ='cadastroCarteira.html'">+</button>
+            <button id="edit-carteira" class="edit-btn">&#x270E;</button>
+            <button id="delete-carteira" class="delete-btn" onclick="deleteAccount({id})">X</button>
+        </div>
+    </footer>
+
+    <script src="assets/js/apresentacaoCarteira.js"></script>
+</body>
+</html>

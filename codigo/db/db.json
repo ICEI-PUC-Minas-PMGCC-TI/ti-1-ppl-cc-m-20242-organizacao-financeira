@@ -1,14 +1,14 @@
 {
   "usuarios": [
     {
-      "id": 1,
+      "id": "1",
       "login": "admin",
       "senha": "123",
       "nome": "Administrador do Sistema",
       "email": "admin@abc.com"
     },
     {
-      "id": 2,
+      "id": "2",
       "login": "user",
       "senha": "123",
       "nome": "Usuario Comum",
@@ -19,121 +19,252 @@
       "senha": "123",
       "nome": "Rommel",
       "email": "rommel@gmail.com",
-      "id": 3
+      "id": "3"
     }
   ],
-  "contas": [
+  "carteiras": [
     {
       "id": "1",
-      "nomeConta": "Poupança",
-      "saldo": 15000,
-      "descricaoConta": "Conta de poupança de longo prazo",
-      "meta": 20000,
-      "detalhes": "Objetivo de reserva para aposentadoria",
-      "tipo": "Poupança",
-      "id_icone": "💰",
-      "id_cor": "#27ae60"
+      "id_usuario": 1,
+      "nome": "Conta no Banco Inter",
+      "descricao": "Conta do cartão do filho mais novo José",
+      "meta": 10000,
+      "tipo": "Cartão de Débito",
+      "id_icone": 2,
+      "id_cor": 9
     },
     {
-      "id": "58a2",
-      "nomeConta": "Oie",
-      "saldo": 12342,
-      "descricaoConta": "Fdasasdf",
-      "meta": 123412,
-      "tipo": "Conta Corrente",
-      "detalhes": "Ola",
-      "id_icone": "🏠",
-      "id_cor": "#2ecc71"
+      "id": "2",
+      "id_usuario": 1,
+      "nome": "Dinheiro Vivo",
+      "descricao": "Dinheiro em espécie para despesas diárias",
+      "meta": 1500,
+      "tipo": "Dinheiro",
+      "id_icone": 1,
+      "id_cor": 1
     },
     {
-      "nomeConta": "abcd",
-      "saldo": 1000,
-      "descricaoConta": "abcd",
-      "meta": 1000,
+      "id": "3",
+      "id_usuario": 1,
+      "nome": "Cartão de Crédito Nubank",
+      "descricao": "Cartão de crédito do Nubank para compras gerais",
+      "meta": 0,
       "tipo": "Cartão de Crédito",
-      "detalhes": "abcd",
-      "id_icone": "✈️",
-      "id_cor": "#f39c12",
-      "id": "qGCgG4P"
+      "id_icone": 2,
+      "id_cor": 2
+    },
+    {
+      "id": "4",
+      "id_usuario": 1,
+      "nome": "Reserva de Emergência",
+      "descricao": "Fundo para emergências inesperadas",
+      "meta": 5000,
+      "tipo": "Reserva",
+      "id_icone": 3,
+      "id_cor": 3
+    },
+    {
+      "id": "5",
+      "id_usuario": 1,
+      "nome": "Viagem para o Exterior",
+      "descricao": "Fundo para a viagem dos sonhos",
+      "meta": 8000,
+      "tipo": "Viagem",
+      "id_icone": 4,
+      "id_cor": 4
+    },
+    {
+      "id": "6",
+      "id_usuario": 1,
+      "nome": "Casa Própria",
+      "descricao": "Economias para dar entrada na casa própria",
+      "meta": 50000,
+      "tipo": "Casa",
+      "id_icone": 6,
+      "id_cor": 7
+    },
+    {
+      "id": "7",
+      "id_usuario": 1,
+      "nome": "Meu Carro",
+      "descricao": "Financiamento do meu fiat Argo",
+      "meta": 0,
+      "tipo": "Carro Financiado",
+      "id_icone": 7,
+      "id_cor": 8
+    }
+  ],
+  "icones_carteira": [
+    {
+      "id": "1",
+      "nome": "Carteira",
+      "url": "url_do_icone_carteira"
+    },
+    {
+      "id": "2",
+      "nome": "Cartão",
+      "url": "url_do_icone_cartao"
+    },
+    {
+      "id": "3",
+      "nome": "Cofrinho",
+      "url": "url_do_icone_cofrinho"
+    },
+    {
+      "id": "4",
+      "nome": "Mala de Viagem",
+      "url": "url_do_icone_mala"
+    },
+    {
+      "id": "5",
+      "nome": "Avião",
+      "url": "url_do_icone_aviao"
+    },
+    {
+      "id": "6",
+      "nome": "Casa",
+      "url": "url_do_icone_casa"
+    },
+    {
+      "id": "7",
+      "nome": "Carro",
+      "url": "url_do_icone_carro"
+    },
+    {
+      "id": "8",
+      "nome": "Emoji Sorrindo",
+      "url": "url_do_icone_emoji"
+    },
+    {
+      "id": "9",
+      "nome": "Bebê",
+      "url": "url_do_icone_bebe"
+    }
+  ],
+  "cores_carteira": [
+    {
+      "id": "1",
+      "nome": "Vermelho Escuro",
+      "codigo_hex": "#B80000"
+    },
+    {
+      "id": "2",
+      "nome": "Vermelho Claro",
+      "codigo_hex": "#FF4D4D"
+    },
+    {
+      "id": "3",
+      "nome": "Roxo",
+      "codigo_hex": "#7A00CC"
+    },
+    {
+      "id": "4",
+      "nome": "Azul Escuro",
+      "codigo_hex": "#3333FF"
+    },
+    {
+      "id": "5",
+      "nome": "Azul Claro",
+      "codigo_hex": "#6699FF"
+    },
+    {
+      "id": "6",
+      "nome": "Ciano",
+      "codigo_hex": "#00CCCC"
+    },
+    {
+      "id": "7",
+      "nome": "Verde",
+      "codigo_hex": "#33CC33"
+    },
+    {
+      "id": "8",
+      "nome": "Amarelo",
+      "codigo_hex": "#FFCC00"
+    },
+    {
+      "id": "9",
+      "nome": "Laranja",
+      "codigo_hex": "#FF8000"
     }
   ],
   "categorias": [
     {
-      "id": 1,
+      "id": "1",
       "nome": "Alimentação"
     },
     {
-      "id": 2,
+      "id": "2",
       "nome": "Vestuário"
     },
     {
-      "id": 3,
+      "id": "3",
       "nome": "Lazer"
     },
     {
-      "id": 4,
+      "id": "4",
       "nome": "Transporte"
     },
     {
-      "id": 5,
+      "id": "5",
       "nome": "Saúde"
     },
     {
-      "id": 6,
+      "id": "6",
       "nome": "Educação"
     },
     {
-      "id": 7,
+      "id": "7",
       "nome": "Moradia"
     },
     {
-      "id": 8,
+      "id": "8",
       "nome": "Entretenimento"
     },
     {
-      "id": 9,
+      "id": "9",
       "nome": "Trabalho"
     },
     {
-      "id": 10,
+      "id": "10",
       "nome": "Pessoal"
     },
     {
-      "id": 11,
+      "id": "11",
       "nome": "Financeiro"
     },
     {
-      "id": 12,
+      "id": "12",
       "nome": "Contas"
     }
   ],
   "tutoriais": [
     {
-      "id": 1,
+      "id": "1",
       "titulo": "Encontrar o EQUILÍBRIO FINANCEIRO",
       "url": "url_do_video_Encontrar_o_EQUILÍBRIO_FINANCEIRO",
       "descricao": "Veja como utilizar das finanças pessoais da forma certa"
     },
     {
-      "id": 2,
+      "id": "2",
       "titulo": "Planejamento Financeiro",
       "url": "url_do_video_Planejamento_Financeiro",
       "descricao": "Aprenda a planejar suas finanças para o futuro"
     },
     {
-      "id": 3,
+      "id": "3",
       "titulo": "Investimentos para Iniciantes",
       "url": "url_do_video_Investimentos_para_Iniciantes",
       "descricao": "Introdução aos principais tipos de investimento"
     },
     {
-      "id": 4,
+      "id": "4",
       "titulo": "Como Controlar Gastos",
       "url": "url_do_video_Como_Controlar_Gastos",
       "descricao": "Dicas para gerenciar suas despesas mensais"
     },
     {
-      "id": 5,
+      "id": "5",
       "titulo": "Economizando Dinheiro",
       "url": "url_do_video_Economizando_Dinheiro",
       "descricao": "Estratégias para economizar no dia a dia"
@@ -141,7 +272,7 @@
   ],
   "lancamentos": [
     {
-      "id": 1,
+      "id": "1",
       "id_usuario": 1,
       "id_carteira": 1,
       "id_categoria": 2,
@@ -153,7 +284,7 @@
       "frequencia": "mensal"
     },
     {
-      "id": 2,
+      "id": "2",
       "id_usuario": 1,
       "id_carteira": 2,
       "id_categoria": 8,
@@ -165,7 +296,7 @@
       "frequencia": "semanal"
     },
     {
-      "id": 3,
+      "id": "3",
       "id_usuario": 1,
       "id_carteira": 3,
       "id_categoria": 6,
@@ -177,7 +308,7 @@
       "frequencia": "mensal"
     },
     {
-      "id": 4,
+      "id": "4",
       "id_usuario": 1,
       "id_carteira": 1,
       "id_categoria": 4,
@@ -189,7 +320,7 @@
       "frequencia": null
     },
     {
-      "id": 5,
+      "id": "5",
       "id_usuario": 1,
       "id_carteira": 5,
       "id_categoria": 7,
@@ -201,7 +332,7 @@
       "frequencia": "mensal"
     },
     {
-      "id": 6,
+      "id": "6",
       "id_usuario": 1,
       "id_carteira": 1,
       "id_categoria": 7,
@@ -213,7 +344,7 @@
       "frequencia": "mensal"
     },
     {
-      "id": 7,
+      "id": "7",
       "id_usuario": 1,
       "id_carteira": 2,
       "id_categoria": 1,
@@ -225,7 +356,7 @@
       "frequencia": null
     },
     {
-      "id": 8,
+      "id": "8",
       "id_usuario": 1,
       "id_carteira": 3,
       "id_categoria": 3,
@@ -237,7 +368,7 @@
       "frequencia": "anual"
     },
     {
-      "id": 9,
+      "id": "9",
       "id_usuario": 1,
       "id_carteira": 4,
       "id_categoria": 4,
@@ -249,7 +380,7 @@
       "frequencia": null
     },
     {
-      "id": 10,
+      "id": "10",
       "id_usuario": 1,
       "id_carteira": 1,
       "id_categoria": 5,
@@ -261,7 +392,7 @@
       "frequencia": "mensal"
     },
     {
-      "id": 11,
+      "id": "11",
       "id_usuario": 1,
       "id_carteira": 7,
       "id_categoria": 4,
@@ -275,42 +406,42 @@
   ],
   "objetivos": [
     {
-      "id": 1,
+      "id": "1",
       "id_tipos_de_objetivos": 1,
       "descricao": "Economizar para a compra do carro dos sonhos",
       "meta": 50000,
       "prazo": "01/12/2025"
     },
     {
-      "id": 2,
+      "id": "2",
       "id_tipos_de_objetivos": 2,
       "descricao": "Acumular fundos para uma viagem à Europa",
       "meta": 12000,
       "prazo": "01/06/2026"
     },
     {
-      "id": 3,
+      "id": "3",
       "id_tipos_de_objetivos": 3,
       "descricao": "Juntar dinheiro para dar entrada na casa própria",
       "meta": 100000,
       "prazo": "01/05/2027"
     },
     {
-      "id": 4,
+      "id": "4",
       "id_tipos_de_objetivos": 4,
       "descricao": "Criar um fundo de emergência com seis meses de despesas",
       "meta": 18000,
       "prazo": "01/12/2024"
     },
     {
-      "id": 5,
+      "id": "5",
       "id_tipos_de_objetivos": 5,
       "descricao": "Economizar para custear a faculdade",
       "meta": 40000,
       "prazo": "01/08/2025"
     },
     {
-      "id": 6,
+      "id": "6",
       "id_tipos_de_objetivos": 6,
       "descricao": "Investir para garantir uma aposentadoria confortável",
       "meta": 200000,
@@ -319,78 +450,29 @@
   ],
   "tipos_de_objetivos": [
     {
-      "id": 1,
+      "id": "1",
       "nome": "Comprar um Carro"
     },
     {
-      "id": 2,
+      "id": "2",
       "nome": "Viajar para a Europa"
     },
     {
-      "id": 3,
+      "id": "3",
       "nome": "Comprar uma Casa"
     },
     {
-      "id": 4,
+      "id": "4",
       "nome": "Fundo de Emergência"
     },
     {
-      "id": 5,
+      "id": "5",
       "nome": "Educação Superior"
     },
     {
-      "id": 6,
+      "id": "6",
       "nome": "Aposentadoria"
     }
   ],
-  "lembretes": [
-    {
-      "id": 1,
-      "id_usuario": 1,
-      "id_categoria": 3,
-      "titulo": "Pagar o Bruno",
-      "descricao": "Dinheiro do ingresso da festa que o Bruno comprou pra mim",
-      "data_hora": "2024-10-10T15:00:00",
-      "valor": 80,
-      "status": true,
-      "recorrente": false,
-      "frequencia": null
-    },
-    {
-      "id": 2,
-      "id_usuario": 1,
-      "id_categoria": 10,
-      "titulo": "Pagar o bolo de aniversário",
-      "descricao": "Pagar no pix para a Luiza telefone (31)923456788",
-      "data_hora": "2024-10-12T10:00:00",
-      "valor": 60,
-      "status": false,
-      "recorrente": false,
-      "frequencia": null
-    },
-    {
-      "id": 3,
-      "id_usuario": 2,
-      "id_categoria": 7,
-      "titulo": "Pagar o aluguel",
-      "descricao": "Pagar o aluguel no dia certo",
-      "data_hora": "2024-10-15T18:00:00",
-      "valor": 1200,
-      "status": true,
-      "recorrente": true,
-      "frequencia": "mensal"
-    },
-    {
-      "id": 4,
-      "id_usuario": 1,
-      "id_categoria": 12,
-      "titulo": "Pagar conta de luz",
-      "descricao": "Lembrar de pagar a conta de luz até o dia 20.",
-      "data_hora": "2024-10-20T12:00:00",
-      "valor": 200,
-      "status": false,
-      "recorrente": true,
-      "frequencia": "mensal"
-    }
-  ]
+  "lembretes": []
 }
