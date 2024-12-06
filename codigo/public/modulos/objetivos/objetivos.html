@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/objetivos.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!--Side bar-->
+    <div class="sidebar">
+        <img src="../../assets/images/histogram-svgrepo-com.svg" alt="">
+        <a href="#"><i class="bi bi-house-door"></i></a>
+        <a href="#"><i class="bi bi-bank"></i></a>
+        <a href="http://localhost:3000/objetivos"><i class="bi bi-bookmark-check-fill"></i></a>
+        <hr>
+        <a href="http://localhost:3000/tutoriais"><i class="bi bi-play-circle-fill"></i></a>
+        <a href="#"><i class="bi bi-calendar2-check-fill"></i></a>
+    </div>
+
+    <!--Card-->
+    <div class="container my-5">
+        <div class="row gx-3 gy-4" id="objetivos-container">
+            <!-- Card de "Novo Objetivo" -->
+            <!-- Os cartões dos objetivos salvos serão inseridos dinamicamente aqui -->
+        </div>
+    </div>
+
+    <!-- Contêiner para notificações -->
+    <div id="notification" class="notification hidden">
+      <i class="bi"></i>
+      <span class="message"></span>
+    </div>
+
+    <!-- Modal de confirmação -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="confirmationModalLabel">Confirmar ação</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <p id="confirmationMessage">Você realmente deseja executar esta ação?</p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-primary" id="confirmActionBtn">Confirmar</button>
+              </div>
+          </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="novoObjetivoModal" tabindex="-1" aria-labelledby="novoObjetivoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="novoObjetivoModalLabel">Novo objetivo</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row g-3">
+                <!-- Nome do objetivo -->
+                <div class="col-md-6">
+                  <label class="form-label">Nome do objetivo</label>
+                  <input type="text" class="form-control" placeholder="Novo objetivo">
+                </div>
+                <!-- Valor do objetivo -->
+                <div class="col-md-6">
+                  <label class="form-label">Valor do objetivo</label>
+                  <input type="text" class="form-control text-primary" oninput="formatarValor(this)" placeholder="R$ 0,00">
+                </div>
+                <!-- Data -->
+                <div class="col-md-6">
+                  <label class="form-label">Data</label>
+                  <input type="date" class="form-control" value="2024-12-01">
+                </div>
+                <!-- Valor inicial -->
+                <div class="col-md-6">
+                  <label class="form-label">Valor inicial do objetivo</label>
+                  <input type="text" class="form-control text-primary" oninput="formatarValor(this)" placeholder="R$ 0,00">
+                </div>
+                <!-- Descrição -->
+                <div class="col-12">
+                  <label class="form-label">Descrição</label>
+                  <textarea class="form-control" rows="3"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-save">SALVAR</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<script src="../../assets/js/objetivos.js"></script>
+</html>
