@@ -28,6 +28,22 @@ app.get("/cadastro/receitas", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "lancamento/Receitas.html"));
 });
 
+app.get("/cadastro/tutoriais", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "modules/tutoriais/tutorial.html"));
+});
+
+app.get("/tutoriais", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "modules/tutoriais/exibicaoTutorial.html"));
+});
+
+app.get("/objetivos", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "modules/objetivos/objetivos.html"));
+});
+
+app.get("/objetivos/detalhes", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "modules/objetivos/detalhesObjetivos.html"));
+});
+
 // Inicializando o servidor
 const PORT = 3000;
 app.listen(PORT, () => {
