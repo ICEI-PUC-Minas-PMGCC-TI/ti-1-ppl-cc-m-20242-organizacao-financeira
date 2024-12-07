@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000/contas';
+const apiUrl = 'http://localhost:3001/carteiras';
 
 let selectedAccountId = null;
 
@@ -118,7 +118,7 @@ function editSelectedAccount() {
         return;
     }
 
-    window.location.href = `editarCarteira.html?id=${selectedAccountId}`;
+    window.location.href = `/editar/carteiras?id=${selectedAccountId}`;
 }
 
 document.addEventListener('DOMContentLoaded', loadCarteiras);

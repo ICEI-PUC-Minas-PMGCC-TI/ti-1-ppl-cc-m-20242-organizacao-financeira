@@ -17,6 +17,45 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve ao redor */
 }
 
+.sidebar {
+    width: 100px;
+    background-color: #ffffff;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 60px;
+    border-right: 1px solid #ddd;
+    display: flex; /* Permite o alinhamento com flexbox */
+    flex-direction: column; /* Direção vertical */
+    align-items: center; /* Centraliza os itens horizontalmente */
+}
+
+.sidebar img {
+    display: flex; /* Para alinhar ícones centralmente com textos, se aplicável */
+    justify-content: center; /* Centraliza o ícone dentro do link */
+    align-items: center; /* Centraliza o ícone dentro do link */
+    padding: 15px 20px; /* Aumenta o espaço para tornar o link maior */
+    color: #333;
+    text-decoration: none;
+    font-size: 18px; /* Aumenta o tamanho da fonte (se aplicável aos ícones) */
+}
+
+.sidebar a {
+    display: flex; /* Para alinhar ícones centralmente com textos, se aplicável */
+    justify-content: center; /* Centraliza o ícone dentro do link */
+    align-items: center; /* Centraliza o ícone dentro do link */
+    padding: 15px 20px; /* Aumenta o espaço para tornar o link maior */
+    color: #333;
+    text-decoration: none;
+    font-size: 18px; /* Aumenta o tamanho da fonte (se aplicável aos ícones) */
+}
+
+.sidebar a:hover {
+    background-color: #f1f1f1;
+    font-size: 20px; /* Aumenta levemente o tamanho na interação */
+}
+
 /* Estilo para o título do formulário */
 .title-form {
     color: red; /* Define o texto do título em vermelho */

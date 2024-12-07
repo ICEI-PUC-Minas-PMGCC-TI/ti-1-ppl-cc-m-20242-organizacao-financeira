@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/lembretes';
+const API_URL = 'http://localhost:3001/lembretes';
 
 
 async function carregarLembretes() {

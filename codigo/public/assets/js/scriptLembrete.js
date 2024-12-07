@@ -25,7 +25,7 @@ async function salvarLembrete(dados) {
 
     
     try {
-        const resposta = await fetch('http://localhost:3000/lembretes', {
+        const resposta = await fetch('http://localhost:3001/lembretes', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

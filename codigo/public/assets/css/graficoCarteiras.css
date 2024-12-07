@@ -2,106 +2,145 @@ body {
     font-family: Arial, sans-serif;
     margin: 20px;
   }
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  #filters {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 30px;
-  }
-  .filter-group {
-    position: relative;
-    width: 200px;
-  }
-  .filter-group button {
-    width: 100%;
-    background: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 1rem;
-    cursor: pointer;
-    text-align: left;
-    position: relative;
-  }
-  .filter-group button::after {
-    content: '▼';
-    font-size: 0.8rem;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .filter-options {
-    display: none;
-    position: absolute;
-    top: 110%;
+
+  .sidebar {
+    width: 100px;
+    background-color: #ffffff;
+    height: 100vh;
+    position: fixed;
+    top: 0;
     left: 0;
-    width: 100%;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    max-height: 200px;
-    overflow-y: auto;
-    z-index: 10;
-  }
-  .filter-options label {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    cursor: pointer;
-  }
-  .filter-options label:hover {
-    background: #f0f0f0;
-  }
-  .filter-options input[type="checkbox"] {
-    margin-right: 10px;
-  }
-  #apply-filters {
-    display: block;
-    margin: 0 auto;
-    background: #007BFF;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  #apply-filters:hover {
-    background: #0056b3;
-  }
-  canvas {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  .return {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    background-color: #007bff;
-    color: #ffffff;
-    font-size: 24px;
-    border-radius: 12px;
-    border: none;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .return:hover {
-    transform: scale(1.1);
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
-  }
-  .return:active {
-    transform: scale(0.95);
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
+    padding-top: 60px;
+    border-right: 1px solid #ddd;
+    display: flex; /* Permite o alinhamento com flexbox */
+    flex-direction: column; /* Direção vertical */
+    align-items: center; /* Centraliza os itens horizontalmente */
+}
+
+.sidebar img {
+    display: flex; /* Para alinhar ícones centralmente com textos, se aplicável */
+    justify-content: center; /* Centraliza o ícone dentro do link */
+    align-items: center; /* Centraliza o ícone dentro do link */
+    padding: 15px 20px; /* Aumenta o espaço para tornar o link maior */
+    color: #333;
+    text-decoration: none;
+    font-size: 18px; /* Aumenta o tamanho da fonte (se aplicável aos ícones) */
+}
+
+.sidebar a {
+    display: flex; /* Para alinhar ícones centralmente com textos, se aplicável */
+    justify-content: center; /* Centraliza o ícone dentro do link */
+    align-items: center; /* Centraliza o ícone dentro do link */
+    padding: 15px 20px; /* Aumenta o espaço para tornar o link maior */
+    color: #333;
+    text-decoration: none;
+    font-size: 18px; /* Aumenta o tamanho da fonte (se aplicável aos ícones) */
+}
+
+.sidebar a:hover {
+    background-color: #f1f1f1;
+    font-size: 20px; /* Aumenta levemente o tamanho na interação */
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+#filters {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.filter-group {
+  position: relative;
+  width: 200px;
+}
+.filter-group button {
+  width: 100%;
+  background: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+}
+.filter-group button::after {
+  content: '▼';
+  font-size: 0.8rem;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.filter-options {
+  display: none;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 100%;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+}
+.filter-options label {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+.filter-options label:hover {
+  background: #f0f0f0;
+}
+.filter-options input[type="checkbox"] {
+  margin-right: 10px;
+}
+#apply-filters {
+  display: block;
+  margin: 0 auto;
+  background: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+#apply-filters:hover {
+  background: #0056b3;
+}
+canvas {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.return {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: #007bff;
+  color: #ffffff;
+  font-size: 24px;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.return:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+}
+.return:active {
+  transform: scale(0.95);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}

@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000/contas';
+const apiUrl = 'http://localhost:3001/carteiras';
 
 function getAccountIdFromUrl() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -78,7 +78,7 @@ async function updateData(id) {
 
         alert('Conta atualizada com sucesso!');
     
-        window.location.href = "apresentacaoCarteira.html";
+        window.location.href = "/carteiras";
     } catch (error) {
         console.error('Erro:', error);
     }
@@ -123,6 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('button[type="submit"]').addEventListener('click', () => updateData(id));
     } else {
         alert("ID da conta não encontrado.");
-        window.location.href = "apresentacaoCarteira.html";
+        window.location.href = "/carteiras";
     }
 });

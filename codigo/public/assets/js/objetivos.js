@@ -252,7 +252,7 @@ function carregarObjetivos() {
 
 // Função para detalhar um objetivo
 function detalharObjetivo(id) {
-    window.location.href = `http://localhost:3000/objetivos/detalhes?id=${id}`;
+    window.location.href = `http://localhost:3001/objetivos/detalhes?id=${id}`;
 }
 
 // Função para remover um objetivo

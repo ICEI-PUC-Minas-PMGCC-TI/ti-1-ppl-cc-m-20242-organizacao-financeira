@@ -25,167 +25,36 @@
   "carteiras": [
     {
       "id": "1",
-      "id_usuario": 1,
-      "nome": "Conta no Banco Inter",
-      "descricao": "Conta do cartão do filho mais novo José",
-      "meta": 10000,
-      "tipo": "Cartão de Débito",
-      "id_icone": 2,
-      "id_cor": 9
+      "nomeConta": "Poupança",
+      "saldo": 15000,
+      "descricaoConta": "Conta de poupança de longo prazo",
+      "meta": 20000,
+      "detalhes": "Objetivo de reserva para aposentadoria",
+      "tipo": "Poupança",
+      "id_icone": "💰",
+      "id_cor": "#27ae60"
     },
     {
-      "id": "2",
-      "id_usuario": 1,
-      "nome": "Dinheiro Vivo",
-      "descricao": "Dinheiro em espécie para despesas diárias",
-      "meta": 1500,
-      "tipo": "Dinheiro",
-      "id_icone": 1,
-      "id_cor": 1
+      "id": "58a2",
+      "nomeConta": "Oie",
+      "saldo": 12342,
+      "descricaoConta": "Fdasasdf",
+      "meta": 123412,
+      "tipo": "Conta Corrente",
+      "detalhes": "Ola",
+      "id_icone": "🏠",
+      "id_cor": "#2ecc71"
     },
     {
-      "id": "3",
-      "id_usuario": 1,
-      "nome": "Cartão de Crédito Nubank",
-      "descricao": "Cartão de crédito do Nubank para compras gerais",
-      "meta": 0,
+      "nomeConta": "abcd",
+      "saldo": 1000,
+      "descricaoConta": "abcd",
+      "meta": 1000,
       "tipo": "Cartão de Crédito",
-      "id_icone": 2,
-      "id_cor": 2
-    },
-    {
-      "id": "4",
-      "id_usuario": 1,
-      "nome": "Reserva de Emergência",
-      "descricao": "Fundo para emergências inesperadas",
-      "meta": 5000,
-      "tipo": "Reserva",
-      "id_icone": 3,
-      "id_cor": 3
-    },
-    {
-      "id": "5",
-      "id_usuario": 1,
-      "nome": "Viagem para o Exterior",
-      "descricao": "Fundo para a viagem dos sonhos",
-      "meta": 8000,
-      "tipo": "Viagem",
-      "id_icone": 4,
-      "id_cor": 4
-    },
-    {
-      "id": "6",
-      "id_usuario": 1,
-      "nome": "Casa Própria",
-      "descricao": "Economias para dar entrada na casa própria",
-      "meta": 50000,
-      "tipo": "Casa",
-      "id_icone": 6,
-      "id_cor": 7
-    },
-    {
-      "id": "7",
-      "id_usuario": 1,
-      "nome": "Meu Carro",
-      "descricao": "Financiamento do meu fiat Argo",
-      "meta": 0,
-      "tipo": "Carro Financiado",
-      "id_icone": 7,
-      "id_cor": 8
-    }
-  ],
-  "icones_carteira": [
-    {
-      "id": "1",
-      "nome": "Carteira",
-      "url": "url_do_icone_carteira"
-    },
-    {
-      "id": "2",
-      "nome": "Cartão",
-      "url": "url_do_icone_cartao"
-    },
-    {
-      "id": "3",
-      "nome": "Cofrinho",
-      "url": "url_do_icone_cofrinho"
-    },
-    {
-      "id": "4",
-      "nome": "Mala de Viagem",
-      "url": "url_do_icone_mala"
-    },
-    {
-      "id": "5",
-      "nome": "Avião",
-      "url": "url_do_icone_aviao"
-    },
-    {
-      "id": "6",
-      "nome": "Casa",
-      "url": "url_do_icone_casa"
-    },
-    {
-      "id": "7",
-      "nome": "Carro",
-      "url": "url_do_icone_carro"
-    },
-    {
-      "id": "8",
-      "nome": "Emoji Sorrindo",
-      "url": "url_do_icone_emoji"
-    },
-    {
-      "id": "9",
-      "nome": "Bebê",
-      "url": "url_do_icone_bebe"
-    }
-  ],
-  "cores_carteira": [
-    {
-      "id": "1",
-      "nome": "Vermelho Escuro",
-      "codigo_hex": "#B80000"
-    },
-    {
-      "id": "2",
-      "nome": "Vermelho Claro",
-      "codigo_hex": "#FF4D4D"
-    },
-    {
-      "id": "3",
-      "nome": "Roxo",
-      "codigo_hex": "#7A00CC"
-    },
-    {
-      "id": "4",
-      "nome": "Azul Escuro",
-      "codigo_hex": "#3333FF"
-    },
-    {
-      "id": "5",
-      "nome": "Azul Claro",
-      "codigo_hex": "#6699FF"
-    },
-    {
-      "id": "6",
-      "nome": "Ciano",
-      "codigo_hex": "#00CCCC"
-    },
-    {
-      "id": "7",
-      "nome": "Verde",
-      "codigo_hex": "#33CC33"
-    },
-    {
-      "id": "8",
-      "nome": "Amarelo",
-      "codigo_hex": "#FFCC00"
-    },
-    {
-      "id": "9",
-      "nome": "Laranja",
-      "codigo_hex": "#FF8000"
+      "detalhes": "abcd",
+      "id_icone": "✈️",
+      "id_cor": "#3498db",
+      "id": "qGCgG4P"
     }
   ],
   "categorias": [

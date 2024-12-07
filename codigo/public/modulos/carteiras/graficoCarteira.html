@@ -6,8 +6,21 @@
   <title>Gráfico de Carteiras</title>
   <link rel="stylesheet" href="../../assets/css/graficoCarteiras.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+
+  <div class="sidebar">
+    <img src="../../assets/images/histogram-svgrepo-com.svg" alt="">
+    <a href="#"><i class="bi bi-house-door"></i></a>
+    <a href="http://localhost:3000/carteiras"><i class="bi bi-bank"></i></a>
+    <a href="http://localhost:3000/cadastro/lancamento"><i class="bi bi-cash-coin"></i></a>
+    <a href="http://localhost:3000/objetivos"><i class="bi bi-bookmark-check-fill"></i></a>
+    <a href="http://localhost:3000/tutoriais"><i class="bi bi-play-circle-fill"></i></a>
+    <a href="#"><i class="bi bi-calendar2-check-fill"></i></a>
+</div>
+
   <h1>Gráfico de Carteiras</h1>
   <div id="filters">
     <div class="filter-group">
@@ -19,9 +32,15 @@
       <div class="filter-options" id="filter-type"></div>
     </div>
   </div>
+
   <button id="apply-filters">Aplicar Filtros</button>
   <canvas id="donutChart"></canvas>
-  <button class="return" onclick="window.location.href ='apresentacaoCarteira.html'">↩</button>
-  <script src="../../assets/js/graficoCarteiras.js"></script>
+  <button class="return" onclick="window.location.href ='http://localhost:3000/carteiras'">↩</button>
+  
 </body>
+
+<script src="../../assets/js/graficoCarteiras.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
 </html>

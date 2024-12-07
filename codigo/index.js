@@ -36,6 +36,22 @@ app.get("/tutoriais", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "modulos/tutoriais/exibicaoTutorial.html"));
 });
 
+app.get("/carteiras", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "modulos/carteiras/apresentacaoCarteira.html"));
+});
+
+app.get("/cadastro/carteiras", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "modulos/carteiras/cadastroCarteira.html"));
+});
+
+app.get("/editar/carteiras", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "modulos/carteiras/editarCarteira.html"));
+});
+
+app.get("/grafico/carteiras", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "modulos/carteiras/graficoCarteira.html"));
+});
+
 app.get("/objetivos", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "modulos/objetivos/objetivos.html"));
 });

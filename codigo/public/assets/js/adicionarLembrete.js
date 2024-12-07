@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000/lembretes'; 
+const apiUrl = 'http://localhost:3001/lembretes'; 
 
 document.querySelector('form').addEventListener('submit', async function (event) {
   event.preventDefault(); 

@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000/contas';
+const apiUrl = 'http://localhost:3001/carteiras';
 
 async function addData() {
 
