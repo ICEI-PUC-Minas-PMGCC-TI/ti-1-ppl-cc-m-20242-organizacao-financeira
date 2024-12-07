@@ -464,26 +464,29 @@
   ],
   "objetivos": [
     {
-      "nome": "Comprar uma casa",
-      "valor": 40,
-      "valorInicial": 609,
-      "data": "2024-12-11",
+      "concluido": true,
+      "id": 19
+    },
+    {
+      "concluido": true,
+      "id": 21
+    },
+    {
+      "nome": "Mudar de país",
+      "valor": 100000,
+      "valorInicial": 5500,
+      "data": "2025-05-30",
       "cor": "#4caf50",
-      "descricao": "Comprar uma casa",
+      "descricao": "Me mudar para suíça",
       "icone": "fas fa-question-circle",
       "depositos": [
         {
-          "id": 1733448480156,
-          "valor": 200,
-          "data": "2024-12-05"
-        },
-        {
-          "id": 1733448498174,
-          "valor": 400,
-          "data": "2024-12-05"
+          "id": 1733582532265,
+          "valor": 500,
+          "data": "2024-12-14"
         }
       ],
-      "id": 19
+      "id": 22
     }
   ],
   "tipos_de_objetivos": [

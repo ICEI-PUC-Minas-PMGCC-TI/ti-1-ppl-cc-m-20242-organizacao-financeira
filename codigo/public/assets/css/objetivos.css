@@ -43,6 +43,7 @@
     flex-wrap: wrap;
     gap: 1rem; /* Espaçamento entre os cards */
     justify-content: flex-start; /* Alinhamento à esquerda */
+    margin-left: 100px;
 }
 
 

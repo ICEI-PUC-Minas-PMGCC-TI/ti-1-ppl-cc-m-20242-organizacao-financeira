@@ -48,13 +48,12 @@ function carregarDetalhes() {
       document.getElementById("valor-total").textContent = `${objetivo.valor.toFixed(2)}`;
       document.getElementById("valor-atual").textContent = `${objetivo.valorInicial.toFixed(2)}`;
 
-      // Atualiza o gráfico de progresso
+      // Calcula o progresso
       const progresso = (objetivo.valorInicial / objetivo.valor) * 100;
-      const progressBar = document.querySelector(".progress");
-      
-      if (progressBar) { // Verifica se o elemento existe
-        progressBar.style.width = `${progresso}%`;
-        progressBar.setAttribute("aria-valuenow", progresso);
+      const progressBar = document.getElementById("progresso");
+
+      if (progressBar) {
+        progressBar.textContent = `${Math.round(progresso)}%`; // Atualiza o texto da porcentagem
       }
 
       // Exibe os depósitos
@@ -62,6 +61,7 @@ function carregarDetalhes() {
     })
     .catch((error) => console.error("Erro ao carregar detalhes:", error));
 }
+
 
 
 // Abre o modal para adicionar depósito
@@ -109,11 +109,12 @@ function adicionarDeposito() {
           showNotification('success', 'Depósito salvo com sucesso');
           const modalDeposito = bootstrap.Modal.getInstance(document.getElementById("modalDeposito"));
           modalDeposito.hide(); // Fecha o modal
-          carregarDetalhes(); // Atualiza a página
+          carregarDetalhes(); // Atualiza os detalhes e a barra de progresso
         })
         .catch((error) => console.error("Erro ao adicionar depósito:", error));
     });
 }
+
 
 
 function exibirDepositos(depositos) {
@@ -161,31 +162,7 @@ function removerDeposito(depositoId) {
     });
 }
 
-function formatarValor(input) {
-  let valor = input.value;
 
-  // Substituir qualquer caractere que não seja número ou vírgula
-  valor = valor.replace(/[^\d,]/g, '');
-
-  // Separar a parte inteira e a parte decimal
-  let [inteiro, decimal] = valor.split(',');
-
-  // Formatar a parte inteira com ponto como separador de milhar
-  inteiro = inteiro.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-
-  // Limitar a parte decimal a 2 casas
-  decimal = decimal ? decimal.substring(0, 2) : '';
-
-  // Se houver parte decimal, adicionar vírgula
-  if (decimal) {
-    valor = `${inteiro},${decimal}`;
-  } else {
-    valor = inteiro;
-  }
-
-  // Atualizar o valor no input
-  input.value = valor;
-}
 
 // Carrega os detalhes ao iniciar a página
 window.onload = carregarDetalhes;

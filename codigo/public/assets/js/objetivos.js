@@ -127,12 +127,14 @@ function salvarNovoObjetivo() {
 }
 
 // Função para salvar as alterações de um objetivo existente
+// Função para salvar as alterações de um objetivo existente
 function salvarEdicao(id) {
     const nomeObjetivo = document.querySelector('input[placeholder="Novo objetivo"]').value.trim();
     const dataObjetivo = document.querySelector('input[type="date"]').value;
     const inputsValor = document.querySelectorAll('input.text-primary');
     const valorObjetivo = parseFloat(inputsValor[0]?.value.trim());
     const valorInicial = parseFloat(inputsValor[1]?.value.trim());
+    const descricao = document.querySelector('textarea')?.value.trim();
     const corSelecionada = document.querySelector('.btn-color.active')?.style.backgroundColor || '#4caf50';
     const iconeSelecionado = document.querySelector('.icone-selecionado')?.dataset.icon || 'fas fa-question-circle';
 
@@ -141,20 +143,29 @@ function salvarEdicao(id) {
         return;
     }
 
-    const objetivoAtualizado = {
-        nome: nomeObjetivo,
-        valor: valorObjetivo,
-        valorInicial: valorInicial || 0,
-        data: dataObjetivo,
-        cor: corSelecionada,
-        icone: iconeSelecionado
-    };
+    // Primeiro, obtenha o objetivo existente para preservar o array `depositos`
+    fetch(`${baseUrl}/${id}`)
+        .then(response => response.json())
+        .then(objetivoExistente => {
+            // Construir o objetivo atualizado, incluindo `descricao` e preservando `depositos`
+            const objetivoAtualizado = {
+                nome: nomeObjetivo,
+                valor: valorObjetivo,
+                valorInicial: valorInicial || 0,
+                data: dataObjetivo,
+                cor: corSelecionada,
+                descricao: descricao || objetivoExistente.descricao, // Preserva a descrição existente, se não fornecida
+                icone: iconeSelecionado,
+                depositos: objetivoExistente.depositos || [] // Preserva o array de depósitos
+            };
 
-    fetch(`${baseUrl}/${id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(objetivoAtualizado),
-    })
+            // Fazer a requisição para atualizar o objetivo
+            return fetch(`${baseUrl}/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(objetivoAtualizado),
+            });
+        })
         .then(response => {
             if (response.ok) {
                 showNotification('success', 'Objetivo atualizado com sucesso!');
@@ -167,6 +178,7 @@ function salvarEdicao(id) {
         .catch(error => console.error('Erro ao salvar as alterações:', error));
 }
 
+
 // Função para carregar os objetivos e renderizar os cartões
 function carregarObjetivos() {
     fetch(baseUrl)
@@ -175,6 +187,7 @@ function carregarObjetivos() {
             const container = document.getElementById('objetivos-container');
             container.innerHTML = ''; // Limpa o container
 
+            // Adiciona o card para criar um novo objetivo
             const novoObjetivoCard = `
                 <div class="col-md-4">
                     <div class="card custom-card text-center p-3" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#novoObjetivoModal">
@@ -187,12 +200,16 @@ function carregarObjetivos() {
             `;
             container.innerHTML += novoObjetivoCard;
 
-            if (data.length === 0) {
+            // Filtra objetivos que não estão concluídos
+            const objetivosNaoConcluidos = data.filter(objetivo => !objetivo.concluido);
+
+            if (objetivosNaoConcluidos.length === 0) {
                 container.innerHTML += '<p class="text-center text-muted">Nenhum objetivo encontrado.</p>';
                 return;
             }
 
-            data.forEach(objetivo => {
+            // Renderiza os objetivos não concluídos
+            objetivosNaoConcluidos.forEach(objetivo => {
                 const valor = parseFloat(objetivo.valor) || 0;
                 const valorInicial = parseFloat(objetivo.valorInicial) || 0;
                 const progresso = valor > 0 ? ((valorInicial / valor) * 100).toFixed(2) : 0;
@@ -231,6 +248,7 @@ function carregarObjetivos() {
         })
         .catch(error => console.error('Erro ao carregar os objetivos:', error));
 }
+
 
 // Função para detalhar um objetivo
 function detalharObjetivo(id) {
@@ -307,31 +325,6 @@ function fecharModal() {
     btnSalvar.textContent = 'Salvar';
 }
 
-function formatarValor(input) {
-    let valor = input.value;
-
-    // Substituir qualquer caractere que não seja número ou vírgula
-    valor = valor.replace(/[^\d,]/g, '');
-
-    // Separar a parte inteira e a parte decimal
-    let [inteiro, decimal] = valor.split(',');
-
-    // Formatar a parte inteira com ponto como separador de milhar
-    inteiro = inteiro.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-
-    // Limitar a parte decimal a 2 casas
-    decimal = decimal ? decimal.substring(0, 2) : '';
-
-    // Se houver parte decimal, adicionar vírgula
-    if (decimal) {
-      valor = `${inteiro},${decimal}`;
-    } else {
-      valor = inteiro;
-    }
-
-    // Atualizar o valor no input
-    input.value = valor;
-}
 
 // Chama a função ao carregar a página
 carregarObjetivos();
