@@ -9,10 +9,10 @@ function validateForm(type = null) {
     const descricao = document.getElementById("exampleInputDescricao").value;
     const valor = document.getElementById("exampleInputValor").value;
     const categoria = document.getElementById("exampleInputCategoria").value;
-    const conta = document.getElementById("exampleInputConta").value;
+    const contaId = document.getElementById("exampleInputConta").value; // Pega o ID da conta
     const recorrente = document.getElementById("exampleCheck1").checked;
 
-    if (!descricao || !valor || !categoria || !conta) {
+    if (!descricao || !valor || !categoria || !contaId) {
         alert("Todos os campos são obrigatórios!");
         return false;
     }
@@ -21,7 +21,7 @@ function validateForm(type = null) {
         descricao,
         valor: parseFloat(valor),
         categoria,
-        conta,
+        id_carteira: contaId, // Salva o ID da carteira no lugar do nome
         recorrente,
         tipo: type || (categoria.includes("receita") ? "receita" : "despesa"),
     };
@@ -79,32 +79,44 @@ function deleteData(id) {
     const endpoint = `http://localhost:3001/lancamentos/${id}`;
 
     fetch(endpoint, { method: "DELETE" })
-        .then(() => {
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Erro ao deletar. Status: ${response.status}`);
+            }
             alert("Registro deletado com sucesso!");
             window.location.reload();
         })
-        .catch(error => console.error("Erro ao deletar item:", error));
+        .catch(error => {
+            console.error("Erro ao deletar item:", error);
+            alert("Erro ao deletar. Verifique o console para mais detalhes.");
+        });
 }
 
 function updateData(id) {
     const endpoint = `http://localhost:3001/lancamentos/${id}`;
 
     fetch(endpoint)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Erro ao carregar dados. Status: ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
-            // Preencha os campos do formulário com os dados carregados
+            // Preenche os campos do formulário com os dados recebidos
             document.getElementById("exampleInputDescricao").value = data.descricao;
             document.getElementById("exampleInputValor").value = data.valor;
             document.getElementById("exampleInputCategoria").value = data.categoria;
-            document.getElementById("exampleInputConta").value = data.conta;
+            document.getElementById("exampleInputConta").value = data.id_carteira;
             document.getElementById("exampleCheck1").checked = data.recorrente;
 
-            // Atualize os botões
+            // Mostra o botão de atualização e esconde o de criação
             document.getElementById("Submit").style.display = "none";
             document.getElementById("Update").style.display = "block";
 
+            // Define a ação do botão de atualização
             document.getElementById("Update").onclick = () => {
-                const updatedData = validateForm(data.tipo); // Passe o tipo original
+                const updatedData = validateForm(data.tipo); // Valida o formulário e pega os novos dados
 
                 if (updatedData) {
                     fetch(endpoint, {
@@ -112,16 +124,50 @@ function updateData(id) {
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(updatedData),
                     })
-                        .then(() => {
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`Erro ao atualizar. Status: ${response.status}`);
+                            }
                             alert("Registro atualizado com sucesso!");
                             window.location.reload();
                         })
-                        .catch(error => console.error("Erro ao atualizar item:", error));
+                        .catch(error => {
+                            console.error("Erro ao atualizar item:", error);
+                            alert("Erro ao atualizar. Verifique o console para mais detalhes.");
+                        });
                 }
             };
         })
-        .catch(error => console.error("Erro ao carregar dados para edição:", error));
+        .catch(error => {
+            console.error("Erro ao carregar dados para edição:", error);
+            alert("Erro ao carregar dados para edição.");
+        });
 }
+
+function populateContas() {
+    const contaSelect = document.getElementById("exampleInputConta");
+    fetch("http://localhost:3001/carteiras")
+        .then(response => response.json())
+        .then(contas => {
+            contas.forEach(conta => {
+                const option = document.createElement("option");
+                option.value = conta.id; // Define o id como valor
+                option.textContent = conta.nomeConta; // Mostra o nomeConta no dropdown
+                contaSelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error("Erro ao carregar contas:", error));
+}
+
+// Chame a função no carregamento da página
+window.onload = () => {
+    const pageTitle = document.title.toLowerCase();
+    const type = pageTitle.includes("receita") ? "receita" : "despesa";
+    showData(type);    
+    populateContas(); // Adicionando o carregamento das contas
+    fetchLancamentos();
+};
+
 
 
 function fetchLancamentos() {

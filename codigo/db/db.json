@@ -24,17 +24,6 @@
   ],
   "carteiras": [
     {
-      "id": "1",
-      "nomeConta": "Poupança",
-      "saldo": 15000,
-      "descricaoConta": "Conta de poupança de longo prazo",
-      "meta": 20000,
-      "detalhes": "Objetivo de reserva para aposentadoria",
-      "tipo": "Poupança",
-      "id_icone": "💰",
-      "id_cor": "#27ae60"
-    },
-    {
       "id": "58a2",
       "nomeConta": "Oie",
       "saldo": 12342,
@@ -55,6 +44,28 @@
       "id_icone": "✈️",
       "id_cor": "#3498db",
       "id": "qGCgG4P"
+    },
+    {
+      "nomeConta": "fadfasdf",
+      "saldo": 12341,
+      "descricaoConta": "adfsasdf",
+      "meta": 1231,
+      "tipo": "Cartão de Crédito",
+      "detalhes": "afdsfa",
+      "id_icone": "🏦",
+      "id_cor": "#8e44ad",
+      "id": "j02UVIb"
+    },
+    {
+      "nomeConta": "teste5",
+      "saldo": 1000,
+      "descricaoConta": "abc",
+      "meta": 10000,
+      "tipo": "Cartão de Débito",
+      "detalhes": "abcd",
+      "id_icone": "🐖",
+      "id_cor": "#f39c12",
+      "id": "65AwP8H"
     }
   ],
   "categorias": [
@@ -199,139 +210,22 @@
   ],
   "lancamentos": [
     {
-      "id": "1",
-      "id_usuario": 1,
-      "id_carteira": 1,
-      "id_categoria": 2,
-      "valor": 1412,
-      "tipo": "receita",
-      "data": "2024-10-01",
-      "descricao": "Salário do mês de Setembro",
-      "recorrente": true,
-      "frequencia": "mensal"
-    },
-    {
-      "id": "2",
-      "id_usuario": 1,
-      "id_carteira": 2,
-      "id_categoria": 8,
-      "valor": 300,
-      "tipo": "receita",
-      "data": "2024-10-10",
-      "descricao": "Venda de doces",
-      "recorrente": true,
-      "frequencia": "semanal"
-    },
-    {
-      "id": "3",
-      "id_usuario": 1,
-      "id_carteira": 3,
-      "id_categoria": 6,
-      "valor": 1250,
-      "tipo": "receita",
-      "data": "2024-10-11",
-      "descricao": "Aluguel recebido",
-      "recorrente": true,
-      "frequencia": "mensal"
-    },
-    {
-      "id": "4",
-      "id_usuario": 1,
-      "id_carteira": 1,
-      "id_categoria": 4,
-      "valor": 320,
-      "tipo": "receita",
-      "data": "2024-10-14",
-      "descricao": "Bicos do mês de setembro",
-      "recorrente": false,
-      "frequencia": null
-    },
-    {
-      "id": "5",
-      "id_usuario": 1,
-      "id_carteira": 5,
-      "id_categoria": 7,
-      "valor": 1800,
-      "tipo": "receita",
-      "data": "2024-10-21",
-      "descricao": "Recebimento de royalties",
-      "recorrente": true,
-      "frequencia": "mensal"
-    },
-    {
-      "id": "6",
-      "id_usuario": 1,
-      "id_carteira": 1,
-      "id_categoria": 7,
-      "valor": -400,
-      "tipo": "despesa",
-      "data": "2024-10-19",
-      "descricao": "Pagamento de conta de energia elétrica",
-      "recorrente": true,
-      "frequencia": "mensal"
-    },
-    {
-      "descricao": "Compra de supermercado da semana",
-      "valor": -150,
-      "categoria": "undefined",
-      "conta": "undefined",
-      "recorrente": false,
-      "tipo": "despesa",
-      "id": "7"
-    },
-    {
-      "id": "8",
-      "id_usuario": 1,
-      "id_carteira": 3,
-      "id_categoria": 3,
-      "valor": -200,
-      "tipo": "despesa",
-      "data": "2024-10-25",
-      "descricao": "Assinatura de jogos da PSN",
-      "recorrente": true,
-      "frequencia": "anual"
-    },
-    {
-      "id": "9",
-      "id_usuario": 1,
-      "id_carteira": 4,
-      "id_categoria": 4,
-      "valor": -1200,
-      "tipo": "despesa",
-      "data": "2024-09-11",
-      "descricao": "Manutenção do carro",
-      "recorrente": false,
-      "frequencia": null
-    },
-    {
-      "id": "10",
-      "id_usuario": 1,
-      "id_carteira": 1,
-      "id_categoria": 5,
-      "valor": -300,
-      "tipo": "despesa",
-      "data": "2024-10-22",
-      "descricao": "Mensalidade da academia",
-      "recorrente": true,
-      "frequencia": "mensal"
-    },
-    {
-      "descricao": "adfasa",
-      "valor": 123,
-      "categoria": "adfasd",
-      "conta": "asdfa",
+      "descricao": "sdadaada",
+      "valor": 1000,
+      "categoria": "aaaaa",
+      "id_carteira": "qGCgG4P",
       "recorrente": false,
       "tipo": "receita",
-      "id": "gaBWh7g"
+      "id": 9
     },
     {
-      "descricao": "adfadfs",
-      "valor": 123,
-      "categoria": "fasdf",
-      "conta": "asdfaf",
+      "descricao": "teste2",
+      "valor": 500,
+      "categoria": "abcd",
+      "id_carteira": "qGCgG4P",
       "recorrente": false,
       "tipo": "despesa",
-      "id": "NRPqTuE"
+      "id": 10
     }
   ],
   "objetivos": [

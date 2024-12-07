@@ -1,23 +1,41 @@
-const apiUrl = 'http://localhost:3001/carteiras';
-let originalData = [];
-let chart;
+const apiUrlCarteiras = 'http://localhost:3001/carteiras';
+const apiUrlLancamentos = 'http://localhost:3001/lancamentos';
+let originalData = []; // Dados das carteiras
+let lancamentos = []; // Dados dos lançamentos
+let chart; // Variável do gráfico
 
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    const response = await fetch(apiUrl);
-    if (!response.ok) throw new Error('Erro ao carregar as carteiras.');
-    originalData = await response.json();
+    // Carregar as carteiras e os lançamentos
+    const responseCarteiras = await fetch(apiUrlCarteiras);
+    if (!responseCarteiras.ok) throw new Error('Erro ao carregar as carteiras.');
+    originalData = await responseCarteiras.json();
 
+    const responseLancamentos = await fetch(apiUrlLancamentos);
+    if (!responseLancamentos.ok) throw new Error('Erro ao carregar os lançamentos.');
+    lancamentos = await responseLancamentos.json();
+
+    // Calcular o saldo para cada conta
+    calculateSaldo();
+
+    // Populando os filtros
     populateFilters();
+
+    // Renderizar o gráfico com as carteiras
     renderChart(originalData);
 
+    // Aplicar filtros ao clicar no botão
     document.getElementById('apply-filters').addEventListener('click', applyFilters);
+
+    // Configuração dos dropdowns para os filtros
     setupDropdowns();
+
   } catch (error) {
     console.error('Erro:', error);
   }
 });
 
+// Configuração dos filtros (dropdowns)
 function setupDropdowns() {
   const toggleName = document.getElementById('toggle-name');
   const toggleType = document.getElementById('toggle-type');
@@ -44,6 +62,7 @@ function setupDropdowns() {
   });
 }
 
+// Populando os filtros com os nomes e tipos únicos
 function populateFilters() {
   const nameContainer = document.getElementById('filter-name');
   const typeContainer = document.getElementById('filter-type');
@@ -70,6 +89,7 @@ function populateFilters() {
   });
 }
 
+// Função para aplicar os filtros
 function applyFilters() {
   const selectedNames = Array.from(document.querySelectorAll('#filter-name input:checked')).map(input => input.value);
   const selectedTypes = Array.from(document.querySelectorAll('#filter-type input:checked')).map(input => input.value);
@@ -83,17 +103,24 @@ function applyFilters() {
   renderChart(filteredData);
 }
 
+// Função para renderizar o gráfico de donuts
 function renderChart(data) {
   const ctx = document.getElementById('donutChart').getContext('2d');
 
+  // Labels para o gráfico (nomes das contas)
   const labels = data.map(item => item.nomeConta);
+
+  // Valores do gráfico (saldo final das contas)
   const values = data.map(item => item.saldo);
+
+  // Cores de fundo para o gráfico
   const backgroundColors = data.map(item => item.id_cor);
 
   if (chart) {
     chart.destroy();
   }
 
+  // Gerando o gráfico
   chart = new Chart(ctx, {
     type: 'doughnut',
     data: {
@@ -120,5 +147,28 @@ function renderChart(data) {
         }
       }
     }
+  });
+}
+
+// Função para calcular o saldo final de cada conta
+function calculateSaldo() {
+  originalData.forEach(account => {
+    // Inicializa o saldo com o saldo inicial da conta
+    let saldoFinal = account.saldoInicial || 0;
+
+    // Filtra os lançamentos que pertencem a esta conta
+    const accountLancamentos = lancamentos.filter(lancamento => lancamento.id_carteira === account.id);
+
+    // Somar as receitas e subtrair as despesas
+    accountLancamentos.forEach(lancamento => {
+      if (lancamento.tipo === 'receita') {
+        saldoFinal += lancamento.valor;  // Adiciona a receita
+      } else if (lancamento.tipo === 'despesa') {
+        saldoFinal -= lancamento.valor;  // Subtrai a despesa
+      }
+    });
+
+    // Atualiza o saldo final da conta
+    account.saldo = saldoFinal;
   });
 }

@@ -67,7 +67,6 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil ao redor do container */
     border: 2px solid #ddd; /* Borda clara para destacar o container */
     overflow-x: auto; /* Permite rolagem horizontal se necessário */
-    padding-left: 20px;
 }
 
 /* Estilo para o título do formulário */

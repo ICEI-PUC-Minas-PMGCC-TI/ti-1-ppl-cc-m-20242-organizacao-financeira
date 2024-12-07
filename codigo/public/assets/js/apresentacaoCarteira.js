@@ -1,4 +1,5 @@
 const apiUrl = 'http://localhost:3001/carteiras';
+const lancamentosUrl = 'http://localhost:3001/lancamentos'; // URL para os lançamentos
 
 let selectedAccountId = null;
 
@@ -9,11 +10,36 @@ async function loadCarteiras() {
 
         const contas = await response.json();
 
-    
-        const valorTotal = contas.reduce((total, conta) => total + (conta.saldo || 0), 0);
+        // Carrega os lançamentos
+        const lancamentosResponse = await fetch(lancamentosUrl);
+        if (!lancamentosResponse.ok) throw new Error('Erro ao carregar os lançamentos.');
+        
+        const lancamentos = await lancamentosResponse.json();
+
+        // Calcular o valor total das carteiras
+        const valorTotal = contas.reduce((total, conta) => {
+            // Filtra os lançamentos relacionados à carteira
+            const lancamentosConta = lancamentos.filter(lancamento => lancamento.id_carteira === conta.id);
+            
+            // Calcula o saldo da carteira (inicial + lançamentos de receita e despesa)
+            const saldoConta = lancamentosConta.reduce((saldo, lancamento) => {
+                if (lancamento.tipo === 'receita') {
+                    return saldo + lancamento.valor;
+                } else if (lancamento.tipo === 'despesa') {
+                    return saldo - lancamento.valor;
+                }
+                return saldo;
+            }, conta.saldo || 0); // Considera o saldo inicial se houver
+
+            conta.saldo = saldoConta; // Atualiza o saldo da conta
+
+            return total + saldoConta; // Soma para o total geral
+        }, 0);
+
+        // Exibe o valor total
         document.getElementById('total-valor').textContent = `R$ ${valorTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
 
-    
+        // Exibe as carteiras
         const carteirasContainer = document.getElementById('carteiras-container');
         carteirasContainer.innerHTML = '';
 
@@ -22,7 +48,7 @@ async function loadCarteiras() {
             itemCarteira.className = 'carteira-item';
             itemCarteira.setAttribute('data-id', conta.id);
 
-            itemCarteira.style.backgroundColor = conta.id_cor;
+            itemCarteira.style.backgroundColor = conta.id_cor; // Cor da carteira
 
             itemCarteira.innerHTML = `
                 <h3>${conta.nomeConta}</h3>
@@ -35,7 +61,6 @@ async function loadCarteiras() {
                 <p class="descricao">Descrição: ${conta.descricaoConta || 'Não disponível'}</p>
             `;
 
-        
             itemCarteira.addEventListener('click', () => selectAccount(conta.id));
 
             carteirasContainer.appendChild(itemCarteira);
@@ -77,10 +102,8 @@ async function deleteSelectedAccount() {
         const selectedItem = document.querySelector(`.carteira-item[data-id="${selectedAccountId}"]`);
         if (selectedItem) selectedItem.remove();
 
-    
         selectedAccountId = null;
 
-    
         loadCarteiras();
     } catch (error) {
         console.error('Erro ao deletar a conta:', error);
@@ -101,11 +124,9 @@ async function loadData(id) {
         document.getElementById('tipo').value = conta.tipo;
         document.getElementById('detalhes').value = conta.detalhes;
 
-    
         document.querySelector(`input[name="id_icone"][value="${conta.id_icone}"]`).checked = true;
         document.querySelector(`input[name="id_cor"][value="${conta.id_cor}"]`).checked = true;
 
-    
         updatePreview();
     } catch (error) {
         console.error('Erro:', error);

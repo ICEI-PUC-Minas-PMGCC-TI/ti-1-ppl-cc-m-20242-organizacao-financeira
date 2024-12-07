@@ -133,6 +133,4 @@ table tbody tr:last-of-type {
     width: 90%; /* Faz o container ocupar 90% da largura da página */
     max-width: 1200px; /* Define um limite máximo para o container */
     margin: 0 auto; /* Centraliza o container horizontalmente */
-    margin-left: 20px;
 }
-
