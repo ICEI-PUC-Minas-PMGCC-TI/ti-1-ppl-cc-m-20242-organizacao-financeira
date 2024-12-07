@@ -479,6 +479,23 @@
         }
       ],
       "id": 19
+    },
+    {
+      "nome": "Fundo de emergência",
+      "valor": 1,
+      "valorInicial": 200,
+      "data": "2024-12-01",
+      "cor": "#4caf50",
+      "descricao": "Fazer uma reserva de emergência",
+      "icone": "fas fa-question-circle",
+      "depositos": [
+        {
+          "id": 1733449154638,
+          "valor": 100,
+          "data": "2024-12-05"
+        }
+      ],
+      "id": 20
     }
   ],
   "tipos_de_objetivos": [
