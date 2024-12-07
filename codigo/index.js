@@ -60,6 +60,10 @@ app.get("/objetivos/detalhes", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "modulos/objetivos/detalhesObjetivos.html"));
 });
 
+app.get("/calendario", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "calendario/calendario.html"));
+});
+
 // Inicializando o servidor
 const PORT = 3000;
 app.listen(PORT, () => {
