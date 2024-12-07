@@ -17,15 +17,15 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Rota para servir a página HTML
 app.get("/cadastro/lancamento", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "lancamento/Lancamentos.html"));
+    res.sendFile(path.join(__dirname, "public", "Lançamento/Lancamentos.html"));
 });
 
 app.get("/cadastro/despesas", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "lancamento/Despesas.html"));
+  res.sendFile(path.join(__dirname, "public", "Lançamento/Despesas.html"));
 });
 
 app.get("/cadastro/receitas", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "lancamento/Receitas.html"));
+  res.sendFile(path.join(__dirname, "public", "Lançamento/Receitas.html"));
 });
 
 app.get("/cadastro/tutoriais", (req, res) => {

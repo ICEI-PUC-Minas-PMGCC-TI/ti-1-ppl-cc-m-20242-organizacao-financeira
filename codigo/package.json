@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
    "start": "node index.js",
-   "start-json": "json-server --watch db/db.json --port 3000"
+   "start-json": "json-server --watch db/db.json --port 3001"
   },
   "keywords": [],
   "author": "Rommel Vieira Carneiro",

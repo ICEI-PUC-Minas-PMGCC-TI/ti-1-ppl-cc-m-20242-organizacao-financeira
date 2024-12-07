@@ -402,16 +402,13 @@
       "frequencia": "mensal"
     },
     {
-      "id": "7",
-      "id_usuario": 1,
-      "id_carteira": 2,
-      "id_categoria": 1,
-      "valor": -150,
-      "tipo": "despesa",
-      "data": "2024-10-30",
       "descricao": "Compra de supermercado da semana",
+      "valor": -150,
+      "categoria": "undefined",
+      "conta": "undefined",
       "recorrente": false,
-      "frequencia": null
+      "tipo": "despesa",
+      "id": "7"
     },
     {
       "id": "8",
@@ -450,16 +447,22 @@
       "frequencia": "mensal"
     },
     {
-      "id": "11",
-      "id_usuario": 1,
-      "id_carteira": 7,
-      "id_categoria": 4,
-      "valor": -400,
+      "descricao": "adfasa",
+      "valor": 123,
+      "categoria": "adfasd",
+      "conta": "asdfa",
+      "recorrente": false,
+      "tipo": "receita",
+      "id": "gaBWh7g"
+    },
+    {
+      "descricao": "adfadfs",
+      "valor": 123,
+      "categoria": "fasdf",
+      "conta": "asdfaf",
+      "recorrente": false,
       "tipo": "despesa",
-      "data": "2024-10-09",
-      "descricao": "Parcela do financiamento do carro",
-      "recorrente": true,
-      "frequencia": "mensal"
+      "id": "NRPqTuE"
     }
   ],
   "objetivos": [
