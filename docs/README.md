@@ -308,7 +308,7 @@ Permite ao usuário salvar lembretes para datas específicas.
 
 Descrição das estruturas de dados utilizadas na solução com exemplos no formato JSON.Info
 
-##### Estrutura de Dados - Contatos   ⚠️ EXEMPLO ⚠️
+##### Estrutura de Dados 
 
 Contatos da aplicação
 
