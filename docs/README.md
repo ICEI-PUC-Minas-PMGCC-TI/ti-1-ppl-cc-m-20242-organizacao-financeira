@@ -639,5 +639,5 @@ Asutay, Mehmet. "Conceptualisation of the second best solution in overcoming the
 ASUTAY, Mehmet. Conceptualisation of the second best solution in overcoming the social failure of Islamic finance: Examining the overpowering of homoislamicus by homoeconomicus. IIUM Journal in Economics and Management, v. 15, n. 2, p. 167-195, 2007.
 Asutay, M. (2007). Conceptualisation of the second best solution in overcoming the social failure of Islamic finance: Examining the overpowering of homoislamicus by homoeconomicus. IIUM Journal in Economics and Management, 15(2), 167-195.
 
-> - [Cuso de Node](https://youtube.com/playlist?list=PLJ_KhUnlXUPtbtLwaxxUxHqvcNQndmI4B&si=ByTd5-kOXJh3ROou)
+> - [Curso de Node](https://youtube.com/playlist?list=PLJ_KhUnlXUPtbtLwaxxUxHqvcNQndmI4B&si=ByTd5-kOXJh3ROou)
 > - [Crud](https://blog.geekhunter.com.br/criar-crud-node-js/)
