@@ -210,22 +210,58 @@
   ],
   "lancamentos": [
     {
-      "descricao": "sdadaada",
-      "valor": 1000,
-      "categoria": "aaaaa",
-      "id_carteira": "qGCgG4P",
-      "recorrente": false,
+      "descricao": "Salario de Novembro",
+      "valor": 1475,
+      "categoria": "Salario",
+      "id_carteira": "58a2",
+      "recorrente": true,
       "tipo": "receita",
       "id": 9
     },
     {
-      "descricao": "teste2",
+      "descricao": "Contas da Casa",
+      "valor": 2000,
+      "categoria": "Contas",
+      "id_carteira": "58a2",
+      "recorrente": true,
+      "tipo": "despesa",
+      "id": 10
+    },
+    {
+      "descricao": "Salario de Dezembro",
+      "valor": 1475,
+      "categoria": "Salario",
+      "id_carteira": "58a2",
+      "recorrente": true,
+      "tipo": "receita",
+      "id": 11
+    },
+    {
+      "descricao": "13 Salario",
+      "valor": 1475,
+      "categoria": "Salario",
+      "id_carteira": "58a2",
+      "recorrente": true,
+      "tipo": "receita",
+      "id": 12
+    },
+    {
+      "descricao": "Despesa da Viagem ",
       "valor": 500,
-      "categoria": "abcd",
+      "categoria": "Viagem",
       "id_carteira": "qGCgG4P",
       "recorrente": false,
       "tipo": "despesa",
-      "id": 10
+      "id": 13
+    },
+    {
+      "descricao": "Aluguel",
+      "valor": 800,
+      "categoria": "Contas",
+      "id_carteira": "j02UVIb",
+      "recorrente": true,
+      "tipo": "despesa",
+      "id": 14
     }
   ],
   "objetivos": [
@@ -291,13 +327,13 @@
   ],
   "lembretes": [
     {
-      "titulo": "adadasd",
-      "descricao": "dada",
-      "valor": 6,
+      "titulo": "Data da Viagem",
+      "descricao": "Dia que vou Viajar ",
+      "valor": 0,
       "data": "2024-12-11",
       "status": false,
       "frequencia": "null",
-      "id": 1
+      "id": 2
     }
   ]
 }
