@@ -310,8 +310,6 @@ Descrição das estruturas de dados utilizadas na solução com exemplos no form
 
 ##### Estrutura de Dados 
 
-Contatos da aplicação
-
 ```json
  {
   "usuarios": [
@@ -617,22 +615,6 @@ Contatos da aplicação
   ]
 }
   
-```
-
-##### Estrutura de Dados - Usuários  ⚠️ EXEMPLO ⚠️
-
-Registro dos usuários do sistema utilizados para login e para o perfil do sistema
-
-```json
-  {
-    {
-      "id": "1",
-      "login": "admin",
-      "senha": "123",
-      "nome": "Administrador do Sistema",
-      "email": "admin@abc.com"
-    },
-  }
 ```
 ## Módulos e APIs
 
