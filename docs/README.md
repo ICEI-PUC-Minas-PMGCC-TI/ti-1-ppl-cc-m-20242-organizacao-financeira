@@ -247,9 +247,63 @@ Permite ao usuário criar Cateiras para ter um controle do gasto.
 ![Tela de Funcionalidade](images/carteiras.jpg)
 
 * ** Cadastro de Carteira
-  ![Tela de Funcionalidade](images/Cadastro de Carterias.jpg)
+  ![Tela de Funcionalidade](images/Cadastro_de_Carterias.jpg)
 
+##### Funcionalidade 3 - Lançamentos 
 
+Permite ao usuário vizualir as receitas e despesas cadastradas.
+
+* **Estrutura de dados:** [Lançamentos](#ti_ed_contatos)
+* **Instruções de acesso:**
+  * Acessar a Tela de Lançamentos  
+  
+* **Tela da funcionalidade**:
+
+![Tela de Funcionalidade](images/Lancamentos.jpg)
+
+* ** Cadastro de Receitas
+  ![Tela de Funcionalidade](images/Receitas.jpg)
+* ** Cadastro de Despesas
+  ![Tela de Funcionalidade](images/Despesas.jpg)
+
+##### Funcionalidade 4 - Objetivos 
+
+Permite ao usuário visualizar os objetivos que foram cadastrados e acompanhar o progresso.
+
+* **Estrutura de dados:** [Objetivos](#ti_ed_contatos)
+* **Instruções de acesso:**
+  * Acessar a Tela de Objetivos  
+  
+* **Tela da funcionalidade**:
+
+![Tela de Funcionalidade](images/Objetivos.jpg)
+
+##### Funcionalidade 5 - Tutoriais 
+
+Permite ao usuário ter acesso a conteúdos de dados para melhorar seus conhecimentos econômicos.
+
+* **Estrutura de dados:** [Tutoriais](#ti_ed_contatos)
+* **Instruções de acesso:**
+  * Acessar a Tela de Tutoriais  
+  
+* **Tela da funcionalidade**:
+
+![Tela de Funcionalidade](images/Tutoriais.jpg)
+
+##### Funcionalidade 6 - Lembretes 
+
+Permite ao usuário salvar lembretes para datas específicas.
+
+* **Estrutura de dados:** [Lembretes](#ti_ed_contatos)
+* **Instruções de acesso:**
+  * Acessar a Tela de Lembretes  
+  
+* **Tela da funcionalidade**:
+
+![Tela de Funcionalidade](images/Calendario.jpg)
+
+* ** Cadastro de Lembretes
+  ![Tela de Funcionalidade](images/Cadastro_de_lembretes.jpg)
 
 ## Estruturas de Dados
 
