@@ -32,6 +32,10 @@ app.get("/objetivos/detalhes", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "modules/objetivos/detalhesObjetivos.html"));
 });
 
+app.get("/dashbord", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "modules/dashbord/dashbord.html"));
+});
+
 
 // Inicializando o servidor
 const PORT = 3000;

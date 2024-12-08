@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .sidebar {
+    width: 100px;
+    background-color: #ffffff;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 60px;
+    border-right: 1px solid #ddd;
+    display: flex; /* Permite o alinhamento com flexbox */
+    flex-direction: column; /* Direção vertical */
+    align-items: center; /* Centraliza os itens horizontalmente */
+}
+
+.sidebar img {
+    display: flex; /* Para alinhar ícones centralmente com textos, se aplicável */
+    justify-content: center; /* Centraliza o ícone dentro do link */
+    align-items: center; /* Centraliza o ícone dentro do link */
+    padding: 15px 20px; /* Aumenta o espaço para tornar o link maior */
+    color: #333;
+    text-decoration: none;
+    font-size: 18px; /* Aumenta o tamanho da fonte (se aplicável aos ícones) */
+}
+
+.sidebar a {
+    display: flex; /* Para alinhar ícones centralmente com textos, se aplicável */
+    justify-content: center; /* Centraliza o ícone dentro do link */
+    align-items: center; /* Centraliza o ícone dentro do link */
+    padding: 15px 20px; /* Aumenta o espaço para tornar o link maior */
+    color: #333;
+    text-decoration: none;
+    font-size: 18px; /* Aumenta o tamanho da fonte (se aplicável aos ícones) */
+}
+  
+  .dashboard {
+    text-align: center;
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  .cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .card {
+    background: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    flex: 1;
+    max-width: 250px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .card p {
+    color: #6c757d;
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .card h2 {
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  .icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -20px;
+    right: 20px;
+    color: white;
+  }
+  
+  .performance-link {
+    color: #6f42c1;
+    text-decoration: none;
+    margin-top: 20px;
+    display: inline-block;
+  }
+
+canvas {
+    max-width: 100%;
+    margin: auto;
+}
+
+
+  
+  
