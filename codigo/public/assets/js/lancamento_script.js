@@ -8,7 +8,7 @@ window.onload = () => {
 function validateForm(type = null) {
     const descricao = document.getElementById("exampleInputDescricao").value;
     const valor = document.getElementById("exampleInputValor").value;
-    const categoria = document.getElementById("exampleInputCategoria").value;
+    const categoria = document.getElementById("categorias").value;
     const conta = document.getElementById("exampleInputConta").value;
     const recorrente = document.getElementById("exampleCheck1").checked;
 
@@ -41,7 +41,7 @@ function showData(type) {
                 html += "<tr>";
                 html += `<td>${element.descricao}</td>`;
                 html += `<td>${element.valor}</td>`;
-                html += `<td>${element.categoria}</td>`;
+                html += `<td>${element.categorias}</td>`;
                 html += `<td>${element.conta}</td>`;
                 html += `<td>${element.recorrente ? "Sim" : "Não"}</td>`;
                 html += `<td><button onclick="deleteData(${element.id})" class="btn btn-danger">Deletar</button></td>`;
@@ -95,7 +95,7 @@ function updateData(id) {
             // Preencha os campos do formulário com os dados carregados
             document.getElementById("exampleInputDescricao").value = data.descricao;
             document.getElementById("exampleInputValor").value = data.valor;
-            document.getElementById("exampleInputCategoria").value = data.categoria;
+            document.getElementById("categorias").value = data.categoria;
             document.getElementById("exampleInputConta").value = data.conta;
             document.getElementById("exampleCheck1").checked = data.recorrente;
 
@@ -142,7 +142,7 @@ function fetchLancamentos() {
                     row.innerHTML = `
                         <td>${lancamento.descricao}</td>
                         <td>${lancamento.valor}</td>
-                        <td>${lancamento.categoria}</td>
+                        <td>${lancamento.categorias}</td>
                         <td>${lancamento.conta}</td>
                         <td>${lancamento.recorrente ? "Sim" : "Não"}</td>
                         <td>${lancamento.tipo}</td>
@@ -157,7 +157,7 @@ function fetchLancamentos() {
 function clearForm() {
     document.getElementById("exampleInputDescricao").value = "";
     document.getElementById("exampleInputValor").value = "";
-    document.getElementById("exampleInputCategoria").value = "";
+    document.getElementById("categorias").value = "";
     document.getElementById("exampleInputConta").value = "";
     document.getElementById("exampleCheck1").checked = false;
     document.getElementById("Submit").style.display = "block";
