@@ -25,7 +25,7 @@
   "carteiras": [
     {
       "nomeConta": "Poupança",
-      "saldo": 12342,
+      "saldo": 0,
       "descricaoConta": "Fdasasdf",
       "meta": 123412,
       "tipo": "Conta Corrente",
@@ -36,7 +36,7 @@
     },
     {
       "nomeConta": "Viagens",
-      "saldo": 1000,
+      "saldo": 0,
       "descricaoConta": "abcd",
       "meta": 1000,
       "tipo": "Cartão de Crédito",
@@ -47,7 +47,7 @@
     },
     {
       "nomeConta": "Conta BB",
-      "saldo": 12341,
+      "saldo": 0,
       "descricaoConta": "adfsasdf",
       "meta": 1231,
       "tipo": "Cartão de Crédito",
@@ -58,7 +58,7 @@
     },
     {
       "nomeConta": "Conta Inter",
-      "saldo": 1000,
+      "saldo": 0,
       "descricaoConta": "abc",
       "meta": 10000,
       "tipo": "Cartão de Débito",
@@ -262,6 +262,33 @@
       "recorrente": true,
       "tipo": "despesa",
       "id": 14
+    },
+    {
+      "descricao": "Verba para Viagem",
+      "valor": 2000,
+      "categoria": "Viagem",
+      "id_carteira": "qGCgG4P",
+      "recorrente": false,
+      "tipo": "receita",
+      "id": 15
+    },
+    {
+      "descricao": "Salario de Outubro",
+      "valor": 1475,
+      "categoria": "Salario",
+      "id_carteira": "j02UVIb",
+      "recorrente": true,
+      "tipo": "receita",
+      "id": 16
+    },
+    {
+      "descricao": "Salario de Setembro",
+      "valor": 1475,
+      "categoria": "Salario",
+      "id_carteira": "65AwP8H",
+      "recorrente": true,
+      "tipo": "receita",
+      "id": 17
     }
   ],
   "objetivos": [
