@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../../assets/css/dashbord.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="sidebar">
+        <img src="../../assets/images/histogram-svgrepo-com.svg" alt="">
+        <a href="http://localhost:3000/dashbord"><i class="bi bi-house-door"></i></a>
+        <a href="#"><i class="bi bi-bank"></i></a>
+        <a href="http://localhost:3000/objetivos"><i class="bi bi-bookmark-check-fill"></i></a>
+        <hr>
+        <a href="http://localhost:3000/tutoriais"><i class="bi bi-play-circle-fill"></i></a>
+        <a href="#"><i class="bi bi-calendar2-check-fill"></i></a>
+    </div>
+
+  <div class="container mt-5">
+    <h1 class="text-center">Dashboard</h1>
+    <div class="row mt-4">
+      <div class="col-md-3">
+        <div class="card text-center shadow">
+          <div class="card-body">
+            <h6 class="card-title text-muted">Saldo atual</h6>
+            <h2 id="saldo" class="text-primary">R$ 0,00</h2>
+            <div class="icon bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center">
+              <i class="bi bi-bank fs-4"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-center shadow">
+          <div class="card-body">
+            <h6 class="card-title text-muted">Receitas</h6>
+            <h2 id="receitas" class="text-success">R$ 0,00</h2>
+            <div class="icon bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center">
+              <i class="bi bi-arrow-up fs-4"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-center shadow">
+          <div class="card-body">
+            <h6 class="card-title text-muted">Despesas</h6>
+            <h2 id="despesas" class="text-danger">R$ 0,00</h2>
+            <div class="icon bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center">
+              <i class="bi bi-arrow-down fs-4"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <div class="row mt-4">
+      <!-- Gráfico de progresso do saldo -->
+      <div class="col-md-6">
+        <canvas id="graficoSaldo"></canvas>
+      </div>
+      <!-- Gráfico de comparação entre receitas e despesas -->
+      <div class="col-md-6">
+        <canvas id="graficoComparacao"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mt-5">
+  <div class="row mt-4">
+    <!-- Gráfico de progresso do saldo -->
+    <div class="col-md-4">
+      <canvas id="graficoSaldo"></canvas>
+    </div>
+    <!-- Gráfico de comparação entre receitas e despesas -->
+    <div class="col-md-4">
+      <canvas id="graficoComparacao"></canvas>
+    </div>
+    <!-- Gráfico de progresso dos objetivos -->
+    <div id="objetivosContainer" class="row">
+      <!-- Gráficos de objetivos serão adicionados aqui -->
+    </div>
+    
+</div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Custom Script -->
+  <script src="../../assets/js/dashbord.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+</body>
+</html>
