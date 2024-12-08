@@ -80,7 +80,6 @@ function criarGraficoSaldo(progressoSaldo) {
   });
 }
 
-
 // Função para criar o gráfico de comparação entre receitas e despesas
 function criarGraficoComparacao(receitas, despesas) {
   const ctx = document.getElementById("graficoComparacao").getContext("2d");
@@ -182,24 +181,6 @@ async function buscarObjetivos() {
 document.addEventListener("DOMContentLoaded", () => {
   buscarObjetivos();
 });
-
-
-
-// Atualizar o Dashboard com todos os gráficos
-function atualizarDashboard(dados) {
-  const receitas = dados.filter((d) => d.tipo === "receita").reduce((acc, item) => acc + item.valor, 0);
-  const despesas = dados.filter((d) => d.tipo === "despesa").reduce((acc, item) => acc + item.valor, 0);
-  const saldo = receitas - despesas;
-
-  // Atualizar valores dos cards
-  document.getElementById("receitas").textContent = `R$ ${receitas.toLocaleString()}`;
-  document.getElementById("despesas").textContent = `R$ ${despesas.toLocaleString()}`;
-  document.getElementById("saldo").textContent = `R$ ${saldo.toLocaleString()}`;
-
-  // Criar gráficos
-  criarGraficoSaldo(saldo, receitas, despesas);
-  criarGraficoComparacao(receitas, despesas);
-}
 
 
 document.addEventListener("DOMContentLoaded", () => {
