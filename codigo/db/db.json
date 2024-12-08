@@ -230,14 +230,6 @@
   ],
   "objetivos": [
     {
-      "concluido": true,
-      "id": 19
-    },
-    {
-      "concluido": true,
-      "id": 21
-    },
-    {
       "nome": "Mudar de país",
       "valor": 100000,
       "valorInicial": 5500,
@@ -253,6 +245,17 @@
         }
       ],
       "id": 22
+    },
+    {
+      "nome": "Comprar uma casa",
+      "valor": 300,
+      "valorInicial": 100,
+      "data": "2024-12-01",
+      "cor": "#4caf50",
+      "descricao": "Comprar uma casa",
+      "icone": "fas fa-question-circle",
+      "depositos": [],
+      "id": 23
     }
   ],
   "tipos_de_objetivos": [

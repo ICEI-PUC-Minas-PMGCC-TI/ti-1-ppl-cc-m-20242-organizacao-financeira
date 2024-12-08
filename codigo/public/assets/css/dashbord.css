@@ -5,6 +5,10 @@ body {
     padding: 20px;
   }
 
+.info-lancamentos{
+  margin-left: 100px;
+}
+
   .sidebar {
     width: 100px;
     background-color: #ffffff;
