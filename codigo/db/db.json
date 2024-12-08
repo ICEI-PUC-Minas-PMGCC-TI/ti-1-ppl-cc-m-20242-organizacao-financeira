@@ -24,18 +24,18 @@
   ],
   "carteiras": [
     {
-      "id": "58a2",
-      "nomeConta": "Oie",
+      "nomeConta": "Poupança",
       "saldo": 12342,
       "descricaoConta": "Fdasasdf",
       "meta": 123412,
       "tipo": "Conta Corrente",
       "detalhes": "Ola",
-      "id_icone": "🏠",
-      "id_cor": "#2ecc71"
+      "id_icone": "🐖",
+      "id_cor": "#2ecc71",
+      "id": "58a2"
     },
     {
-      "nomeConta": "abcd",
+      "nomeConta": "Viagens",
       "saldo": 1000,
       "descricaoConta": "abcd",
       "meta": 1000,
@@ -46,7 +46,7 @@
       "id": "qGCgG4P"
     },
     {
-      "nomeConta": "fadfasdf",
+      "nomeConta": "Conta BB",
       "saldo": 12341,
       "descricaoConta": "adfsasdf",
       "meta": 1231,
@@ -57,13 +57,13 @@
       "id": "j02UVIb"
     },
     {
-      "nomeConta": "teste5",
+      "nomeConta": "Conta Inter",
       "saldo": 1000,
       "descricaoConta": "abc",
       "meta": 10000,
       "tipo": "Cartão de Débito",
       "detalhes": "abcd",
-      "id_icone": "🐖",
+      "id_icone": "👶",
       "id_cor": "#f39c12",
       "id": "65AwP8H"
     }
@@ -232,7 +232,7 @@
     {
       "nome": "Mudar de país",
       "valor": 100000,
-      "valorInicial": 5500,
+      "valorInicial": 25500,
       "data": "2025-05-30",
       "cor": "#4caf50",
       "descricao": "Me mudar para suíça",
@@ -242,6 +242,11 @@
           "id": 1733582532265,
           "valor": 500,
           "data": "2024-12-14"
+        },
+        {
+          "id": 1733667539612,
+          "valor": 20000,
+          "data": "2024-12-04"
         }
       ],
       "id": 22
@@ -284,5 +289,15 @@
       "nome": "Aposentadoria"
     }
   ],
-  "lembretes": []
+  "lembretes": [
+    {
+      "titulo": "adadasd",
+      "descricao": "dada",
+      "valor": 6,
+      "data": "2024-12-11",
+      "status": false,
+      "frequencia": "null",
+      "id": 1
+    }
+  ]
 }
