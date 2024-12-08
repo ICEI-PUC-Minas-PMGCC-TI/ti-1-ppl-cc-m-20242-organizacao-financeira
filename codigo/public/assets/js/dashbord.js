@@ -100,7 +100,6 @@ function criarGraficoComparacao(receitas, despesas) {
       plugins: {
         title: {
           display: true,
-          text: "Receitas vs Despesas",
         },
       },
     },
@@ -206,3 +205,115 @@ document.addEventListener("DOMContentLoaded", () => {
   buscarDados();
 });
 
+//////// Grafico Categorias de Gasto 
+
+
+window.onload = () => {
+  const canvas = document.getElementById('categoriaDonutChart');
+  // Definindo explicitamente o tamanho do canvas no JS
+  canvas.width = 300;  // Largura do canvas
+  canvas.height = 300; // Altura do canvas
+  fetchCategorias();
+};
+
+function fetchCategorias() {
+  const endpoint = "http://localhost:3001/lancamentos"; 
+  fetch(endpoint)
+      .then(response => response.json())
+      .then(dataList => {
+          const categoriaMap = {};
+          let valorTotal = 0;
+
+          dataList.forEach(lancamento => {
+              const valor = parseFloat(lancamento.valor); 
+
+              if (!isNaN(valor)) { 
+                  if (!categoriaMap[lancamento.categoria]) {
+                      categoriaMap[lancamento.categoria] = 0;
+                  }
+                  categoriaMap[lancamento.categoria] += valor;
+                  valorTotal += valor;
+              } else {
+                  console.warn(`Valor inválido para lançamento: ${lancamento.valor}`);
+              }
+          });
+
+          exibirTotal(valorTotal);
+
+          createDonutChart(categoriaMap);
+      })
+      .catch(error => console.error("Erro ao carregar dados de categorias:", error));
+}
+
+function exibirTotal(valorTotal) {
+  const totalElement = document.getElementById('categoriaDonutChart');
+  totalElement.textContent = `Valor Total: R$ ${valorTotal.toFixed(2)}`;
+}
+
+function createDonutChart(categoriaMap) {
+  const labels = Object.keys(categoriaMap);
+  const data = Object.values(categoriaMap);
+
+  const ctx = document.getElementById('categoriaDonutChart').getContext('2d');
+  
+  new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+          labels: labels,
+          datasets: [{
+              label: 'Valores por Categoria',
+              data: data,
+              backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#FF9F40', '#9966FF'],
+              hoverOffset: 4
+          }]
+      },
+      options: {
+          responsive: false,  // Desativa o redimensionamento automático
+          maintainAspectRatio: false,  // Desativa a manutenção da proporção
+          cutout: '55%',  // Tamanho do buraco central no donut
+          plugins: {
+              legend: {
+                  position: 'top',  // Posição da legenda
+                  labels: {
+                      font: {
+                          size: 14,
+                          family: ' "Titillium Web", sans-serif',
+                          weight: '60',
+                      },
+                      color: '#333',
+                  },
+              },
+              tooltip: {
+                  backgroundColor: 'rgba(0, 0, 0, 0.7)',  // Cor de fundo do tooltip
+                  titleFont: {
+                      size: 16,
+                      weight: 'bold',
+                      family: ' "Titillium Web", sans-serif'
+                  },
+                  bodyFont: {
+                      size: 14,
+                      weight: 'normal',
+                  },
+                  callbacks: {
+                      label: function(tooltipItem) {
+                          return `${tooltipItem.label}: R$ ${tooltipItem.raw.toFixed(2)}`;
+                      }
+                  }
+              },
+              datalabels: {
+                  display: true,
+                  color: '#fff',
+                  font: {
+                      weight: 'bold',
+                      size: 16
+                  },
+                  formatter: (value) => `R$ ${value.toFixed(2)}`,
+              }
+          },
+          animation: {
+              animateScale: true,
+              animateRotate: true, // Animação de rotação ao carregar
+          }
+      }
+  });
+}

@@ -24,7 +24,7 @@
     </div>
 
   <div class="container mt-5">
-    <h1 class="text-center">Dashboard</h1>
+    <h1 class="text-center" id="titulo">Dashboard</h1>
     <div class="row mt-4">
       <div class="col-md-3">
         <div class="card text-center shadow">
@@ -62,34 +62,43 @@
     </div>
   </div>
 
-  <div class="mt-5">
-    <div class="row mt-4">
-      <!-- Gráfico de progresso do saldo -->
-      <div class="col-md-6">
-        <canvas id="graficoSaldo"></canvas>
+  <div class="container mt-5">
+    <div class="row mt-4 g-4" id="graficos_container">
+      
+      <!-- Título e gráfico de progresso do saldo -->
+      <div class="col-md-4" id="algo">
+        <h1 id="titulo_grafico">Progressão Saldo</h1>
+        <div id="graficos">
+          <canvas id="graficoSaldo"></canvas>
+        </div>
       </div>
-      <!-- Gráfico de comparação entre receitas e despesas -->
-      <div class="col-md-6">
-        <canvas id="graficoComparacao"></canvas>
+  
+      <!-- Título e gráfico de comparação entre receitas e despesas -->
+      <div class="col-md-4" id="algo">
+        <h1 id="titulo_grafico">Comparação Receitas e Despesas</h1>
+        <div id="graficos">
+          <canvas id="graficoComparacao"></canvas>
+        </div>
       </div>
+  
+      <!-- Título e gráfico de categoria de despesas -->
+      <div class="col-md-4" id="algo">
+        <h1 id="titulo_grafico">Despesas por Categoria</h1>
+        <div id="graficos">
+          <canvas id="categoriaDonutChart"></canvas>
+          <p id="totalGastos"></p>
+        </div>
+      </div>
+  
     </div>
-  </div>
-</div>
-
-<div class="mt-5">
-  <div class="row mt-4">
-    <!-- Gráfico de progresso do saldo -->
-    <div class="col-md-4">
-      <canvas id="graficoSaldo"></canvas>
-    </div>
-    <!-- Gráfico de comparação entre receitas e despesas -->
-    <div class="col-md-4">
-      <canvas id="graficoComparacao"></canvas>
-    </div>
-    <!-- Gráfico de progresso dos objetivos -->
+  
+    <!-- Container para objetivos -->
+    <h1 id="titulo_objetivo">Objetivos</h1>
     <div id="objetivosContainer" class="row">
       <!-- Gráficos de objetivos serão adicionados aqui -->
     </div>
+  </div>
+  
     
 </div>
 

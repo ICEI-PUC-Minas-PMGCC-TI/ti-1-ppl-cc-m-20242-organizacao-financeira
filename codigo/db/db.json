@@ -212,7 +212,7 @@
     {
       "descricao": "sdadaada",
       "valor": 1000,
-      "categoria": "aaaaa",
+      "categoria": "Alimentação",
       "id_carteira": "qGCgG4P",
       "recorrente": false,
       "tipo": "receita",
@@ -221,7 +221,7 @@
     {
       "descricao": "teste2",
       "valor": 500,
-      "categoria": "abcd",
+      "categoria": "Habitação",
       "id_carteira": "qGCgG4P",
       "recorrente": false,
       "tipo": "despesa",

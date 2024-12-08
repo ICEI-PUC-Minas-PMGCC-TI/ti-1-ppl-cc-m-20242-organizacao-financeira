@@ -78,6 +78,13 @@ label {
     font-weight: bold; /* Faz o texto do rótulo ficar em negrito */
 }
 
+#exampleInputCategoria {
+    display: block; /* Faz com que os rótulos ocupem uma linha inteira */
+    margin-bottom: 5px; /* Adiciona espaço abaixo do rótulo */
+    color: #616161; /* Define a cor do texto do rótulo como cinza escuro */
+    font-weight: bold; /* Faz o texto do rótulo ficar em negrito */
+}
+
 /* Estilo para botões primários e de sucesso */
 .btn-primary, .btn-success {
     background-color: red; /* Define o fundo do botão como vermelho */
