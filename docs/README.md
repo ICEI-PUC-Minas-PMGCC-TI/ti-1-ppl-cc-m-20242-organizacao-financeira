@@ -641,5 +641,3 @@ Asutay, M. (2007). Conceptualisation of the second best solution in overcoming t
 
 > - [Cuso de Node](https://youtube.com/playlist?list=PLJ_KhUnlXUPtbtLwaxxUxHqvcNQndmI4B&si=ByTd5-kOXJh3ROou)
 > - [Crud](https://blog.geekhunter.com.br/criar-crud-node-js/)
-> - [Formato ABNT](https://www.normastecnicas.com/abnt/trabalhos-academicos/referencias/)
-> - [Referências Bibliográficas da ABNT](https://comunidade.rockcontent.com/referencia-bibliografica-abnt/)
