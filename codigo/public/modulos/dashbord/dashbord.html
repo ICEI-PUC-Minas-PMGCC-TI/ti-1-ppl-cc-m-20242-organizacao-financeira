@@ -13,18 +13,18 @@
 </head>
 <body>
 
-    <div class="sidebar">
-        <img src="../../assets/images/histogram-svgrepo-com.svg" alt="">
-        <a href="http://localhost:3000/dashbord"><i class="bi bi-house-door"></i></a>
-        <a href="#"><i class="bi bi-bank"></i></a>
-        <a href="http://localhost:3000/objetivos"><i class="bi bi-bookmark-check-fill"></i></a>
-        <hr>
-        <a href="http://localhost:3000/tutoriais"><i class="bi bi-play-circle-fill"></i></a>
-        <a href="#"><i class="bi bi-calendar2-check-fill"></i></a>
-    </div>
+<div class="sidebar">
+    <img src="../../assets/images/histogram-svgrepo-com.svg" alt="">
+    <a href="http://localhost:3000/dashbord"><i class="bi bi-house-door"></i></a>
+    <a href="http://localhost:3000/carteiras"><i class="bi bi-bank"></i></a>
+    <a href="http://localhost:3000/cadastro/lancamento"><i class="bi bi-cash-coin"></i></a>
+    <a href="http://localhost:3000/objetivos"><i class="bi bi-bookmark-check-fill"></i></a>
+    <a href="http://localhost:3000/tutoriais"><i class="bi bi-play-circle-fill"></i></a>
+    <a href="http://localhost:3000/calendario"><i class="bi bi-calendar2-check-fill"></i></a>
+</div>
 
-  <div class="container mt-5">
-    <h1 class="text-center" id="titulo">Dashboard</h1>
+  <div class="container mt-5" class="info-lancamentos">
+    <h1 class="text-center">Dashboard</h1>
     <div class="row mt-4">
       <div class="col-md-3">
         <div class="card text-center shadow">
@@ -62,43 +62,34 @@
     </div>
   </div>
 
-  <div class="container mt-5">
-    <div class="row mt-4 g-4" id="graficos_container">
-      
-      <!-- Título e gráfico de progresso do saldo -->
-      <div class="col-md-4" id="algo">
-        <h1 id="titulo_grafico">Progressão Saldo</h1>
-        <div id="graficos">
-          <canvas id="graficoSaldo"></canvas>
-        </div>
+  <div class="mt-5">
+    <div class="row mt-4">
+      <!-- Gráfico de progresso do saldo -->
+      <div class="col-md-6">
+        <canvas id="graficoSaldo"></canvas>
       </div>
-  
-      <!-- Título e gráfico de comparação entre receitas e despesas -->
-      <div class="col-md-4" id="algo">
-        <h1 id="titulo_grafico">Comparação Receitas e Despesas</h1>
-        <div id="graficos">
-          <canvas id="graficoComparacao"></canvas>
-        </div>
+      <!-- Gráfico de comparação entre receitas e despesas -->
+      <div class="col-md-6">
+        <canvas id="graficoComparacao"></canvas>
       </div>
-  
-      <!-- Título e gráfico de categoria de despesas -->
-      <div class="col-md-4" id="algo">
-        <h1 id="titulo_grafico">Despesas por Categoria</h1>
-        <div id="graficos">
-          <canvas id="categoriaDonutChart"></canvas>
-          <p id="totalGastos"></p>
-        </div>
-      </div>
-  
     </div>
-  
-    <!-- Container para objetivos -->
-    <h1 id="titulo_objetivo">Objetivos</h1>
+  </div>
+</div>
+
+<div class="mt-5">
+  <div class="row mt-4">
+    <!-- Gráfico de progresso do saldo -->
+    <div class="col-md-4">
+      <canvas id="graficoSaldo"></canvas>
+    </div>
+    <!-- Gráfico de comparação entre receitas e despesas -->
+    <div class="col-md-4">
+      <canvas id="graficoComparacao"></canvas>
+    </div>
+    <!-- Gráfico de progresso dos objetivos -->
     <div id="objetivosContainer" class="row">
       <!-- Gráficos de objetivos serão adicionados aqui -->
     </div>
-  </div>
-  
     
 </div>
 
